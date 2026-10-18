@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <InternalsVisibleTo Include="EnglishSchool.Modules.Retention.Tests" />
+    <InternalsVisibleTo Include="EnglishSchool.Modules.Discipline.Tests" />
   </ItemGroup>
 
   <ItemGroup>
