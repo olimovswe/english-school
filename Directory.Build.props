@@ -1,0 +1,13 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <!-- Loyiha nomi "Modules.Curriculum" -> assembly va namespace "EnglishSchool.Modules.Curriculum" -->
+    <AssemblyName>EnglishSchool.$(MSBuildProjectName)</AssemblyName>
+    <RootNamespace>EnglishSchool.$(MSBuildProjectName)</RootNamespace>
+  </PropertyGroup>
+</Project>

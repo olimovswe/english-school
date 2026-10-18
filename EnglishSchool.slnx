@@ -1,0 +1,61 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/BuildingBlocks.Abstractions/BuildingBlocks.Abstractions.csproj" />
+    <Project Path="src/BuildingBlocks/BuildingBlocks.csproj" />
+    <Project Path="src/Host.Api/Host.Api.csproj" />
+    <Project Path="src/Host.Worker/Host.Worker.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/" />
+  <Folder Name="/src/Modules/AiGateway.Contracts/">
+    <Project Path="src/Modules/AiGateway.Contracts/Modules.AiGateway.Contracts.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/AiGateway/">
+    <Project Path="src/Modules/AiGateway/Modules.AiGateway.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Analytics.Contracts/">
+    <Project Path="src/Modules/Analytics.Contracts/Modules.Analytics.Contracts.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Analytics/">
+    <Project Path="src/Modules/Analytics/Modules.Analytics.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Curriculum.Contracts/">
+    <Project Path="src/Modules/Curriculum.Contracts/Modules.Curriculum.Contracts.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Curriculum/">
+    <Project Path="src/Modules/Curriculum/Modules.Curriculum.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Discipline.Contracts/">
+    <Project Path="src/Modules/Discipline.Contracts/Modules.Discipline.Contracts.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Discipline/">
+    <Project Path="src/Modules/Discipline/Modules.Discipline.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Identity.Contracts/">
+    <Project Path="src/Modules/Identity.Contracts/Modules.Identity.Contracts.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Identity/">
+    <Project Path="src/Modules/Identity/Modules.Identity.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Practice.Contracts/">
+    <Project Path="src/Modules/Practice.Contracts/Modules.Practice.Contracts.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Practice/">
+    <Project Path="src/Modules/Practice/Modules.Practice.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Retention.Contracts/">
+    <Project Path="src/Modules/Retention.Contracts/Modules.Retention.Contracts.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Retention/">
+    <Project Path="src/Modules/Retention/Modules.Retention.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Speech.Contracts/">
+    <Project Path="src/Modules/Speech.Contracts/Modules.Speech.Contracts.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Speech/">
+    <Project Path="src/Modules/Speech/Modules.Speech.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Architecture.Tests/Architecture.Tests.csproj" />
+    <Project Path="tests/Modules.Curriculum.Tests/Modules.Curriculum.Tests.csproj" />
+  </Folder>
+</Solution>

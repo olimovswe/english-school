@@ -1,0 +1,7052 @@
+{
+  "course": "A0-A2",
+  "version": 1,
+  "language": "en-US",
+  "days": [
+    {
+      "day": 1,
+      "week": 1,
+      "kind": "lesson",
+      "title": "Alifbo va oʻqish qoidalari (fonetika poydevori)",
+      "description": null,
+      "grammar": {
+        "topic": "Alifbo va oʻqish qoidalari (fonetika poydevori)",
+        "formula": [
+          "26 harf: 5 ta unli (a, e, i, o, u) va 21 ta undosh",
+          "Qisqa unlilar: a /æ/ cat · e /e/ bed · i /ɪ/ sit · o /ɑ/ hot · u /ʌ/ cup",
+          "Magic e: cap → cape · kit → kite · hop → hope · cut → cute",
+          "Harf birikmalari: th /θ, ð/ · sh /ʃ/ · ch /tʃ/ · ck /k/ · ph /f/ · wh /w/"
+        ],
+        "examples": [
+          "x = /ks/ box · j = /dʒ/ job · qu = /kw/ queen · c = /k/ cat yoki /s/ city · y = /j/ yes yoki /aɪ/ my"
+        ],
+        "notes": [],
+        "warnings": [
+          "oʻzbek harfi ingliz harfi bilan bir xil oʻqilmaydi!"
+        ]
+      },
+      "vocabulary": {
+        "theme": "Salomlashish, tanishuv va davlatlar",
+        "sourceRefs": [
+          "EVU:8",
+          "EVU:27",
+          "DEST:12"
+        ],
+        "preparesFor": "2-kun: to be (tasdiq)",
+        "words": [
+          {
+            "en": "hello",
+            "uz": "salom"
+          },
+          {
+            "en": "hi",
+            "uz": "salom (norasmiy)"
+          },
+          {
+            "en": "goodbye",
+            "uz": "xayr"
+          },
+          {
+            "en": "name",
+            "uz": "ism"
+          },
+          {
+            "en": "last name",
+            "uz": "familiya"
+          },
+          {
+            "en": "friend",
+            "uz": "doʻst"
+          },
+          {
+            "en": "man",
+            "uz": "erkak"
+          },
+          {
+            "en": "woman",
+            "uz": "ayol"
+          },
+          {
+            "en": "people",
+            "uz": "odamlar"
+          },
+          {
+            "en": "country",
+            "uz": "mamlakat"
+          },
+          {
+            "en": "city",
+            "uz": "shahar"
+          },
+          {
+            "en": "from",
+            "uz": "…dan (qayerdan)"
+          },
+          {
+            "en": "language",
+            "uz": "til"
+          },
+          {
+            "en": "Uzbekistan",
+            "uz": "Oʻzbekiston"
+          },
+          {
+            "en": "Uzbek",
+            "uz": "oʻzbek; oʻzbekcha"
+          },
+          {
+            "en": "the USA",
+            "uz": "AQSH (Amerika)"
+          },
+          {
+            "en": "American",
+            "uz": "amerikalik"
+          },
+          {
+            "en": "England",
+            "uz": "Angliya"
+          },
+          {
+            "en": "English",
+            "uz": "ingliz; inglizcha"
+          },
+          {
+            "en": "Russia",
+            "uz": "Rossiya"
+          },
+          {
+            "en": "Russian",
+            "uz": "rus; ruscha"
+          },
+          {
+            "en": "Turkey",
+            "uz": "Turkiya"
+          },
+          {
+            "en": "Turkish",
+            "uz": "turk; turkcha"
+          },
+          {
+            "en": "China",
+            "uz": "Xitoy"
+          },
+          {
+            "en": "Chinese",
+            "uz": "xitoylik; xitoycha"
+          },
+          {
+            "en": "Korea",
+            "uz": "Koreya"
+          },
+          {
+            "en": "Korean",
+            "uz": "koreys; koreyscha"
+          },
+          {
+            "en": "one … ten (1–10)",
+            "uz": "birdan oʻngacha"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Nice to meet you.",
+            "uz": "Tanishganimdan xursandman."
+          },
+          {
+            "en": "How are you?",
+            "uz": "Qalaysiz?"
+          },
+          {
+            "en": "I'm fine, thanks.",
+            "uz": "Yaxshi, rahmat."
+          },
+          {
+            "en": "My name is …",
+            "uz": "Mening ismim …"
+          },
+          {
+            "en": "Where are you from?",
+            "uz": "Qayerdansiz?"
+          }
+        ]
+      }
+    },
+    {
+      "day": 2,
+      "week": 1,
+      "kind": "lesson",
+      "title": "Kishilik olmoshlari va to be: tasdiq",
+      "description": null,
+      "grammar": {
+        "topic": "Kishilik olmoshlari va to be: tasdiq",
+        "formula": [
+          "I am (I'm) · he / she / it is (he's) · you / we / they are (you're)"
+        ],
+        "examples": [
+          "I'm Ali. I'm from Uzbekistan. We are friends."
+        ],
+        "notes": [
+          "Oʻqish: ee, ea = /iː/ see, tea · oo = /uː/ food, /ʊ/ book"
+        ],
+        "warnings": [
+          "\"Men talabaman\" → I am a student (✗ I student)"
+        ]
+      },
+      "vocabulary": {
+        "theme": "His-tuygʻular va holatlar",
+        "sourceRefs": [
+          "EVU:7"
+        ],
+        "preparesFor": "3-kun: to be (inkor va soʻroq)",
+        "words": [
+          {
+            "en": "happy",
+            "uz": "xursand"
+          },
+          {
+            "en": "sad",
+            "uz": "xafa, gʻamgin"
+          },
+          {
+            "en": "tired",
+            "uz": "charchagan"
+          },
+          {
+            "en": "hungry",
+            "uz": "och (qorni och)"
+          },
+          {
+            "en": "thirsty",
+            "uz": "chanqagan"
+          },
+          {
+            "en": "busy",
+            "uz": "band"
+          },
+          {
+            "en": "free",
+            "uz": "boʻsh (vaqti boʻsh); bepul"
+          },
+          {
+            "en": "angry",
+            "uz": "jahli chiqqan"
+          },
+          {
+            "en": "bored",
+            "uz": "zerikkan"
+          },
+          {
+            "en": "excited",
+            "uz": "hayajonlangan"
+          },
+          {
+            "en": "nervous",
+            "uz": "hayajondagi, asabiy"
+          },
+          {
+            "en": "worried",
+            "uz": "tashvishlangan"
+          },
+          {
+            "en": "scared",
+            "uz": "qoʻrqqan"
+          },
+          {
+            "en": "sick",
+            "uz": "kasal"
+          },
+          {
+            "en": "fine",
+            "uz": "yaxshi"
+          },
+          {
+            "en": "OK",
+            "uz": "mayli, yaxshi"
+          },
+          {
+            "en": "great",
+            "uz": "zoʻr, ajoyib"
+          },
+          {
+            "en": "ready",
+            "uz": "tayyor"
+          },
+          {
+            "en": "late",
+            "uz": "kech qolgan; kech"
+          },
+          {
+            "en": "early",
+            "uz": "erta"
+          },
+          {
+            "en": "wrong",
+            "uz": "notoʻgʻri"
+          },
+          {
+            "en": "sure",
+            "uz": "ishonchi komil"
+          },
+          {
+            "en": "married",
+            "uz": "uylangan / turmushga chiqqan"
+          },
+          {
+            "en": "single",
+            "uz": "boʻydoq / turmush qurmagan"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Are you OK?",
+            "uz": "Yaxshimisiz? Tinchlikmi?"
+          },
+          {
+            "en": "I'm not sure.",
+            "uz": "Aniq bilmayman."
+          },
+          {
+            "en": "I'm sorry.",
+            "uz": "Kechirasiz. / Afsusdaman."
+          },
+          {
+            "en": "Don't worry.",
+            "uz": "Xavotir olmang."
+          },
+          {
+            "en": "Me too.",
+            "uz": "Men ham."
+          }
+        ]
+      }
+    },
+    {
+      "day": 3,
+      "week": 1,
+      "kind": "lesson",
+      "title": "to be: inkor va soʻroq",
+      "description": null,
+      "grammar": {
+        "topic": "to be: inkor va soʻroq",
+        "formula": [
+          "(−) I'm not · he isn't · you aren't",
+          "(?) Am I…? · Is he…? · Are you…?",
+          "Qisqa javob: Yes, I am. / No, I'm not."
+        ],
+        "examples": [
+          "Are you tired? — No, I'm not.",
+          "Is she from Tashkent? — Yes, she is."
+        ],
+        "notes": [
+          "Oʻqish: ai, ay = /eɪ/ rain, day · oa, ow = /oʊ/ boat, slow · ou, ow = /aʊ/ house, now"
+        ],
+        "warnings": [
+          "oʻzbekchada \"-mi\" qoʻshilgan joyda inglizchada is / are gap boshiga chiqadi."
+        ]
+      },
+      "vocabulary": {
+        "theme": "Kasblar va ish joylari",
+        "sourceRefs": [
+          "EVU:14",
+          "DEST:36"
+        ],
+        "preparesFor": "4-kun: a / an",
+        "words": [
+          {
+            "en": "job",
+            "uz": "ish, kasb"
+          },
+          {
+            "en": "work",
+            "uz": "ish; ishlamoq"
+          },
+          {
+            "en": "doctor",
+            "uz": "shifokor"
+          },
+          {
+            "en": "nurse",
+            "uz": "hamshira"
+          },
+          {
+            "en": "teacher",
+            "uz": "oʻqituvchi"
+          },
+          {
+            "en": "student",
+            "uz": "talaba, oʻquvchi"
+          },
+          {
+            "en": "engineer",
+            "uz": "muhandis"
+          },
+          {
+            "en": "developer",
+            "uz": "dasturchi"
+          },
+          {
+            "en": "driver",
+            "uz": "haydovchi"
+          },
+          {
+            "en": "lawyer",
+            "uz": "advokat, yurist"
+          },
+          {
+            "en": "accountant",
+            "uz": "buxgalter"
+          },
+          {
+            "en": "manager",
+            "uz": "menejer, rahbar"
+          },
+          {
+            "en": "designer",
+            "uz": "dizayner"
+          },
+          {
+            "en": "chef",
+            "uz": "oshpaz"
+          },
+          {
+            "en": "waiter",
+            "uz": "ofitsiant"
+          },
+          {
+            "en": "police officer",
+            "uz": "politsiyachi"
+          },
+          {
+            "en": "farmer",
+            "uz": "fermer, dehqon"
+          },
+          {
+            "en": "salesperson",
+            "uz": "sotuvchi"
+          },
+          {
+            "en": "office",
+            "uz": "ofis, idora"
+          },
+          {
+            "en": "hospital",
+            "uz": "kasalxona"
+          },
+          {
+            "en": "school",
+            "uz": "maktab"
+          },
+          {
+            "en": "bank",
+            "uz": "bank"
+          },
+          {
+            "en": "company",
+            "uz": "kompaniya"
+          },
+          {
+            "en": "factory",
+            "uz": "zavod, fabrika"
+          },
+          {
+            "en": "store",
+            "uz": "doʻkon (AmE)"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "What do you do?",
+            "uz": "Kasbingiz nima?"
+          },
+          {
+            "en": "I work in an office.",
+            "uz": "Men ofisda ishlayman."
+          },
+          {
+            "en": "I'm a student.",
+            "uz": "Men talabaman."
+          },
+          {
+            "en": "I'm looking for a job.",
+            "uz": "Men ish qidiryapman."
+          },
+          {
+            "en": "It's my first day.",
+            "uz": "Bu mening birinchi kunim."
+          }
+        ]
+      }
+    },
+    {
+      "day": 4,
+      "week": 1,
+      "kind": "lesson",
+      "title": "Artikl a / an va kasblar",
+      "description": null,
+      "grammar": {
+        "topic": "Artikl a / an va kasblar",
+        "formula": [
+          "a + undosh tovush: a car, a university",
+          "an + unli tovush: an apple, an hour"
+        ],
+        "examples": [
+          "I'm a developer. She's an engineer."
+        ],
+        "notes": [
+          "Oʻqish: r bilan unlilar (AmE'da r aytiladi): ar /ɑr/ car · er, ir, ur /ɜr/ her, bird, turn · or /ɔr/ for"
+        ],
+        "warnings": [
+          "oʻzbek tilida artikl yoʻq → ✗ I am developer"
+        ]
+      },
+      "vocabulary": {
+        "theme": "Oila",
+        "sourceRefs": [
+          "EVU:1"
+        ],
+        "preparesFor": "5-kun: egalik olmoshlari",
+        "words": [
+          {
+            "en": "family",
+            "uz": "oila"
+          },
+          {
+            "en": "parents",
+            "uz": "ota-ona"
+          },
+          {
+            "en": "mother (mom)",
+            "uz": "ona (oyi)"
+          },
+          {
+            "en": "father (dad)",
+            "uz": "ota (dada)"
+          },
+          {
+            "en": "brother",
+            "uz": "aka / uka"
+          },
+          {
+            "en": "sister",
+            "uz": "opa / singil"
+          },
+          {
+            "en": "son",
+            "uz": "oʻgʻil"
+          },
+          {
+            "en": "daughter",
+            "uz": "qiz (farzand)"
+          },
+          {
+            "en": "child (children)",
+            "uz": "bola (bolalar)"
+          },
+          {
+            "en": "baby",
+            "uz": "chaqaloq"
+          },
+          {
+            "en": "husband",
+            "uz": "er"
+          },
+          {
+            "en": "wife",
+            "uz": "xotin, rafiqa"
+          },
+          {
+            "en": "grandmother",
+            "uz": "buvi"
+          },
+          {
+            "en": "grandfather",
+            "uz": "bobo"
+          },
+          {
+            "en": "grandparents",
+            "uz": "buvi va bobo"
+          },
+          {
+            "en": "uncle",
+            "uz": "amaki / togʻa"
+          },
+          {
+            "en": "aunt",
+            "uz": "amma / xola"
+          },
+          {
+            "en": "cousin",
+            "uz": "amakivachcha, xolavachcha"
+          },
+          {
+            "en": "relatives",
+            "uz": "qarindoshlar"
+          },
+          {
+            "en": "boy",
+            "uz": "oʻgʻil bola"
+          },
+          {
+            "en": "girl",
+            "uz": "qiz bola"
+          },
+          {
+            "en": "age",
+            "uz": "yosh (necha yosh)"
+          },
+          {
+            "en": "birthday",
+            "uz": "tugʻilgan kun"
+          },
+          {
+            "en": "young",
+            "uz": "yosh"
+          },
+          {
+            "en": "old",
+            "uz": "qari; eski"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "This is my brother.",
+            "uz": "Bu mening akam (ukam)."
+          },
+          {
+            "en": "I have two sisters.",
+            "uz": "Mening ikkita opam (singlim) bor."
+          },
+          {
+            "en": "Are you married?",
+            "uz": "Uylanganmisiz? / Turmushga chiqqanmisiz?"
+          },
+          {
+            "en": "How old are you?",
+            "uz": "Necha yoshdasiz?"
+          },
+          {
+            "en": "I live with my parents.",
+            "uz": "Men ota-onam bilan yashayman."
+          }
+        ]
+      }
+    },
+    {
+      "day": 5,
+      "week": 1,
+      "kind": "lesson",
+      "title": "Egalik olmoshlari",
+      "description": null,
+      "grammar": {
+        "topic": "Egalik olmoshlari",
+        "formula": [
+          "I → my · you → your · he → his · she → her · it → its · we → our · they → their"
+        ],
+        "examples": [
+          "What's your name? — My name is Aziz."
+        ],
+        "notes": [
+          "Oʻqish: soqov harflar: kn know · wr write · mb climb · gh night · h hour"
+        ],
+        "warnings": [
+          "his erkak uchun, her ayol uchun. Oʻzbekchada ikkalasi ham \"uning\"."
+        ]
+      },
+      "vocabulary": {
+        "theme": "Buyumlar, telefon va kompyuter",
+        "sourceRefs": [
+          "EVU:16",
+          "EVU:17",
+          "DEST:42"
+        ],
+        "preparesFor": "6-kun: this / that, koʻplik",
+        "words": [
+          {
+            "en": "phone (cell phone)",
+            "uz": "telefon (mobil telefon)"
+          },
+          {
+            "en": "computer",
+            "uz": "kompyuter"
+          },
+          {
+            "en": "laptop",
+            "uz": "noutbuk"
+          },
+          {
+            "en": "screen",
+            "uz": "ekran"
+          },
+          {
+            "en": "keyboard",
+            "uz": "klaviatura"
+          },
+          {
+            "en": "mouse",
+            "uz": "sichqoncha"
+          },
+          {
+            "en": "charger",
+            "uz": "zaryadlovchi"
+          },
+          {
+            "en": "headphones",
+            "uz": "quloqchin"
+          },
+          {
+            "en": "app",
+            "uz": "ilova"
+          },
+          {
+            "en": "message",
+            "uz": "xabar"
+          },
+          {
+            "en": "email",
+            "uz": "elektron pochta"
+          },
+          {
+            "en": "password",
+            "uz": "parol"
+          },
+          {
+            "en": "internet",
+            "uz": "internet"
+          },
+          {
+            "en": "bag",
+            "uz": "sumka"
+          },
+          {
+            "en": "book",
+            "uz": "kitob"
+          },
+          {
+            "en": "notebook",
+            "uz": "daftar"
+          },
+          {
+            "en": "pen",
+            "uz": "ruchka"
+          },
+          {
+            "en": "pencil",
+            "uz": "qalam"
+          },
+          {
+            "en": "key",
+            "uz": "kalit"
+          },
+          {
+            "en": "wallet",
+            "uz": "hamyon"
+          },
+          {
+            "en": "watch",
+            "uz": "qoʻl soati; tomosha qilmoq"
+          },
+          {
+            "en": "glasses",
+            "uz": "koʻzoynak"
+          },
+          {
+            "en": "umbrella",
+            "uz": "soyabon"
+          },
+          {
+            "en": "box",
+            "uz": "quti"
+          },
+          {
+            "en": "bottle",
+            "uz": "shisha (idish)"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Can I use your charger?",
+            "uz": "Zaryadlovchingizdan foydalansam boʻladimi?"
+          },
+          {
+            "en": "My phone is dead.",
+            "uz": "Telefonimning zaryadi tugadi."
+          },
+          {
+            "en": "Send me a message.",
+            "uz": "Menga xabar yuboring."
+          },
+          {
+            "en": "What's the Wi-Fi password?",
+            "uz": "Wi-Fi paroli nima?"
+          },
+          {
+            "en": "Is this yours?",
+            "uz": "Bu siznikimi?"
+          }
+        ]
+      }
+    },
+    {
+      "day": 6,
+      "week": 1,
+      "kind": "lesson",
+      "title": "this / that / these / those va koʻplik shakli",
+      "description": null,
+      "grammar": {
+        "topic": "this / that / these / those va koʻplik shakli",
+        "formula": [
+          "this (yaqin, 1 ta) · these (yaqin, koʻp) · that (uzoq, 1 ta) · those (uzoq, koʻp)",
+          "+s: book → books · +es: box → boxes · y → ies: city → cities",
+          "Notoʻgʻri: man → men · woman → women · child → children · person → people"
+        ],
+        "examples": [
+          "These are my books. That is my car."
+        ],
+        "notes": [
+          "-s talaffuzi: /s/ books · /z/ pens · /ɪz/ boxes"
+        ],
+        "warnings": [
+          "sondan keyin koʻplik! three books (✗ three book)"
+        ]
+      },
+      "vocabulary": {
+        "theme": "Oʻqish, dars va savol soʻzlari",
+        "sourceRefs": [
+          "EVU:15",
+          "EVU:9",
+          "DEST:9"
+        ],
+        "preparesFor": "8-kun: soʻroq soʻzlari + be",
+        "words": [
+          {
+            "en": "what",
+            "uz": "nima"
+          },
+          {
+            "en": "who",
+            "uz": "kim"
+          },
+          {
+            "en": "where",
+            "uz": "qayerda"
+          },
+          {
+            "en": "when",
+            "uz": "qachon"
+          },
+          {
+            "en": "why",
+            "uz": "nega"
+          },
+          {
+            "en": "how",
+            "uz": "qanday"
+          },
+          {
+            "en": "which",
+            "uz": "qaysi"
+          },
+          {
+            "en": "class",
+            "uz": "dars; sinf"
+          },
+          {
+            "en": "lesson",
+            "uz": "dars"
+          },
+          {
+            "en": "homework",
+            "uz": "uy vazifasi"
+          },
+          {
+            "en": "exam",
+            "uz": "imtihon"
+          },
+          {
+            "en": "question",
+            "uz": "savol"
+          },
+          {
+            "en": "answer",
+            "uz": "javob"
+          },
+          {
+            "en": "word",
+            "uz": "soʻz"
+          },
+          {
+            "en": "sentence",
+            "uz": "gap"
+          },
+          {
+            "en": "page",
+            "uz": "sahifa"
+          },
+          {
+            "en": "university",
+            "uz": "universitet"
+          },
+          {
+            "en": "library",
+            "uz": "kutubxona"
+          },
+          {
+            "en": "course",
+            "uz": "kurs"
+          },
+          {
+            "en": "subject",
+            "uz": "fan (oʻquv fani)"
+          },
+          {
+            "en": "easy",
+            "uz": "oson"
+          },
+          {
+            "en": "difficult",
+            "uz": "qiyin"
+          },
+          {
+            "en": "important",
+            "uz": "muhim"
+          },
+          {
+            "en": "interesting",
+            "uz": "qiziqarli"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "I don't understand.",
+            "uz": "Tushunmadim."
+          },
+          {
+            "en": "Can you repeat that, please?",
+            "uz": "Iltimos, qaytarib yuborasizmi?"
+          },
+          {
+            "en": "What does … mean?",
+            "uz": "… nima degani?"
+          },
+          {
+            "en": "How do you say … in English?",
+            "uz": "… inglizcha qanday boʻladi?"
+          },
+          {
+            "en": "Can you speak slowly, please?",
+            "uz": "Iltimos, sekinroq gapira olasizmi?"
+          }
+        ]
+      }
+    },
+    {
+      "day": 7,
+      "week": 1,
+      "kind": "review",
+      "title": "TAKRORLASH KUNI",
+      "description": "1-hafta testi: 1–6-kunlardagi formulalar, soʻzlar, diktant, oʻzini 1 daqiqa tanishtirish",
+      "grammar": null,
+      "vocabulary": null
+    },
+    {
+      "day": 8,
+      "week": 2,
+      "kind": "lesson",
+      "title": "Soʻroq soʻzlari va to be",
+      "description": null,
+      "grammar": {
+        "topic": "Soʻroq soʻzlari va to be",
+        "formula": [
+          "Soʻroq soʻzi + am / is / are + ega?",
+          "What · Who · Where · How · How old · When"
+        ],
+        "examples": [
+          "Where are you from? — I'm from Samarkand.",
+          "How old is she? — She's twenty."
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Odamlarni tasvirlash",
+        "sourceRefs": [
+          "EVU:5",
+          "DEST:27"
+        ],
+        "preparesFor": "9-kun: 's va Whose?",
+        "words": [
+          {
+            "en": "tall",
+            "uz": "baland boʻyli"
+          },
+          {
+            "en": "slim",
+            "uz": "xushqomat, ozgʻin"
+          },
+          {
+            "en": "strong",
+            "uz": "kuchli"
+          },
+          {
+            "en": "beautiful",
+            "uz": "goʻzal"
+          },
+          {
+            "en": "pretty",
+            "uz": "chiroyli"
+          },
+          {
+            "en": "handsome",
+            "uz": "kelishgan (erkak)"
+          },
+          {
+            "en": "hair",
+            "uz": "soch"
+          },
+          {
+            "en": "eyes",
+            "uz": "koʻzlar"
+          },
+          {
+            "en": "face",
+            "uz": "yuz"
+          },
+          {
+            "en": "dark",
+            "uz": "qora, toʻq; qorongʻi"
+          },
+          {
+            "en": "blond",
+            "uz": "sariq sochli"
+          },
+          {
+            "en": "curly",
+            "uz": "jingalak"
+          },
+          {
+            "en": "straight",
+            "uz": "tekis (soch); toʻgʻri"
+          },
+          {
+            "en": "long",
+            "uz": "uzun"
+          },
+          {
+            "en": "smile",
+            "uz": "tabassum; jilmaymoq"
+          },
+          {
+            "en": "kind",
+            "uz": "mehribon"
+          },
+          {
+            "en": "friendly",
+            "uz": "samimiy"
+          },
+          {
+            "en": "funny",
+            "uz": "kulgili, quvnoq"
+          },
+          {
+            "en": "smart",
+            "uz": "aqlli"
+          },
+          {
+            "en": "quiet",
+            "uz": "jim, kamgap"
+          },
+          {
+            "en": "shy",
+            "uz": "uyatchan"
+          },
+          {
+            "en": "beard",
+            "uz": "soqol"
+          },
+          {
+            "en": "mustache",
+            "uz": "moʻylov (AmE)"
+          },
+          {
+            "en": "look like",
+            "uz": "…ga oʻxshamoq"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "What does he look like?",
+            "uz": "Uning tashqi koʻrinishi qanday?"
+          },
+          {
+            "en": "She looks like her mother.",
+            "uz": "U onasiga oʻxshaydi."
+          },
+          {
+            "en": "He has dark hair.",
+            "uz": "Uning sochi qora."
+          },
+          {
+            "en": "Whose phone is this?",
+            "uz": "Bu kimning telefoni?"
+          },
+          {
+            "en": "It's Ali's.",
+            "uz": "Bu Aliniki."
+          }
+        ]
+      }
+    },
+    {
+      "day": 9,
+      "week": 2,
+      "kind": "lesson",
+      "title": "Egalik 's va Whose?",
+      "description": null,
+      "grammar": {
+        "topic": "Egalik 's va Whose?",
+        "formula": [
+          "Ism + 's: Ali's phone · my mother's name",
+          "Koʻplikda: my parents' house",
+          "Whose + ot + is this?"
+        ],
+        "examples": [
+          "Whose bag is this? — It's Ali's."
+        ],
+        "notes": [
+          "\"Alining telefoni\" → Ali's phone (tartib oʻzbekchadagidek)"
+        ],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Uy: xonalar va jihozlar",
+        "sourceRefs": [
+          "EVU:12",
+          "EVU:13",
+          "DEST:3"
+        ],
+        "preparesFor": "10-kun: there is / there are",
+        "words": [
+          {
+            "en": "house",
+            "uz": "uy (hovli-joy)"
+          },
+          {
+            "en": "apartment",
+            "uz": "kvartira (AmE)"
+          },
+          {
+            "en": "room",
+            "uz": "xona"
+          },
+          {
+            "en": "living room",
+            "uz": "mehmonxona (yashash xonasi)"
+          },
+          {
+            "en": "bedroom",
+            "uz": "yotoqxona"
+          },
+          {
+            "en": "bathroom",
+            "uz": "hammom, yuvinish xonasi"
+          },
+          {
+            "en": "kitchen",
+            "uz": "oshxona"
+          },
+          {
+            "en": "floor",
+            "uz": "qavat; pol"
+          },
+          {
+            "en": "wall",
+            "uz": "devor"
+          },
+          {
+            "en": "door",
+            "uz": "eshik"
+          },
+          {
+            "en": "window",
+            "uz": "deraza"
+          },
+          {
+            "en": "bed",
+            "uz": "karavot"
+          },
+          {
+            "en": "sofa (couch)",
+            "uz": "divan"
+          },
+          {
+            "en": "table",
+            "uz": "stol"
+          },
+          {
+            "en": "chair",
+            "uz": "stul"
+          },
+          {
+            "en": "lamp",
+            "uz": "chiroq"
+          },
+          {
+            "en": "TV",
+            "uz": "televizor"
+          },
+          {
+            "en": "mirror",
+            "uz": "koʻzgu, oyna"
+          },
+          {
+            "en": "shower",
+            "uz": "dush"
+          },
+          {
+            "en": "towel",
+            "uz": "sochiq"
+          },
+          {
+            "en": "closet",
+            "uz": "kiyim shkafi (AmE)"
+          },
+          {
+            "en": "shelf",
+            "uz": "javon"
+          },
+          {
+            "en": "carpet",
+            "uz": "gilam"
+          },
+          {
+            "en": "picture",
+            "uz": "rasm, surat"
+          },
+          {
+            "en": "yard",
+            "uz": "hovli (AmE)"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Come in, please.",
+            "uz": "Kiring, marhamat."
+          },
+          {
+            "en": "Make yourself at home.",
+            "uz": "Oʻzingizni uydagidek his qiling."
+          },
+          {
+            "en": "Where is the bathroom?",
+            "uz": "Hammom qayerda?"
+          },
+          {
+            "en": "I live on the third floor.",
+            "uz": "Men uchinchi qavatda yashayman."
+          },
+          {
+            "en": "There's no hot water.",
+            "uz": "Issiq suv yoʻq."
+          }
+        ]
+      }
+    },
+    {
+      "day": 10,
+      "week": 2,
+      "kind": "lesson",
+      "title": "There is / There are",
+      "description": null,
+      "grammar": {
+        "topic": "There is / There are",
+        "formula": [
+          "There is + birlik · There are + koʻplik",
+          "(−) There isn't · There aren't",
+          "(?) Is there…? · Are there…?"
+        ],
+        "examples": [
+          "There is a bank near my house. There are two parks in my city."
+        ],
+        "notes": [],
+        "warnings": [
+          "bu iborada joyda nima borligi aytiladi. Egalik uchun have ishlatiladi (15-kun)."
+        ]
+      },
+      "vocabulary": {
+        "theme": "Oshxona va joylashuv",
+        "sourceRefs": [
+          "EVU:11",
+          "EVU:53",
+          "DEST:3"
+        ],
+        "preparesFor": "11-kun: joy predloglari",
+        "words": [
+          {
+            "en": "fridge",
+            "uz": "muzlatkich"
+          },
+          {
+            "en": "stove",
+            "uz": "plita"
+          },
+          {
+            "en": "oven",
+            "uz": "duxovka"
+          },
+          {
+            "en": "microwave",
+            "uz": "mikrotoʻlqinli pech"
+          },
+          {
+            "en": "sink",
+            "uz": "rakovina"
+          },
+          {
+            "en": "cup",
+            "uz": "chashka, piyola"
+          },
+          {
+            "en": "glass",
+            "uz": "stakan; shisha"
+          },
+          {
+            "en": "plate",
+            "uz": "tarelka, likopcha"
+          },
+          {
+            "en": "bowl",
+            "uz": "kosa"
+          },
+          {
+            "en": "spoon",
+            "uz": "qoshiq"
+          },
+          {
+            "en": "fork",
+            "uz": "vilka"
+          },
+          {
+            "en": "knife",
+            "uz": "pichoq"
+          },
+          {
+            "en": "pan",
+            "uz": "tova"
+          },
+          {
+            "en": "pot",
+            "uz": "qozon, kastryul"
+          },
+          {
+            "en": "kettle",
+            "uz": "choynak (suv qaynatgich)"
+          },
+          {
+            "en": "trash can",
+            "uz": "axlat qutisi (AmE)"
+          },
+          {
+            "en": "top",
+            "uz": "ust, tepa"
+          },
+          {
+            "en": "bottom",
+            "uz": "tag, past"
+          },
+          {
+            "en": "middle",
+            "uz": "oʻrta"
+          },
+          {
+            "en": "side",
+            "uz": "yon, taraf"
+          },
+          {
+            "en": "corner",
+            "uz": "burchak"
+          },
+          {
+            "en": "inside",
+            "uz": "ichida"
+          },
+          {
+            "en": "outside",
+            "uz": "tashqarida"
+          },
+          {
+            "en": "front",
+            "uz": "old tomon"
+          },
+          {
+            "en": "back",
+            "uz": "orqa"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "It's on the table.",
+            "uz": "U stolning ustida."
+          },
+          {
+            "en": "It's next to the fridge.",
+            "uz": "U muzlatkichning yonida."
+          },
+          {
+            "en": "Put it here.",
+            "uz": "Uni bu yerga qoʻying."
+          },
+          {
+            "en": "Can you pass me the salt?",
+            "uz": "Tuzni uzatib yuborasizmi?"
+          },
+          {
+            "en": "Be careful, it's hot!",
+            "uz": "Ehtiyot boʻling, issiq!"
+          }
+        ]
+      }
+    },
+    {
+      "day": 11,
+      "week": 2,
+      "kind": "lesson",
+      "title": "Joy predloglari",
+      "description": null,
+      "grammar": {
+        "topic": "Joy predloglari",
+        "formula": [
+          "in (ichida) · on (ustida) · under (ostida) · next to (yonida) · between (orasida) · behind (orqasida) · in front of (oldida) · near (yaqinida)"
+        ],
+        "examples": [
+          "The phone is on the table. Where is the bank? — It's next to the park."
+        ],
+        "notes": [
+          "the = maʼlum, oʻsha (batafsil 32-kunda)"
+        ],
+        "warnings": [
+          "oʻzbekchada \"stol ustida\" (predlog keyin keladi), inglizchada on the table (predlog oldin keladi)."
+        ]
+      },
+      "vocabulary": {
+        "theme": "Sonlar, pul va vaqt",
+        "sourceRefs": [],
+        "preparesFor": "12-kun: sonlar, narx, vaqt",
+        "words": [
+          {
+            "en": "zero",
+            "uz": "nol"
+          },
+          {
+            "en": "eleven",
+            "uz": "oʻn bir"
+          },
+          {
+            "en": "twelve",
+            "uz": "oʻn ikki"
+          },
+          {
+            "en": "thirteen",
+            "uz": "oʻn uch"
+          },
+          {
+            "en": "twenty",
+            "uz": "yigirma"
+          },
+          {
+            "en": "thirty",
+            "uz": "oʻttiz"
+          },
+          {
+            "en": "forty",
+            "uz": "qirq"
+          },
+          {
+            "en": "fifty",
+            "uz": "ellik"
+          },
+          {
+            "en": "hundred",
+            "uz": "yuz"
+          },
+          {
+            "en": "thousand",
+            "uz": "ming"
+          },
+          {
+            "en": "million",
+            "uz": "million"
+          },
+          {
+            "en": "first",
+            "uz": "birinchi"
+          },
+          {
+            "en": "second",
+            "uz": "ikkinchi; soniya"
+          },
+          {
+            "en": "third",
+            "uz": "uchinchi"
+          },
+          {
+            "en": "half",
+            "uz": "yarim"
+          },
+          {
+            "en": "price",
+            "uz": "narx"
+          },
+          {
+            "en": "money",
+            "uz": "pul"
+          },
+          {
+            "en": "cash",
+            "uz": "naqd pul"
+          },
+          {
+            "en": "card",
+            "uz": "karta"
+          },
+          {
+            "en": "dollar",
+            "uz": "dollar"
+          },
+          {
+            "en": "cent",
+            "uz": "sent"
+          },
+          {
+            "en": "o'clock",
+            "uz": "soat (… boʻldi)"
+          },
+          {
+            "en": "minute",
+            "uz": "daqiqa"
+          },
+          {
+            "en": "hour",
+            "uz": "soat (vaqt birligi)"
+          },
+          {
+            "en": "quarter",
+            "uz": "chorak"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "How much is it?",
+            "uz": "Bu qancha turadi?"
+          },
+          {
+            "en": "It's too expensive.",
+            "uz": "Bu juda qimmat."
+          },
+          {
+            "en": "Can I pay by card?",
+            "uz": "Karta bilan toʻlasam boʻladimi?"
+          },
+          {
+            "en": "What time is it?",
+            "uz": "Soat necha boʻldi?"
+          },
+          {
+            "en": "It's seven thirty.",
+            "uz": "Soat yetti yarim."
+          }
+        ]
+      }
+    },
+    {
+      "day": 12,
+      "week": 2,
+      "kind": "lesson",
+      "title": "Sonlar, narx va vaqt",
+      "description": null,
+      "grammar": {
+        "topic": "Sonlar, narx va vaqt",
+        "formula": [
+          "0–100: 13 thirteen ↔ 30 thirty",
+          "How many + koʻplik ot? · How much is it? — It's $5.",
+          "What time is it? — It's seven o'clock. / It's 7:30 (seven thirty)."
+        ],
+        "examples": [
+          "How many students are there? — There are twelve."
+        ],
+        "notes": [],
+        "warnings": [
+          "urgʻuga eʼtibor bering: thirTEEN / THIRty"
+        ]
+      },
+      "vocabulary": {
+        "theme": "Shahar va yoʻl soʻrash",
+        "sourceRefs": [
+          "EVU:29"
+        ],
+        "preparesFor": "13-kun: buyruq mayli",
+        "words": [
+          {
+            "en": "street",
+            "uz": "koʻcha"
+          },
+          {
+            "en": "road",
+            "uz": "yoʻl"
+          },
+          {
+            "en": "building",
+            "uz": "bino"
+          },
+          {
+            "en": "bus stop",
+            "uz": "avtobus bekati"
+          },
+          {
+            "en": "station",
+            "uz": "vokzal, bekat"
+          },
+          {
+            "en": "airport",
+            "uz": "aeroport"
+          },
+          {
+            "en": "pharmacy",
+            "uz": "dorixona"
+          },
+          {
+            "en": "supermarket",
+            "uz": "supermarket"
+          },
+          {
+            "en": "restaurant",
+            "uz": "restoran"
+          },
+          {
+            "en": "café",
+            "uz": "kafe"
+          },
+          {
+            "en": "park",
+            "uz": "park, bogʻ"
+          },
+          {
+            "en": "museum",
+            "uz": "muzey"
+          },
+          {
+            "en": "mosque",
+            "uz": "masjid"
+          },
+          {
+            "en": "post office",
+            "uz": "pochta"
+          },
+          {
+            "en": "hotel",
+            "uz": "mehmonxona"
+          },
+          {
+            "en": "traffic light",
+            "uz": "svetofor"
+          },
+          {
+            "en": "bridge",
+            "uz": "koʻprik"
+          },
+          {
+            "en": "downtown",
+            "uz": "shahar markazi (AmE)"
+          },
+          {
+            "en": "left",
+            "uz": "chap"
+          },
+          {
+            "en": "right",
+            "uz": "oʻng; toʻgʻri"
+          },
+          {
+            "en": "straight ahead",
+            "uz": "toʻgʻriga"
+          },
+          {
+            "en": "turn",
+            "uz": "burilmoq"
+          },
+          {
+            "en": "cross",
+            "uz": "kesib oʻtmoq"
+          },
+          {
+            "en": "near",
+            "uz": "yaqin"
+          },
+          {
+            "en": "far",
+            "uz": "uzoq"
+          },
+          {
+            "en": "map",
+            "uz": "xarita"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Excuse me, where is the bank?",
+            "uz": "Kechirasiz, bank qayerda?"
+          },
+          {
+            "en": "Go straight and turn left.",
+            "uz": "Toʻgʻriga yuring va chapga buriling."
+          },
+          {
+            "en": "Is it far from here?",
+            "uz": "Bu yerdan uzoqmi?"
+          },
+          {
+            "en": "It's around the corner.",
+            "uz": "Burilishdan keyin, shu yaqinda."
+          },
+          {
+            "en": "Can you show me on the map?",
+            "uz": "Xaritada koʻrsata olasizmi?"
+          }
+        ]
+      }
+    },
+    {
+      "day": 13,
+      "week": 2,
+      "kind": "lesson",
+      "title": "Buyruq mayli va Let's",
+      "description": null,
+      "grammar": {
+        "topic": "Buyruq mayli va Let's",
+        "formula": [
+          "Feʼl (asl shakl): Open the door. Sit down.",
+          "(−) Don't + feʼl: Don't talk.",
+          "Let's + feʼl: Let's go. · Muloyim qilish uchun please qoʻshiladi"
+        ],
+        "examples": [
+          "Please close the window. Let's start the lesson."
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Kun tartibi",
+        "sourceRefs": [
+          "EVU:47",
+          "EVU:46",
+          "DEST:3"
+        ],
+        "preparesFor": "15-kun: Present Simple",
+        "words": [
+          {
+            "en": "wake up",
+            "uz": "uygʻonmoq"
+          },
+          {
+            "en": "get up",
+            "uz": "oʻrnidan turmoq"
+          },
+          {
+            "en": "take a shower",
+            "uz": "dush qabul qilmoq"
+          },
+          {
+            "en": "brush your teeth",
+            "uz": "tish yuvmoq"
+          },
+          {
+            "en": "get dressed",
+            "uz": "kiyinmoq"
+          },
+          {
+            "en": "have breakfast",
+            "uz": "nonushta qilmoq"
+          },
+          {
+            "en": "have lunch",
+            "uz": "tushlik qilmoq"
+          },
+          {
+            "en": "have dinner",
+            "uz": "kechki ovqatlanmoq"
+          },
+          {
+            "en": "go to work",
+            "uz": "ishga bormoq"
+          },
+          {
+            "en": "start",
+            "uz": "boshlamoq"
+          },
+          {
+            "en": "finish",
+            "uz": "tugatmoq"
+          },
+          {
+            "en": "come home",
+            "uz": "uyga kelmoq"
+          },
+          {
+            "en": "cook",
+            "uz": "ovqat pishirmoq"
+          },
+          {
+            "en": "clean",
+            "uz": "tozalamoq"
+          },
+          {
+            "en": "wash",
+            "uz": "yuvmoq"
+          },
+          {
+            "en": "watch TV",
+            "uz": "televizor koʻrmoq"
+          },
+          {
+            "en": "read",
+            "uz": "oʻqimoq"
+          },
+          {
+            "en": "listen to music",
+            "uz": "musiqa tinglamoq"
+          },
+          {
+            "en": "relax",
+            "uz": "dam olmoq"
+          },
+          {
+            "en": "go to bed",
+            "uz": "uxlashga yotmoq"
+          },
+          {
+            "en": "sleep",
+            "uz": "uxlamoq"
+          },
+          {
+            "en": "morning",
+            "uz": "ertalab"
+          },
+          {
+            "en": "afternoon",
+            "uz": "tushdan keyin"
+          },
+          {
+            "en": "evening",
+            "uz": "kechqurun"
+          },
+          {
+            "en": "night",
+            "uz": "tun"
+          },
+          {
+            "en": "every day",
+            "uz": "har kuni"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "I get up at seven.",
+            "uz": "Men soat yettida turaman."
+          },
+          {
+            "en": "I'm running late.",
+            "uz": "Kechikyapman."
+          },
+          {
+            "en": "Let's have lunch together.",
+            "uz": "Keling, birga tushlik qilaylik."
+          },
+          {
+            "en": "I go to bed early.",
+            "uz": "Men erta yotaman."
+          },
+          {
+            "en": "See you tomorrow!",
+            "uz": "Ertaga koʻrishguncha!"
+          }
+        ]
+      }
+    },
+    {
+      "day": 14,
+      "week": 2,
+      "kind": "review",
+      "title": "TAKRORLASH KUNI",
+      "description": "2-hafta testi va 1-haftaning qisqa takrori. Uyingiz va shahringizni 1 daqiqa tasvirlab berish.",
+      "grammar": null,
+      "vocabulary": null
+    },
+    {
+      "day": 15,
+      "week": 3,
+      "kind": "lesson",
+      "title": "Present Simple: I / you / we / they",
+      "description": null,
+      "grammar": {
+        "topic": "Present Simple: I / you / we / they",
+        "formula": [
+          "Ega + feʼl (asl shakl)",
+          "Ishlatilishi: odat, doimiy holat, fakt",
+          "have ham shu qoida boʻyicha ishlaydi: I have a car."
+        ],
+        "examples": [
+          "I work from home. They live in Tashkent. We study English every day."
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "\"do\" va \"make\"",
+        "sourceRefs": [
+          "EVU:40",
+          "EVU:41"
+        ],
+        "preparesFor": "16-kun: Present Simple (he / she / it)",
+        "words": [
+          {
+            "en": "do homework",
+            "uz": "uy vazifasini bajarmoq"
+          },
+          {
+            "en": "do the dishes",
+            "uz": "idish yuvmoq (AmE)"
+          },
+          {
+            "en": "do the laundry",
+            "uz": "kir yuvmoq (AmE)"
+          },
+          {
+            "en": "do exercise",
+            "uz": "jismoniy mashq qilmoq"
+          },
+          {
+            "en": "do your best",
+            "uz": "qoʻlidan kelganini qilmoq"
+          },
+          {
+            "en": "do business",
+            "uz": "biznes qilmoq"
+          },
+          {
+            "en": "make breakfast",
+            "uz": "nonushta tayyorlamoq"
+          },
+          {
+            "en": "make tea",
+            "uz": "choy damlamoq"
+          },
+          {
+            "en": "make a mistake",
+            "uz": "xato qilmoq"
+          },
+          {
+            "en": "make a decision",
+            "uz": "qaror qabul qilmoq"
+          },
+          {
+            "en": "make money",
+            "uz": "pul topmoq"
+          },
+          {
+            "en": "make friends",
+            "uz": "doʻst orttirmoq"
+          },
+          {
+            "en": "make a phone call",
+            "uz": "qoʻngʻiroq qilmoq"
+          },
+          {
+            "en": "make a plan",
+            "uz": "reja tuzmoq"
+          },
+          {
+            "en": "make noise",
+            "uz": "shovqin qilmoq"
+          },
+          {
+            "en": "help",
+            "uz": "yordam bermoq"
+          },
+          {
+            "en": "need",
+            "uz": "kerak boʻlmoq"
+          },
+          {
+            "en": "use",
+            "uz": "ishlatmoq, foydalanmoq"
+          },
+          {
+            "en": "try",
+            "uz": "urinmoq, sinab koʻrmoq"
+          },
+          {
+            "en": "learn",
+            "uz": "oʻrganmoq"
+          },
+          {
+            "en": "teach",
+            "uz": "oʻrgatmoq"
+          },
+          {
+            "en": "study",
+            "uz": "oʻqimoq, oʻrganmoq"
+          },
+          {
+            "en": "know",
+            "uz": "bilmoq"
+          },
+          {
+            "en": "understand",
+            "uz": "tushunmoq"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Everybody makes mistakes.",
+            "uz": "Hamma xato qiladi."
+          },
+          {
+            "en": "She does her best.",
+            "uz": "U qoʻlidan kelganini qiladi."
+          },
+          {
+            "en": "He makes good money.",
+            "uz": "U yaxshi pul topadi."
+          },
+          {
+            "en": "I need help.",
+            "uz": "Menga yordam kerak."
+          },
+          {
+            "en": "Let me try.",
+            "uz": "Menga ruxsat bering, sinab koʻray."
+          }
+        ]
+      }
+    },
+    {
+      "day": 16,
+      "week": 3,
+      "kind": "lesson",
+      "title": "Present Simple: he / she / it (+s)",
+      "description": null,
+      "grammar": {
+        "topic": "Present Simple: he / she / it (+s)",
+        "formula": [
+          "he / she / it + feʼl + -s",
+          "+es: watch → watches · go → goes · do → does",
+          "y → ies: study → studies · have → has"
+        ],
+        "examples": [
+          "She works in a bank. He goes to the gym."
+        ],
+        "notes": [
+          "Talaffuz: /s/ works · /z/ plays · /ɪz/ watches"
+        ],
+        "warnings": [
+          "✗ He work. Oʻzbekchada \"u\" olmoshi bitta, shuning uchun -s koʻp unutiladi."
+        ]
+      },
+      "vocabulary": {
+        "theme": "Ovqat va ichimliklar",
+        "sourceRefs": [
+          "EVU:10",
+          "DEST:24"
+        ],
+        "preparesFor": "17-kun: Present Simple (inkor)",
+        "words": [
+          {
+            "en": "food",
+            "uz": "ovqat, oziq-ovqat"
+          },
+          {
+            "en": "bread",
+            "uz": "non"
+          },
+          {
+            "en": "rice",
+            "uz": "guruch"
+          },
+          {
+            "en": "meat",
+            "uz": "goʻsht"
+          },
+          {
+            "en": "chicken",
+            "uz": "tovuq; tovuq goʻshti"
+          },
+          {
+            "en": "beef",
+            "uz": "mol goʻshti"
+          },
+          {
+            "en": "fish",
+            "uz": "baliq"
+          },
+          {
+            "en": "egg",
+            "uz": "tuxum"
+          },
+          {
+            "en": "cheese",
+            "uz": "pishloq"
+          },
+          {
+            "en": "butter",
+            "uz": "sariyogʻ"
+          },
+          {
+            "en": "milk",
+            "uz": "sut"
+          },
+          {
+            "en": "tea",
+            "uz": "choy"
+          },
+          {
+            "en": "coffee",
+            "uz": "qahva"
+          },
+          {
+            "en": "juice",
+            "uz": "sharbat"
+          },
+          {
+            "en": "water",
+            "uz": "suv"
+          },
+          {
+            "en": "sugar",
+            "uz": "shakar"
+          },
+          {
+            "en": "salt",
+            "uz": "tuz"
+          },
+          {
+            "en": "fruit",
+            "uz": "meva"
+          },
+          {
+            "en": "apple",
+            "uz": "olma"
+          },
+          {
+            "en": "banana",
+            "uz": "banan"
+          },
+          {
+            "en": "vegetables",
+            "uz": "sabzavotlar"
+          },
+          {
+            "en": "potato",
+            "uz": "kartoshka"
+          },
+          {
+            "en": "tomato",
+            "uz": "pomidor"
+          },
+          {
+            "en": "onion",
+            "uz": "piyoz"
+          },
+          {
+            "en": "soup",
+            "uz": "shoʻrva"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "I don't eat meat.",
+            "uz": "Men goʻsht yemayman."
+          },
+          {
+            "en": "I'd like a cup of tea.",
+            "uz": "Bir chashka choy olsam."
+          },
+          {
+            "en": "It's delicious!",
+            "uz": "Juda mazali!"
+          },
+          {
+            "en": "Enjoy your meal!",
+            "uz": "Yoqimli ishtaha!"
+          },
+          {
+            "en": "I'm full.",
+            "uz": "Toʻydim."
+          }
+        ]
+      }
+    },
+    {
+      "day": 17,
+      "week": 3,
+      "kind": "lesson",
+      "title": "Present Simple: inkor",
+      "description": null,
+      "grammar": {
+        "topic": "Present Simple: inkor",
+        "formula": [
+          "I / you / we / they + don't + feʼl",
+          "he / she / it + doesn't + feʼl (-s qoʻshilmaydi!)"
+        ],
+        "examples": [
+          "I don't have a car. She doesn't work on Sundays."
+        ],
+        "notes": [],
+        "warnings": [
+          "✗ She doesn't works"
+        ]
+      },
+      "vocabulary": {
+        "theme": "Boʻsh vaqt va musiqa",
+        "sourceRefs": [
+          "EVU:25",
+          "EVU:26",
+          "DEST:6"
+        ],
+        "preparesFor": "18-kun: Present Simple (soʻroq)",
+        "words": [
+          {
+            "en": "hobby",
+            "uz": "sevimli mashgʻulot"
+          },
+          {
+            "en": "free time",
+            "uz": "boʻsh vaqt"
+          },
+          {
+            "en": "play",
+            "uz": "oʻynamoq; chalmoq"
+          },
+          {
+            "en": "game",
+            "uz": "oʻyin"
+          },
+          {
+            "en": "video game",
+            "uz": "kompyuter oʻyini"
+          },
+          {
+            "en": "chess",
+            "uz": "shaxmat"
+          },
+          {
+            "en": "draw",
+            "uz": "rasm chizmoq (qalam bilan)"
+          },
+          {
+            "en": "paint",
+            "uz": "boʻyamoq; boʻyoq bilan rasm chizmoq"
+          },
+          {
+            "en": "take photos",
+            "uz": "suratga olmoq"
+          },
+          {
+            "en": "dance",
+            "uz": "raqs tushmoq; raqs"
+          },
+          {
+            "en": "sing",
+            "uz": "qoʻshiq aytmoq"
+          },
+          {
+            "en": "song",
+            "uz": "qoʻshiq"
+          },
+          {
+            "en": "music",
+            "uz": "musiqa"
+          },
+          {
+            "en": "singer",
+            "uz": "qoʻshiqchi"
+          },
+          {
+            "en": "band",
+            "uz": "musiqa guruhi"
+          },
+          {
+            "en": "concert",
+            "uz": "konsert"
+          },
+          {
+            "en": "guitar",
+            "uz": "gitara"
+          },
+          {
+            "en": "piano",
+            "uz": "pianino"
+          },
+          {
+            "en": "listen",
+            "uz": "tinglamoq"
+          },
+          {
+            "en": "podcast",
+            "uz": "podkast"
+          },
+          {
+            "en": "social media",
+            "uz": "ijtimoiy tarmoqlar"
+          },
+          {
+            "en": "post",
+            "uz": "post; joylamoq"
+          },
+          {
+            "en": "online",
+            "uz": "onlayn"
+          },
+          {
+            "en": "favorite",
+            "uz": "sevimli (AmE)"
+          },
+          {
+            "en": "weekend",
+            "uz": "dam olish kunlari"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "What do you do in your free time?",
+            "uz": "Boʻsh vaqtingizda nima qilasiz?"
+          },
+          {
+            "en": "Do you play any sports?",
+            "uz": "Biror sport bilan shugʻullanasizmi?"
+          },
+          {
+            "en": "I'm into music.",
+            "uz": "Men musiqaga qiziqaman."
+          },
+          {
+            "en": "That sounds fun!",
+            "uz": "Qiziq ekan!"
+          },
+          {
+            "en": "What kind of music do you like?",
+            "uz": "Qanday musiqani yoqtirasiz?"
+          }
+        ]
+      }
+    },
+    {
+      "day": 18,
+      "week": 3,
+      "kind": "lesson",
+      "title": "Present Simple: soʻroq va qisqa javob",
+      "description": null,
+      "grammar": {
+        "topic": "Present Simple: soʻroq va qisqa javob",
+        "formula": [
+          "Do + I / you / we / they + feʼl?",
+          "Does + he / she / it + feʼl?",
+          "Yes, I do. / No, I don't. · Yes, she does. / No, she doesn't."
+        ],
+        "examples": [
+          "Do you have a brother? Does he speak English?"
+        ],
+        "notes": [],
+        "warnings": [
+          "oʻzbekchadagi \"-mi\" oʻrniga gap boshiga Do / Does qoʻyiladi. ✗ You work here?"
+        ]
+      },
+      "vocabulary": {
+        "theme": "\"have\" va \"go\" iboralari",
+        "sourceRefs": [
+          "EVU:38",
+          "EVU:39"
+        ],
+        "preparesFor": "19-kun: Present Simple (Wh- savollar)",
+        "words": [
+          {
+            "en": "have a good time",
+            "uz": "yaxshi vaqt oʻtkazmoq"
+          },
+          {
+            "en": "have a party",
+            "uz": "ziyofat qilmoq"
+          },
+          {
+            "en": "have a break",
+            "uz": "tanaffus qilmoq"
+          },
+          {
+            "en": "have a problem",
+            "uz": "muammosi boʻlmoq"
+          },
+          {
+            "en": "have a meeting",
+            "uz": "yigʻilish oʻtkazmoq"
+          },
+          {
+            "en": "have a look",
+            "uz": "qarab koʻrmoq"
+          },
+          {
+            "en": "have fun",
+            "uz": "maza qilmoq"
+          },
+          {
+            "en": "have time",
+            "uz": "vaqti boʻlmoq"
+          },
+          {
+            "en": "go shopping",
+            "uz": "xarid qilishga bormoq"
+          },
+          {
+            "en": "go home",
+            "uz": "uyga ketmoq"
+          },
+          {
+            "en": "go out",
+            "uz": "koʻchaga (sayrga) chiqmoq"
+          },
+          {
+            "en": "go away",
+            "uz": "ketmoq, joʻnab ketmoq"
+          },
+          {
+            "en": "go for a walk",
+            "uz": "sayr qilishga chiqmoq"
+          },
+          {
+            "en": "go swimming",
+            "uz": "suzishga bormoq"
+          },
+          {
+            "en": "go on vacation",
+            "uz": "taʼtilga chiqmoq (AmE)"
+          },
+          {
+            "en": "go to the gym",
+            "uz": "sport zaliga bormoq"
+          },
+          {
+            "en": "leave",
+            "uz": "ketmoq, chiqib ketmoq"
+          },
+          {
+            "en": "arrive",
+            "uz": "yetib kelmoq"
+          },
+          {
+            "en": "stay",
+            "uz": "qolmoq"
+          },
+          {
+            "en": "visit",
+            "uz": "tashrif buyurmoq"
+          },
+          {
+            "en": "meet",
+            "uz": "uchrashmoq; tanishmoq"
+          },
+          {
+            "en": "together",
+            "uz": "birga"
+          },
+          {
+            "en": "alone",
+            "uz": "yolgʻiz"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Have a nice day!",
+            "uz": "Kuningiz yaxshi oʻtsin!"
+          },
+          {
+            "en": "Let's go out tonight.",
+            "uz": "Bugun kechqurun sayrga chiqaylik."
+          },
+          {
+            "en": "What time do you leave home?",
+            "uz": "Uydan soat nechada chiqasiz?"
+          },
+          {
+            "en": "Where do you usually go on weekends?",
+            "uz": "Dam olish kunlari odatda qayerga borasiz?"
+          },
+          {
+            "en": "I have no time.",
+            "uz": "Vaqtim yoʻq."
+          }
+        ]
+      }
+    },
+    {
+      "day": 19,
+      "week": 3,
+      "kind": "lesson",
+      "title": "Present Simple: Wh- savollar",
+      "description": null,
+      "grammar": {
+        "topic": "Present Simple: Wh- savollar",
+        "formula": [
+          "Soʻroq soʻzi + do / does + ega + feʼl?"
+        ],
+        "examples": [
+          "What do you do? (Kasbingiz nima?)",
+          "Where does she live? · What time do you get up?"
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Vaqt va takrorlanish soʻzlari",
+        "sourceRefs": [
+          "EVU:52",
+          "DEST:18"
+        ],
+        "preparesFor": "20-kun: chastota ravishlari",
+        "words": [
+          {
+            "en": "always",
+            "uz": "har doim"
+          },
+          {
+            "en": "usually",
+            "uz": "odatda"
+          },
+          {
+            "en": "often",
+            "uz": "tez-tez"
+          },
+          {
+            "en": "sometimes",
+            "uz": "baʼzan"
+          },
+          {
+            "en": "rarely",
+            "uz": "kamdan-kam"
+          },
+          {
+            "en": "never",
+            "uz": "hech qachon"
+          },
+          {
+            "en": "once",
+            "uz": "bir marta"
+          },
+          {
+            "en": "twice",
+            "uz": "ikki marta"
+          },
+          {
+            "en": "again",
+            "uz": "yana, qaytadan"
+          },
+          {
+            "en": "today",
+            "uz": "bugun"
+          },
+          {
+            "en": "tomorrow",
+            "uz": "ertaga"
+          },
+          {
+            "en": "yesterday",
+            "uz": "kecha"
+          },
+          {
+            "en": "tonight",
+            "uz": "bugun kechqurun"
+          },
+          {
+            "en": "now",
+            "uz": "hozir"
+          },
+          {
+            "en": "soon",
+            "uz": "tez orada"
+          },
+          {
+            "en": "later",
+            "uz": "keyinroq"
+          },
+          {
+            "en": "already",
+            "uz": "allaqachon"
+          },
+          {
+            "en": "still",
+            "uz": "hali ham"
+          },
+          {
+            "en": "just",
+            "uz": "hozirgina; faqat"
+          },
+          {
+            "en": "ago",
+            "uz": "… oldin"
+          },
+          {
+            "en": "next week",
+            "uz": "kelasi hafta"
+          },
+          {
+            "en": "last week",
+            "uz": "oʻtgan hafta"
+          },
+          {
+            "en": "day",
+            "uz": "kun"
+          },
+          {
+            "en": "week",
+            "uz": "hafta"
+          },
+          {
+            "en": "month",
+            "uz": "oy"
+          },
+          {
+            "en": "year",
+            "uz": "yil"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "How often do you exercise?",
+            "uz": "Qanchalik tez-tez mashq qilasiz?"
+          },
+          {
+            "en": "Once a week.",
+            "uz": "Haftasiga bir marta."
+          },
+          {
+            "en": "See you later!",
+            "uz": "Keyinroq koʻrishamiz!"
+          },
+          {
+            "en": "Not now, maybe later.",
+            "uz": "Hozir emas, balki keyinroq."
+          },
+          {
+            "en": "From time to time.",
+            "uz": "Vaqti-vaqti bilan."
+          }
+        ]
+      }
+    },
+    {
+      "day": 20,
+      "week": 3,
+      "kind": "lesson",
+      "title": "Chastota ravishlari",
+      "description": null,
+      "grammar": {
+        "topic": "Chastota ravishlari",
+        "formula": [
+          "always 100% · usually · often · sometimes · rarely · never 0%",
+          "Oddiy feʼldan oldin keladi: I usually get up at 7.",
+          "be feʼlidan keyin keladi: She is always late.",
+          "How often…? — every day / once a week"
+        ],
+        "examples": [
+          "How often do you go to the gym? — Three times a week."
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Kunlar, oylar va fasllar",
+        "sourceRefs": [
+          "EVU:51"
+        ],
+        "preparesFor": "22-kun: at / on / in",
+        "words": [
+          {
+            "en": "Monday",
+            "uz": "dushanba"
+          },
+          {
+            "en": "Tuesday",
+            "uz": "seshanba"
+          },
+          {
+            "en": "Wednesday",
+            "uz": "chorshanba"
+          },
+          {
+            "en": "Thursday",
+            "uz": "payshanba"
+          },
+          {
+            "en": "Friday",
+            "uz": "juma"
+          },
+          {
+            "en": "Saturday",
+            "uz": "shanba"
+          },
+          {
+            "en": "Sunday",
+            "uz": "yakshanba"
+          },
+          {
+            "en": "January",
+            "uz": "yanvar"
+          },
+          {
+            "en": "February",
+            "uz": "fevral"
+          },
+          {
+            "en": "March",
+            "uz": "mart"
+          },
+          {
+            "en": "April",
+            "uz": "aprel"
+          },
+          {
+            "en": "May",
+            "uz": "may"
+          },
+          {
+            "en": "June",
+            "uz": "iyun"
+          },
+          {
+            "en": "July",
+            "uz": "iyul"
+          },
+          {
+            "en": "August",
+            "uz": "avgust"
+          },
+          {
+            "en": "September",
+            "uz": "sentabr"
+          },
+          {
+            "en": "October",
+            "uz": "oktabr"
+          },
+          {
+            "en": "November",
+            "uz": "noyabr"
+          },
+          {
+            "en": "December",
+            "uz": "dekabr"
+          },
+          {
+            "en": "spring",
+            "uz": "bahor"
+          },
+          {
+            "en": "summer",
+            "uz": "yoz"
+          },
+          {
+            "en": "fall (autumn)",
+            "uz": "kuz (AmE: fall)"
+          },
+          {
+            "en": "winter",
+            "uz": "qish"
+          },
+          {
+            "en": "season",
+            "uz": "fasl"
+          },
+          {
+            "en": "date",
+            "uz": "sana"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "What day is it today?",
+            "uz": "Bugun qaysi kun?"
+          },
+          {
+            "en": "What's the date today?",
+            "uz": "Bugun nechanchi sana?"
+          },
+          {
+            "en": "My birthday is in May.",
+            "uz": "Tugʻilgan kunim mayda."
+          },
+          {
+            "en": "See you on Monday.",
+            "uz": "Dushanbada koʻrishamiz."
+          },
+          {
+            "en": "Have a nice weekend!",
+            "uz": "Dam olish kunlaringiz yaxshi oʻtsin!"
+          }
+        ]
+      }
+    },
+    {
+      "day": 21,
+      "week": 3,
+      "kind": "review",
+      "title": "TAKRORLASH KUNI",
+      "description": "3-hafta testi. \"Mening ish kunim\" mavzusida 90 soniya gapirish. Present Simple'ning 4 shakli (+ / − / ? / Wh-) boʻyicha aralash mashq.",
+      "grammar": null,
+      "vocabulary": null
+    },
+    {
+      "day": 22,
+      "week": 4,
+      "kind": "lesson",
+      "title": "Vaqt predloglari at / on / in",
+      "description": null,
+      "grammar": {
+        "topic": "Vaqt predloglari at / on / in",
+        "formula": [
+          "at + soat: at 7:00, at noon, at night",
+          "on + kun, sana: on Monday, on May 5",
+          "in + oy, yil, fasl, kun qismi: in July, in 2026, in summer, in the morning"
+        ],
+        "examples": [
+          "I get up at 6 in the morning. My birthday is in May."
+        ],
+        "notes": [
+          "AmE: on the weekend (Britaniyada: at the weekend)"
+        ],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Sport va qobiliyatlar",
+        "sourceRefs": [
+          "EVU:23",
+          "DEST:18"
+        ],
+        "preparesFor": "23-kun: can / can't",
+        "words": [
+          {
+            "en": "sport",
+            "uz": "sport"
+          },
+          {
+            "en": "soccer",
+            "uz": "futbol (AmE)"
+          },
+          {
+            "en": "basketball",
+            "uz": "basketbol"
+          },
+          {
+            "en": "volleyball",
+            "uz": "voleybol"
+          },
+          {
+            "en": "tennis",
+            "uz": "tennis"
+          },
+          {
+            "en": "boxing",
+            "uz": "boks"
+          },
+          {
+            "en": "swim",
+            "uz": "suzmoq"
+          },
+          {
+            "en": "run",
+            "uz": "yugurmoq"
+          },
+          {
+            "en": "ride a bike",
+            "uz": "velosiped haydamoq"
+          },
+          {
+            "en": "drive",
+            "uz": "(mashina) haydamoq"
+          },
+          {
+            "en": "jump",
+            "uz": "sakramoq"
+          },
+          {
+            "en": "climb",
+            "uz": "tirmashmoq, (togʻga) chiqmoq"
+          },
+          {
+            "en": "throw",
+            "uz": "otmoq, uloqtirmoq"
+          },
+          {
+            "en": "catch",
+            "uz": "ilib olmoq, ushlamoq"
+          },
+          {
+            "en": "kick",
+            "uz": "tepmoq"
+          },
+          {
+            "en": "win",
+            "uz": "yutmoq, gʻalaba qilmoq"
+          },
+          {
+            "en": "lose",
+            "uz": "yutqazmoq; yoʻqotmoq"
+          },
+          {
+            "en": "team",
+            "uz": "jamoa"
+          },
+          {
+            "en": "player",
+            "uz": "oʻyinchi"
+          },
+          {
+            "en": "match",
+            "uz": "oʻyin, uchrashuv (sport)"
+          },
+          {
+            "en": "coach",
+            "uz": "murabbiy"
+          },
+          {
+            "en": "gym",
+            "uz": "sport zali"
+          },
+          {
+            "en": "fast",
+            "uz": "tez"
+          },
+          {
+            "en": "well",
+            "uz": "yaxshi (ravish)"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Can you swim?",
+            "uz": "Suza olasizmi?"
+          },
+          {
+            "en": "I can't drive.",
+            "uz": "Men mashina hayday olmayman."
+          },
+          {
+            "en": "Who won?",
+            "uz": "Kim yutdi?"
+          },
+          {
+            "en": "Good job!",
+            "uz": "Barakalla! Zoʻr!"
+          },
+          {
+            "en": "Let's play!",
+            "uz": "Keling, oʻynaymiz!"
+          }
+        ]
+      }
+    },
+    {
+      "day": 23,
+      "week": 4,
+      "kind": "lesson",
+      "title": "can / can't",
+      "description": null,
+      "grammar": {
+        "topic": "can / can't",
+        "formula": [
+          "Ega + can + feʼl (hamma shaxs uchun bir xil, -s qoʻshilmaydi)",
+          "(−) can't · (?) Can you…? — Yes, I can.",
+          "Ishlatilishi: qobiliyat · ruxsat (Can I…?) · iltimos (Can you help me?)"
+        ],
+        "examples": [
+          "I can drive. She can't swim. Can I sit here?"
+        ],
+        "notes": [
+          "AmE talaffuz: can /kən/ qisqa aytiladi · can't /kænt/ choʻziqroq, \"t\" deyarli eshitilmaydi"
+        ],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Gaplashish va muloqot",
+        "sourceRefs": [
+          "EVU:48",
+          "DEST:42"
+        ],
+        "preparesFor": "24-kun: obyekt olmoshlari",
+        "words": [
+          {
+            "en": "say",
+            "uz": "aytmoq"
+          },
+          {
+            "en": "tell",
+            "uz": "(kimgadir) aytmoq, aytib bermoq"
+          },
+          {
+            "en": "ask",
+            "uz": "soʻramoq"
+          },
+          {
+            "en": "talk",
+            "uz": "gaplashmoq, suhbatlashmoq"
+          },
+          {
+            "en": "speak",
+            "uz": "gapirmoq"
+          },
+          {
+            "en": "call",
+            "uz": "qoʻngʻiroq qilmoq; chaqirmoq"
+          },
+          {
+            "en": "text",
+            "uz": "SMS yozmoq (AmE)"
+          },
+          {
+            "en": "explain",
+            "uz": "tushuntirmoq"
+          },
+          {
+            "en": "invite",
+            "uz": "taklif qilmoq"
+          },
+          {
+            "en": "thank",
+            "uz": "minnatdorchilik bildirmoq"
+          },
+          {
+            "en": "agree",
+            "uz": "rozi boʻlmoq"
+          },
+          {
+            "en": "argue",
+            "uz": "bahslashmoq"
+          },
+          {
+            "en": "joke",
+            "uz": "hazil; hazillashmoq"
+          },
+          {
+            "en": "story",
+            "uz": "hikoya"
+          },
+          {
+            "en": "news",
+            "uz": "yangilik(lar)"
+          },
+          {
+            "en": "idea",
+            "uz": "gʻoya, fikr"
+          },
+          {
+            "en": "opinion",
+            "uz": "fikr, nuqtai nazar"
+          },
+          {
+            "en": "voice",
+            "uz": "ovoz"
+          },
+          {
+            "en": "introduce",
+            "uz": "tanishtirmoq"
+          },
+          {
+            "en": "promise",
+            "uz": "vaʼda; vaʼda bermoq"
+          },
+          {
+            "en": "lie",
+            "uz": "yolgʻon; yolgʻon gapirmoq"
+          },
+          {
+            "en": "truth",
+            "uz": "haqiqat"
+          },
+          {
+            "en": "secret",
+            "uz": "sir"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Tell me about yourself.",
+            "uz": "Oʻzingiz haqingizda gapirib bering."
+          },
+          {
+            "en": "Call me later.",
+            "uz": "Menga keyinroq qoʻngʻiroq qiling."
+          },
+          {
+            "en": "Can I ask you a question?",
+            "uz": "Sizga bir savol bersam boʻladimi?"
+          },
+          {
+            "en": "I agree with you.",
+            "uz": "Siz bilan roziman."
+          },
+          {
+            "en": "Say it again, please.",
+            "uz": "Iltimos, yana bir bor ayting."
+          }
+        ]
+      }
+    },
+    {
+      "day": 24,
+      "week": 4,
+      "kind": "lesson",
+      "title": "Obyekt olmoshlari",
+      "description": null,
+      "grammar": {
+        "topic": "Obyekt olmoshlari",
+        "formula": [
+          "I → me · you → you · he → him · she → her · it → it · we → us · they → them",
+          "Feʼl yoki predlogdan keyin keladi"
+        ],
+        "examples": [
+          "Call me tomorrow. I know him. Look at them."
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Kino va media",
+        "sourceRefs": [
+          "EVU:24",
+          "EVU:35",
+          "DEST:6"
+        ],
+        "preparesFor": "25-kun: like + -ing, want to",
+        "words": [
+          {
+            "en": "movie",
+            "uz": "film (AmE)"
+          },
+          {
+            "en": "movie theater",
+            "uz": "kinoteatr (AmE)"
+          },
+          {
+            "en": "actor",
+            "uz": "aktyor"
+          },
+          {
+            "en": "actress",
+            "uz": "aktrisa"
+          },
+          {
+            "en": "director",
+            "uz": "rejissyor"
+          },
+          {
+            "en": "star",
+            "uz": "yulduz"
+          },
+          {
+            "en": "comedy",
+            "uz": "komediya"
+          },
+          {
+            "en": "horror movie",
+            "uz": "qoʻrqinchli film"
+          },
+          {
+            "en": "cartoon",
+            "uz": "multfilm"
+          },
+          {
+            "en": "show",
+            "uz": "koʻrsatuv, shou"
+          },
+          {
+            "en": "series",
+            "uz": "serial"
+          },
+          {
+            "en": "channel",
+            "uz": "kanal"
+          },
+          {
+            "en": "magazine",
+            "uz": "jurnal (\"magazin\" emas!)"
+          },
+          {
+            "en": "newspaper",
+            "uz": "gazeta"
+          },
+          {
+            "en": "radio",
+            "uz": "radio"
+          },
+          {
+            "en": "ad",
+            "uz": "reklama"
+          },
+          {
+            "en": "ticket",
+            "uz": "chipta"
+          },
+          {
+            "en": "popular",
+            "uz": "ommabop"
+          },
+          {
+            "en": "famous",
+            "uz": "mashhur"
+          },
+          {
+            "en": "boring",
+            "uz": "zerikarli"
+          },
+          {
+            "en": "exciting",
+            "uz": "hayajonli"
+          },
+          {
+            "en": "scary",
+            "uz": "qoʻrqinchli"
+          },
+          {
+            "en": "enjoy",
+            "uz": "zavqlanmoq, rohatlanmoq"
+          },
+          {
+            "en": "hate",
+            "uz": "yomon koʻrmoq"
+          },
+          {
+            "en": "love",
+            "uz": "sevmoq, juda yoqtirmoq"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Do you want to watch a movie?",
+            "uz": "Film koʻrishni xohlaysizmi?"
+          },
+          {
+            "en": "I love watching comedies.",
+            "uz": "Komediyalarni koʻrishni juda yaxshi koʻraman."
+          },
+          {
+            "en": "What's on TV tonight?",
+            "uz": "Bugun kechqurun televizorda nima bor?"
+          },
+          {
+            "en": "It was so boring.",
+            "uz": "Juda zerikarli edi."
+          },
+          {
+            "en": "I can't wait!",
+            "uz": "Intiqlik bilan kutyapman!"
+          }
+        ]
+      }
+    },
+    {
+      "day": 25,
+      "week": 4,
+      "kind": "lesson",
+      "title": "like / love / hate + -ing va want to",
+      "description": null,
+      "grammar": {
+        "topic": "like / love / hate + -ing va want to",
+        "formula": [
+          "like / love / hate / enjoy + feʼl + -ing",
+          "want + to + feʼl"
+        ],
+        "examples": [
+          "I like reading. She hates cooking. I want to learn English."
+        ],
+        "notes": [],
+        "warnings": [
+          "✗ I want learn"
+        ]
+      },
+      "vocabulary": {
+        "theme": "Kiyim va ranglar (1)",
+        "sourceRefs": [
+          "EVU:4",
+          "DEST:33"
+        ],
+        "preparesFor": "26-kun: Present Continuous",
+        "words": [
+          {
+            "en": "clothes",
+            "uz": "kiyim(lar)"
+          },
+          {
+            "en": "shirt",
+            "uz": "koʻylak (erkaklar)"
+          },
+          {
+            "en": "T-shirt",
+            "uz": "futbolka"
+          },
+          {
+            "en": "pants",
+            "uz": "shim (AmE)"
+          },
+          {
+            "en": "jeans",
+            "uz": "jinsi shim"
+          },
+          {
+            "en": "dress",
+            "uz": "koʻylak (ayollar)"
+          },
+          {
+            "en": "skirt",
+            "uz": "yubka"
+          },
+          {
+            "en": "jacket",
+            "uz": "kurtka"
+          },
+          {
+            "en": "coat",
+            "uz": "palto"
+          },
+          {
+            "en": "sweater",
+            "uz": "sviter"
+          },
+          {
+            "en": "shoes",
+            "uz": "tufli, oyoq kiyim"
+          },
+          {
+            "en": "sneakers",
+            "uz": "krossovka (AmE)"
+          },
+          {
+            "en": "boots",
+            "uz": "etik"
+          },
+          {
+            "en": "socks",
+            "uz": "paypoq"
+          },
+          {
+            "en": "hat",
+            "uz": "bosh kiyim, shlyapa"
+          },
+          {
+            "en": "scarf",
+            "uz": "sharf"
+          },
+          {
+            "en": "wear",
+            "uz": "kiymoq, kiyib yurmoq"
+          },
+          {
+            "en": "put on",
+            "uz": "kiymoq (ustiga)"
+          },
+          {
+            "en": "take off",
+            "uz": "yechmoq"
+          },
+          {
+            "en": "size",
+            "uz": "oʻlcham, razmer"
+          },
+          {
+            "en": "try on",
+            "uz": "kiyib koʻrmoq"
+          },
+          {
+            "en": "red",
+            "uz": "qizil"
+          },
+          {
+            "en": "blue",
+            "uz": "koʻk"
+          },
+          {
+            "en": "black",
+            "uz": "qora"
+          },
+          {
+            "en": "white",
+            "uz": "oq"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "What are you wearing today?",
+            "uz": "Bugun nima kiyib oldingiz?"
+          },
+          {
+            "en": "Can I try this on?",
+            "uz": "Buni kiyib koʻrsam boʻladimi?"
+          },
+          {
+            "en": "It looks good on you.",
+            "uz": "Bu sizga yarashibdi."
+          },
+          {
+            "en": "What size are you?",
+            "uz": "Razmeringiz qanaqa?"
+          },
+          {
+            "en": "It's too small.",
+            "uz": "Bu juda kichik."
+          }
+        ]
+      }
+    },
+    {
+      "day": 26,
+      "week": 4,
+      "kind": "lesson",
+      "title": "Present Continuous",
+      "description": null,
+      "grammar": {
+        "topic": "Present Continuous",
+        "formula": [
+          "am / is / are + feʼl + -ing: hozir, ayni paytda boʻlayotgan ish",
+          "(−) I'm not working · (?) Are you working?",
+          "Imlo: make → making · run → running · study → studying"
+        ],
+        "examples": [
+          "I'm reading now. They are watching a movie."
+        ],
+        "notes": [
+          "Signal soʻzlar: now, right now, at the moment"
+        ],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Ob-havo",
+        "sourceRefs": [
+          "EVU:28",
+          "DEST:30"
+        ],
+        "preparesFor": "27-kun: Present Simple yoki Continuous?",
+        "words": [
+          {
+            "en": "weather",
+            "uz": "ob-havo"
+          },
+          {
+            "en": "sun",
+            "uz": "quyosh"
+          },
+          {
+            "en": "sunny",
+            "uz": "quyoshli"
+          },
+          {
+            "en": "rain",
+            "uz": "yomgʻir; yomgʻir yogʻmoq"
+          },
+          {
+            "en": "rainy",
+            "uz": "yomgʻirli"
+          },
+          {
+            "en": "snow",
+            "uz": "qor; qor yogʻmoq"
+          },
+          {
+            "en": "cloud",
+            "uz": "bulut"
+          },
+          {
+            "en": "cloudy",
+            "uz": "bulutli"
+          },
+          {
+            "en": "wind",
+            "uz": "shamol"
+          },
+          {
+            "en": "windy",
+            "uz": "shamolli"
+          },
+          {
+            "en": "storm",
+            "uz": "boʻron"
+          },
+          {
+            "en": "fog",
+            "uz": "tuman"
+          },
+          {
+            "en": "hot",
+            "uz": "issiq"
+          },
+          {
+            "en": "warm",
+            "uz": "iliq"
+          },
+          {
+            "en": "cold",
+            "uz": "sovuq"
+          },
+          {
+            "en": "cool",
+            "uz": "salqin"
+          },
+          {
+            "en": "degree",
+            "uz": "daraja (gradus)"
+          },
+          {
+            "en": "temperature",
+            "uz": "harorat"
+          },
+          {
+            "en": "dry",
+            "uz": "quruq"
+          },
+          {
+            "en": "wet",
+            "uz": "hoʻl"
+          },
+          {
+            "en": "sky",
+            "uz": "osmon"
+          },
+          {
+            "en": "forecast",
+            "uz": "ob-havo maʼlumoti"
+          },
+          {
+            "en": "ice",
+            "uz": "muz"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "What's the weather like?",
+            "uz": "Ob-havo qanday?"
+          },
+          {
+            "en": "It's raining.",
+            "uz": "Yomgʻir yogʻyapti."
+          },
+          {
+            "en": "It's freezing!",
+            "uz": "Qattiq sovuq!"
+          },
+          {
+            "en": "It's 30 degrees.",
+            "uz": "Havo 30 daraja."
+          },
+          {
+            "en": "Take an umbrella.",
+            "uz": "Soyabon olib oling."
+          }
+        ]
+      }
+    },
+    {
+      "day": 27,
+      "week": 4,
+      "kind": "lesson",
+      "title": "Present Simple yoki Continuous?",
+      "description": null,
+      "grammar": {
+        "topic": "Present Simple yoki Continuous?",
+        "formula": [
+          "Simple: odat, har doim · Continuous: hozir, vaqtincha",
+          "Holat feʼllari Continuous shaklda ishlatilmaydi: like, love, want, know, understand, need"
+        ],
+        "examples": [
+          "I work in an office, but today I'm working from home."
+        ],
+        "notes": [],
+        "warnings": [
+          "✗ I'm knowing → I know"
+        ]
+      },
+      "vocabulary": {
+        "theme": "Sanalmaydigan otlar va oziq-ovqat",
+        "sourceRefs": [
+          "EVU:55",
+          "DEST:24"
+        ],
+        "preparesFor": "29-kun: sanaladigan va sanalmaydigan otlar",
+        "words": [
+          {
+            "en": "information",
+            "uz": "maʼlumot"
+          },
+          {
+            "en": "advice",
+            "uz": "maslahat"
+          },
+          {
+            "en": "furniture",
+            "uz": "mebel"
+          },
+          {
+            "en": "luggage",
+            "uz": "yuk (sayohatda)"
+          },
+          {
+            "en": "traffic",
+            "uz": "tirbandlik, transport oqimi"
+          },
+          {
+            "en": "equipment",
+            "uz": "jihozlar, uskunalar"
+          },
+          {
+            "en": "flour",
+            "uz": "un"
+          },
+          {
+            "en": "oil",
+            "uz": "yogʻ (oʻsimlik); neft"
+          },
+          {
+            "en": "honey",
+            "uz": "asal"
+          },
+          {
+            "en": "jam",
+            "uz": "murabbo"
+          },
+          {
+            "en": "yogurt",
+            "uz": "qatiq, yogurt"
+          },
+          {
+            "en": "pasta",
+            "uz": "makaron"
+          },
+          {
+            "en": "cereal",
+            "uz": "nonushta yormasi"
+          },
+          {
+            "en": "chocolate",
+            "uz": "shokolad"
+          },
+          {
+            "en": "ice cream",
+            "uz": "muzqaymoq"
+          },
+          {
+            "en": "candy",
+            "uz": "konfet (AmE)"
+          },
+          {
+            "en": "cookie",
+            "uz": "pechenye (AmE)"
+          },
+          {
+            "en": "cake",
+            "uz": "tort"
+          },
+          {
+            "en": "grapes",
+            "uz": "uzum"
+          },
+          {
+            "en": "watermelon",
+            "uz": "tarvuz"
+          },
+          {
+            "en": "melon",
+            "uz": "qovun"
+          },
+          {
+            "en": "carrot",
+            "uz": "sabzi"
+          },
+          {
+            "en": "garlic",
+            "uz": "sarimsoq"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Can I have some information?",
+            "uz": "Biror maʼlumot olsam boʻladimi?"
+          },
+          {
+            "en": "Can you give me some advice?",
+            "uz": "Menga maslahat bera olasizmi?"
+          },
+          {
+            "en": "How much sugar do you want?",
+            "uz": "Qancha shakar xohlaysiz?"
+          },
+          {
+            "en": "Just a little, please.",
+            "uz": "Ozgina, iltimos."
+          },
+          {
+            "en": "I'm stuck in traffic.",
+            "uz": "Tirbandlikda qolib ketdim."
+          }
+        ]
+      }
+    },
+    {
+      "day": 28,
+      "week": 4,
+      "kind": "exam",
+      "title": "1-OY IMTIHONI (A1 darvozasi)",
+      "description": "1–27-kunlar grammatikasi va soʻzlari, diktant, 2 daqiqalik nutq (oʻzi, oilasi, kun tartibi haqida), 80 soʻzli matn. Mezonlar oxirgi sahifada.",
+      "grammar": null,
+      "vocabulary": null
+    },
+    {
+      "day": 29,
+      "week": 5,
+      "kind": "lesson",
+      "title": "Sanaladigan va sanalmaydigan otlar",
+      "description": null,
+      "grammar": {
+        "topic": "Sanaladigan va sanalmaydigan otlar",
+        "formula": [
+          "Sanaladigan: a book, two books",
+          "Sanalmaydigan: water, money, information, music, advice, bread, rice. Ular bilan a / an ishlatilmaydi, koʻplik shakli ham yoʻq."
+        ],
+        "examples": [
+          "I need some information."
+        ],
+        "notes": [],
+        "warnings": [
+          "✗ an information, ✗ informations (oʻzbekchada \"maʼlumotlar\" deyilsa ham)"
+        ]
+      },
+      "vocabulary": {
+        "theme": "Doʻkon, xarid va ranglar (2)",
+        "sourceRefs": [
+          "EVU:19",
+          "DEST:24"
+        ],
+        "preparesFor": "30-kun: some / any",
+        "words": [
+          {
+            "en": "shop",
+            "uz": "doʻkon; xarid qilmoq"
+          },
+          {
+            "en": "mall",
+            "uz": "savdo markazi (AmE)"
+          },
+          {
+            "en": "market",
+            "uz": "bozor"
+          },
+          {
+            "en": "bakery",
+            "uz": "novvoyxona"
+          },
+          {
+            "en": "customer",
+            "uz": "xaridor, mijoz"
+          },
+          {
+            "en": "cashier",
+            "uz": "kassir"
+          },
+          {
+            "en": "checkout",
+            "uz": "kassa"
+          },
+          {
+            "en": "receipt",
+            "uz": "chek"
+          },
+          {
+            "en": "discount",
+            "uz": "chegirma"
+          },
+          {
+            "en": "sale",
+            "uz": "chegirmali savdo; sotuv"
+          },
+          {
+            "en": "cheap",
+            "uz": "arzon"
+          },
+          {
+            "en": "expensive",
+            "uz": "qimmat"
+          },
+          {
+            "en": "buy",
+            "uz": "sotib olmoq"
+          },
+          {
+            "en": "sell",
+            "uz": "sotmoq"
+          },
+          {
+            "en": "pay",
+            "uz": "toʻlamoq"
+          },
+          {
+            "en": "spend",
+            "uz": "sarflamoq"
+          },
+          {
+            "en": "cost",
+            "uz": "narxi … boʻlmoq, turmoq"
+          },
+          {
+            "en": "change",
+            "uz": "qaytim; oʻzgartirmoq"
+          },
+          {
+            "en": "shopping cart",
+            "uz": "xarid aravachasi (AmE)"
+          },
+          {
+            "en": "open",
+            "uz": "ochiq; ochmoq"
+          },
+          {
+            "en": "closed",
+            "uz": "yopiq"
+          },
+          {
+            "en": "color",
+            "uz": "rang (AmE)"
+          },
+          {
+            "en": "green",
+            "uz": "yashil"
+          },
+          {
+            "en": "yellow",
+            "uz": "sariq"
+          },
+          {
+            "en": "brown",
+            "uz": "jigarrang"
+          },
+          {
+            "en": "gray",
+            "uz": "kulrang (AmE)"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Can I help you?",
+            "uz": "Sizga yordam bera olamanmi?"
+          },
+          {
+            "en": "I'm just looking, thanks.",
+            "uz": "Shunchaki koʻryapman, rahmat."
+          },
+          {
+            "en": "Do you have this in black?",
+            "uz": "Buning qorasi bormi?"
+          },
+          {
+            "en": "Where can I pay?",
+            "uz": "Qayerda toʻlasam boʻladi?"
+          },
+          {
+            "en": "Here's your change.",
+            "uz": "Mana qaytimingiz."
+          }
+        ]
+      }
+    },
+    {
+      "day": 30,
+      "week": 5,
+      "kind": "lesson",
+      "title": "some / any",
+      "description": null,
+      "grammar": {
+        "topic": "some / any",
+        "formula": [
+          "some tasdiq gapda · any inkor va soʻroq gapda",
+          "Taklif va iltimosda some ishlatiladi: Would you like some tea?"
+        ],
+        "examples": [
+          "I have some friends in Tashkent. I don't have any money. Do you have any questions?"
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Onlayn xarid va pul",
+        "sourceRefs": [
+          "EVU:20"
+        ],
+        "preparesFor": "31-kun: much / many",
+        "words": [
+          {
+            "en": "order",
+            "uz": "buyurtma; buyurtma bermoq"
+          },
+          {
+            "en": "delivery",
+            "uz": "yetkazib berish"
+          },
+          {
+            "en": "deliver",
+            "uz": "yetkazib bermoq"
+          },
+          {
+            "en": "website",
+            "uz": "veb-sayt"
+          },
+          {
+            "en": "account",
+            "uz": "akkaunt; hisob"
+          },
+          {
+            "en": "review",
+            "uz": "sharh, fikr-mulohaza"
+          },
+          {
+            "en": "rating",
+            "uz": "reyting, baho"
+          },
+          {
+            "en": "cart",
+            "uz": "savat (onlayn)"
+          },
+          {
+            "en": "address",
+            "uz": "manzil"
+          },
+          {
+            "en": "package",
+            "uz": "posilka (AmE)"
+          },
+          {
+            "en": "return",
+            "uz": "qaytarmoq"
+          },
+          {
+            "en": "refund",
+            "uz": "pulni qaytarish"
+          },
+          {
+            "en": "free shipping",
+            "uz": "bepul yetkazib berish"
+          },
+          {
+            "en": "credit card",
+            "uz": "kredit karta"
+          },
+          {
+            "en": "salary",
+            "uz": "maosh"
+          },
+          {
+            "en": "bill",
+            "uz": "toʻlov hisobi (kommunal va h.k.)"
+          },
+          {
+            "en": "save money",
+            "uz": "pul tejamoq"
+          },
+          {
+            "en": "borrow",
+            "uz": "qarz olmoq"
+          },
+          {
+            "en": "lend",
+            "uz": "qarz bermoq"
+          },
+          {
+            "en": "rich",
+            "uz": "boy, badavlat"
+          },
+          {
+            "en": "poor",
+            "uz": "kambagʻal"
+          },
+          {
+            "en": "enough",
+            "uz": "yetarli"
+          },
+          {
+            "en": "total",
+            "uz": "jami"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "How much does it cost?",
+            "uz": "Bu qancha turadi?"
+          },
+          {
+            "en": "How many do you need?",
+            "uz": "Sizga nechta kerak?"
+          },
+          {
+            "en": "I ordered it online.",
+            "uz": "Men uni onlayn buyurtma qildim."
+          },
+          {
+            "en": "When will it arrive?",
+            "uz": "U qachon yetib keladi?"
+          },
+          {
+            "en": "I don't have much money.",
+            "uz": "Pulim koʻp emas."
+          }
+        ]
+      }
+    },
+    {
+      "day": 31,
+      "week": 5,
+      "kind": "lesson",
+      "title": "much / many / a lot of",
+      "description": null,
+      "grammar": {
+        "topic": "much / many / a lot of",
+        "formula": [
+          "many + sanaladigan koʻplik · much + sanalmaydigan (asosan inkor va soʻroq gapda)",
+          "a lot of ikkalasi bilan ham ishlatiladi, asosan tasdiq gapda",
+          "How many…? · How much…?"
+        ],
+        "examples": [
+          "I don't have much time. How many languages do you speak? She has a lot of friends."
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Tashqarida ovqatlanish",
+        "sourceRefs": [
+          "EVU:22",
+          "DEST:24"
+        ],
+        "preparesFor": "32-kun: the",
+        "words": [
+          {
+            "en": "menu",
+            "uz": "menyu"
+          },
+          {
+            "en": "check",
+            "uz": "hisob (restoranda, AmE)"
+          },
+          {
+            "en": "tip",
+            "uz": "choychaqa"
+          },
+          {
+            "en": "dish",
+            "uz": "taom; idish"
+          },
+          {
+            "en": "main course",
+            "uz": "asosiy taom"
+          },
+          {
+            "en": "dessert",
+            "uz": "shirinlik"
+          },
+          {
+            "en": "salad",
+            "uz": "salat"
+          },
+          {
+            "en": "steak",
+            "uz": "steyk"
+          },
+          {
+            "en": "burger",
+            "uz": "burger"
+          },
+          {
+            "en": "pizza",
+            "uz": "pitsa"
+          },
+          {
+            "en": "sandwich",
+            "uz": "sendvich"
+          },
+          {
+            "en": "fries",
+            "uz": "kartoshka fri (AmE)"
+          },
+          {
+            "en": "drink",
+            "uz": "ichimlik; ichmoq"
+          },
+          {
+            "en": "reservation",
+            "uz": "(stol) band qilish"
+          },
+          {
+            "en": "spicy",
+            "uz": "achchiq, ziravorli"
+          },
+          {
+            "en": "sweet",
+            "uz": "shirin"
+          },
+          {
+            "en": "salty",
+            "uz": "shoʻr"
+          },
+          {
+            "en": "fresh",
+            "uz": "yangi, toza"
+          },
+          {
+            "en": "delicious",
+            "uz": "mazali"
+          },
+          {
+            "en": "taste",
+            "uz": "taʼm; tatib koʻrmoq"
+          },
+          {
+            "en": "vegetarian",
+            "uz": "vegetarian"
+          },
+          {
+            "en": "takeout",
+            "uz": "olib ketiladigan ovqat (AmE)"
+          },
+          {
+            "en": "napkin",
+            "uz": "salfetka"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "A table for two, please.",
+            "uz": "Ikki kishilik stol, iltimos."
+          },
+          {
+            "en": "Can I see the menu?",
+            "uz": "Menyuni koʻrsam boʻladimi?"
+          },
+          {
+            "en": "Can we have the check, please?",
+            "uz": "Hisobni olib kelsangiz."
+          },
+          {
+            "en": "For here or to go?",
+            "uz": "Shu yerdami yoki olib ketasizmi?"
+          },
+          {
+            "en": "Is it spicy?",
+            "uz": "Bu achchiqmi?"
+          }
+        ]
+      }
+    },
+    {
+      "day": 32,
+      "week": 5,
+      "kind": "lesson",
+      "title": "Artikl the (a / an dan farqi)",
+      "description": null,
+      "grammar": {
+        "topic": "Artikl the (a / an dan farqi)",
+        "formula": [
+          "a / an: birinchi marta tilga olinganda, istalgan bitta narsa · the: maʼlum, ikkinchi marta tilga olingan yoki yagona narsa (the sun)",
+          "Artiklsiz: umumiy maʼno, masalan I like music."
+        ],
+        "examples": [
+          "I have a dog. The dog is very big."
+        ],
+        "notes": [
+          "Iboralar: go to work · at home · go to school"
+        ],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Qishloq va tabiat",
+        "sourceRefs": [
+          "EVU:30",
+          "DEST:30"
+        ],
+        "preparesFor": "33-kun: was / were",
+        "words": [
+          {
+            "en": "countryside",
+            "uz": "qishloq joy, shahar tashqarisi"
+          },
+          {
+            "en": "village",
+            "uz": "qishloq"
+          },
+          {
+            "en": "farm",
+            "uz": "ferma"
+          },
+          {
+            "en": "field",
+            "uz": "dala"
+          },
+          {
+            "en": "mountain",
+            "uz": "togʻ"
+          },
+          {
+            "en": "hill",
+            "uz": "tepalik"
+          },
+          {
+            "en": "river",
+            "uz": "daryo"
+          },
+          {
+            "en": "lake",
+            "uz": "koʻl"
+          },
+          {
+            "en": "sea",
+            "uz": "dengiz"
+          },
+          {
+            "en": "beach",
+            "uz": "plyaj, sohil"
+          },
+          {
+            "en": "forest",
+            "uz": "oʻrmon"
+          },
+          {
+            "en": "tree",
+            "uz": "daraxt"
+          },
+          {
+            "en": "flower",
+            "uz": "gul"
+          },
+          {
+            "en": "grass",
+            "uz": "oʻt, maysa"
+          },
+          {
+            "en": "rock",
+            "uz": "tosh, qoya"
+          },
+          {
+            "en": "desert",
+            "uz": "choʻl, sahro"
+          },
+          {
+            "en": "island",
+            "uz": "orol"
+          },
+          {
+            "en": "nature",
+            "uz": "tabiat"
+          },
+          {
+            "en": "air",
+            "uz": "havo"
+          },
+          {
+            "en": "view",
+            "uz": "manzara"
+          },
+          {
+            "en": "peaceful",
+            "uz": "osoyishta, tinch"
+          },
+          {
+            "en": "wild",
+            "uz": "yovvoyi"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "It was a beautiful day.",
+            "uz": "Ajoyib kun edi."
+          },
+          {
+            "en": "We were in the mountains.",
+            "uz": "Biz togʻda edik."
+          },
+          {
+            "en": "The view was amazing.",
+            "uz": "Manzara ajoyib edi."
+          },
+          {
+            "en": "There were a lot of people.",
+            "uz": "Odam juda koʻp edi."
+          },
+          {
+            "en": "I was born in a small village.",
+            "uz": "Men kichik qishloqda tugʻilganman."
+          }
+        ]
+      }
+    },
+    {
+      "day": 33,
+      "week": 5,
+      "kind": "lesson",
+      "title": "was / were (to be, oʻtgan zamon)",
+      "description": null,
+      "grammar": {
+        "topic": "was / were (to be, oʻtgan zamon)",
+        "formula": [
+          "I / he / she / it + was · you / we / they + were",
+          "(−) wasn't / weren't · (?) Was she…? Were you…?",
+          "There was / There were"
+        ],
+        "examples": [
+          "I was at home yesterday. Were you tired? — Yes, I was."
+        ],
+        "notes": [
+          "Vaqt soʻzlari: yesterday, last week, two days ago, in 2020"
+        ],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Uy va ishdagi muammolar",
+        "sourceRefs": [
+          "EVU:36"
+        ],
+        "preparesFor": "34-kun: Past Simple (-ed)",
+        "words": [
+          {
+            "en": "broken",
+            "uz": "singan, buzilgan"
+          },
+          {
+            "en": "repair",
+            "uz": "taʼmirlamoq"
+          },
+          {
+            "en": "fix",
+            "uz": "tuzatmoq"
+          },
+          {
+            "en": "mess",
+            "uz": "tartibsizlik"
+          },
+          {
+            "en": "messy",
+            "uz": "tartibsiz"
+          },
+          {
+            "en": "dirty",
+            "uz": "iflos"
+          },
+          {
+            "en": "noisy",
+            "uz": "shovqinli"
+          },
+          {
+            "en": "stop",
+            "uz": "toʻxtamoq; toʻxtatmoq"
+          },
+          {
+            "en": "happen",
+            "uz": "sodir boʻlmoq"
+          },
+          {
+            "en": "lock",
+            "uz": "qulf; qulflamoq"
+          },
+          {
+            "en": "forget",
+            "uz": "unutmoq"
+          },
+          {
+            "en": "remember",
+            "uz": "eslamoq, esda tutmoq"
+          },
+          {
+            "en": "miss",
+            "uz": "oʻtkazib yubormoq; sogʻinmoq"
+          },
+          {
+            "en": "wait",
+            "uz": "kutmoq"
+          },
+          {
+            "en": "complain",
+            "uz": "shikoyat qilmoq"
+          },
+          {
+            "en": "deadline",
+            "uz": "topshirish muddati"
+          },
+          {
+            "en": "boss",
+            "uz": "boshliq"
+          },
+          {
+            "en": "colleague",
+            "uz": "hamkasb"
+          },
+          {
+            "en": "crash",
+            "uz": "qotib qolmoq (kompyuter); avariya"
+          },
+          {
+            "en": "battery",
+            "uz": "batareya"
+          },
+          {
+            "en": "plumber",
+            "uz": "santexnik"
+          },
+          {
+            "en": "leak",
+            "uz": "oqish; oqmoq (suv)"
+          },
+          {
+            "en": "upset",
+            "uz": "ranjigan, xafa"
+          },
+          {
+            "en": "bad mood",
+            "uz": "yomon kayfiyat"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "What happened?",
+            "uz": "Nima boʻldi?"
+          },
+          {
+            "en": "My laptop stopped working.",
+            "uz": "Noutbukim ishlamay qoldi."
+          },
+          {
+            "en": "I missed the bus.",
+            "uz": "Avtobusdan qolib ketdim."
+          },
+          {
+            "en": "I'm in a bad mood.",
+            "uz": "Kayfiyatim yomon."
+          },
+          {
+            "en": "Sorry, I forgot.",
+            "uz": "Kechirasiz, esimdan chiqibdi."
+          }
+        ]
+      }
+    },
+    {
+      "day": 34,
+      "week": 5,
+      "kind": "lesson",
+      "title": "Past Simple: toʻgʻri feʼllar (-ed)",
+      "description": null,
+      "grammar": {
+        "topic": "Past Simple: toʻgʻri feʼllar (-ed)",
+        "formula": [
+          "Feʼl + ed (hamma shaxs uchun bir xil)",
+          "Imlo: live → lived · study → studied · stop → stopped · play → played"
+        ],
+        "examples": [
+          "I worked yesterday. She studied English last night."
+        ],
+        "notes": [
+          "Talaffuz: /t/ worked · /d/ played · /ɪd/ wanted"
+        ],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Taʼtil va dam olish",
+        "sourceRefs": [
+          "EVU:18",
+          "DEST:15"
+        ],
+        "preparesFor": "36-kun: notoʻgʻri feʼllar",
+        "words": [
+          {
+            "en": "trip",
+            "uz": "sayohat (qisqa)"
+          },
+          {
+            "en": "holiday",
+            "uz": "bayram"
+          },
+          {
+            "en": "travel",
+            "uz": "sayohat qilmoq"
+          },
+          {
+            "en": "tourist",
+            "uz": "sayyoh"
+          },
+          {
+            "en": "passport",
+            "uz": "pasport"
+          },
+          {
+            "en": "visa",
+            "uz": "viza"
+          },
+          {
+            "en": "suitcase",
+            "uz": "chamadon"
+          },
+          {
+            "en": "book a room",
+            "uz": "xona band qilmoq"
+          },
+          {
+            "en": "abroad",
+            "uz": "chet elda, xorijda"
+          },
+          {
+            "en": "souvenir",
+            "uz": "esdalik sovgʻa"
+          },
+          {
+            "en": "sightseeing",
+            "uz": "diqqatga sazovor joylarni koʻrish"
+          },
+          {
+            "en": "guide",
+            "uz": "gid, yoʻlboshchi"
+          },
+          {
+            "en": "tour",
+            "uz": "tur, ekskursiya"
+          },
+          {
+            "en": "currency",
+            "uz": "valyuta"
+          },
+          {
+            "en": "exchange",
+            "uz": "almashtirmoq"
+          },
+          {
+            "en": "photo",
+            "uz": "surat"
+          },
+          {
+            "en": "camera",
+            "uz": "fotoapparat"
+          },
+          {
+            "en": "sunbathe",
+            "uz": "quyoshda toblanmoq"
+          },
+          {
+            "en": "unforgettable",
+            "uz": "unutilmas"
+          },
+          {
+            "en": "amazing",
+            "uz": "hayratlanarli, ajoyib"
+          },
+          {
+            "en": "wonderful",
+            "uz": "ajoyib, zoʻr"
+          },
+          {
+            "en": "pack",
+            "uz": "(chamadon) yigʻmoq"
+          },
+          {
+            "en": "flight",
+            "uz": "parvoz, reys"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Where did you go on vacation?",
+            "uz": "Taʼtilda qayerga bordingiz?"
+          },
+          {
+            "en": "I went to Istanbul.",
+            "uz": "Men Istanbulga bordim."
+          },
+          {
+            "en": "We had a great time.",
+            "uz": "Biz ajoyib vaqt oʻtkazdik."
+          },
+          {
+            "en": "I took a lot of photos.",
+            "uz": "Men koʻp surat oldim."
+          },
+          {
+            "en": "Have a safe trip!",
+            "uz": "Oq yoʻl!"
+          }
+        ]
+      }
+    },
+    {
+      "day": 35,
+      "week": 5,
+      "kind": "review",
+      "title": "TAKRORLASH KUNI",
+      "description": "5-hafta testi va 1-oyning qisqa takrori. Doʻkonda xarid qilish dialogi.",
+      "grammar": null,
+      "vocabulary": null
+    },
+    {
+      "day": 36,
+      "week": 6,
+      "kind": "lesson",
+      "title": "Past Simple: notoʻgʻri feʼllar (1-qism)",
+      "description": null,
+      "grammar": {
+        "topic": "Past Simple: notoʻgʻri feʼllar (1-qism)",
+        "formula": [
+          "Feʼlning 2-shakli yod olinadi (Ilovadagi 1–25-feʼllar)",
+          "go → went · have → had · see → saw · do → did · make → made"
+        ],
+        "examples": [
+          "I went to Samarkand last year. We had dinner at a restaurant."
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Sayohat va transport",
+        "sourceRefs": [
+          "EVU:32",
+          "EVU:49",
+          "DEST:15"
+        ],
+        "preparesFor": "37-kun: Past Simple (inkor va soʻroq)",
+        "words": [
+          {
+            "en": "train",
+            "uz": "poyezd"
+          },
+          {
+            "en": "bus",
+            "uz": "avtobus"
+          },
+          {
+            "en": "subway",
+            "uz": "metro (AmE)"
+          },
+          {
+            "en": "taxi",
+            "uz": "taksi"
+          },
+          {
+            "en": "plane",
+            "uz": "samolyot"
+          },
+          {
+            "en": "car",
+            "uz": "mashina"
+          },
+          {
+            "en": "bike",
+            "uz": "velosiped"
+          },
+          {
+            "en": "ride",
+            "uz": "minmoq, (transportda) yurmoq"
+          },
+          {
+            "en": "walk",
+            "uz": "piyoda yurmoq"
+          },
+          {
+            "en": "fly",
+            "uz": "uchmoq"
+          },
+          {
+            "en": "get on",
+            "uz": "(transportga) chiqmoq"
+          },
+          {
+            "en": "get off",
+            "uz": "(transportdan) tushmoq"
+          },
+          {
+            "en": "seat",
+            "uz": "oʻrindiq"
+          },
+          {
+            "en": "platform",
+            "uz": "platforma"
+          },
+          {
+            "en": "journey",
+            "uz": "safar (uzoq yoʻl)"
+          },
+          {
+            "en": "passenger",
+            "uz": "yoʻlovchi"
+          },
+          {
+            "en": "on time",
+            "uz": "oʻz vaqtida"
+          },
+          {
+            "en": "delay",
+            "uz": "kechikish"
+          },
+          {
+            "en": "gate",
+            "uz": "chiqish joyi (aeroportda)"
+          },
+          {
+            "en": "one-way",
+            "uz": "bir tomonga (chipta)"
+          },
+          {
+            "en": "round-trip",
+            "uz": "borish-kelish (chipta, AmE)"
+          },
+          {
+            "en": "highway",
+            "uz": "avtomagistral (AmE)"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "How do you get to work?",
+            "uz": "Ishga qanday borasiz?"
+          },
+          {
+            "en": "I didn't take the bus, I walked.",
+            "uz": "Avtobusga chiqmadim, piyoda bordim."
+          },
+          {
+            "en": "Did you have a good flight?",
+            "uz": "Parvoz yaxshi oʻtdimi?"
+          },
+          {
+            "en": "The train is late.",
+            "uz": "Poyezd kechikyapti."
+          },
+          {
+            "en": "One ticket to Samarkand, please.",
+            "uz": "Samarqandga bitta chipta, iltimos."
+          }
+        ]
+      }
+    },
+    {
+      "day": 37,
+      "week": 6,
+      "kind": "lesson",
+      "title": "Past Simple: inkor va soʻroq",
+      "description": null,
+      "grammar": {
+        "topic": "Past Simple: inkor va soʻroq",
+        "formula": [
+          "(−) didn't + feʼl (asl shakl)",
+          "(?) Did + ega + feʼl? — Yes, I did. / No, I didn't."
+        ],
+        "examples": [
+          "I didn't go to work. Did you see the movie?"
+        ],
+        "notes": [],
+        "warnings": [
+          "✗ I didn't went"
+        ]
+      },
+      "vocabulary": {
+        "theme": "\"come\", \"take\" va hikoya soʻzlari",
+        "sourceRefs": [
+          "EVU:42",
+          "EVU:43"
+        ],
+        "preparesFor": "38-kun: Past Simple (Wh-) va hikoya",
+        "words": [
+          {
+            "en": "come back",
+            "uz": "qaytib kelmoq"
+          },
+          {
+            "en": "come in",
+            "uz": "ichkariga kirmoq"
+          },
+          {
+            "en": "come from",
+            "uz": "…dan boʻlmoq (kelib chiqishi)"
+          },
+          {
+            "en": "come over",
+            "uz": "mehmonga kelmoq"
+          },
+          {
+            "en": "take a taxi",
+            "uz": "taksiga chiqmoq"
+          },
+          {
+            "en": "take a test",
+            "uz": "test topshirmoq"
+          },
+          {
+            "en": "take time",
+            "uz": "vaqt olmoq"
+          },
+          {
+            "en": "take medicine",
+            "uz": "dori ichmoq"
+          },
+          {
+            "en": "take a seat",
+            "uz": "oʻtirmoq (marhamat)"
+          },
+          {
+            "en": "take care",
+            "uz": "ehtiyot boʻlmoq"
+          },
+          {
+            "en": "take part",
+            "uz": "ishtirok etmoq"
+          },
+          {
+            "en": "then",
+            "uz": "keyin, soʻng"
+          },
+          {
+            "en": "after that",
+            "uz": "shundan keyin"
+          },
+          {
+            "en": "finally",
+            "uz": "nihoyat, oxirida"
+          },
+          {
+            "en": "suddenly",
+            "uz": "birdan"
+          },
+          {
+            "en": "at first",
+            "uz": "avvaliga"
+          },
+          {
+            "en": "in the end",
+            "uz": "oxir-oqibat"
+          },
+          {
+            "en": "moment",
+            "uz": "lahza, payt"
+          },
+          {
+            "en": "event",
+            "uz": "voqea, tadbir"
+          },
+          {
+            "en": "decide",
+            "uz": "qaror qilmoq"
+          },
+          {
+            "en": "find",
+            "uz": "topmoq"
+          },
+          {
+            "en": "look for",
+            "uz": "qidirmoq"
+          },
+          {
+            "en": "notice",
+            "uz": "payqamoq"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "What happened next?",
+            "uz": "Keyin nima boʻldi?"
+          },
+          {
+            "en": "When did you come back?",
+            "uz": "Qachon qaytib keldingiz?"
+          },
+          {
+            "en": "It takes 20 minutes.",
+            "uz": "Bu 20 daqiqa vaqt oladi."
+          },
+          {
+            "en": "Take care!",
+            "uz": "Oʻzingizni ehtiyot qiling!"
+          },
+          {
+            "en": "Come over to my place.",
+            "uz": "Uyimga mehmonga keling."
+          }
+        ]
+      }
+    },
+    {
+      "day": 38,
+      "week": 6,
+      "kind": "lesson",
+      "title": "Past Simple: Wh- savollar va hikoya qilish",
+      "description": null,
+      "grammar": {
+        "topic": "Past Simple: Wh- savollar va hikoya qilish",
+        "formula": [
+          "Soʻroq soʻzi + did + ega + feʼl?",
+          "Hikoya bogʻlovchilari: first, then, after that, finally",
+          "Notoʻgʻri feʼllar: 26–40"
+        ],
+        "examples": [
+          "Where did you go? What did you do yesterday?",
+          "First I got up, then I had breakfast…"
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "\"bring\" va bogʻlovchilar",
+        "sourceRefs": [
+          "EVU:44",
+          "EVU:50"
+        ],
+        "preparesFor": "39-kun: bogʻlovchilar",
+        "words": [
+          {
+            "en": "bring",
+            "uz": "olib kelmoq"
+          },
+          {
+            "en": "bring back",
+            "uz": "qaytarib olib kelmoq"
+          },
+          {
+            "en": "carry",
+            "uz": "koʻtarib yurmoq"
+          },
+          {
+            "en": "send",
+            "uz": "yubormoq"
+          },
+          {
+            "en": "give",
+            "uz": "bermoq"
+          },
+          {
+            "en": "get",
+            "uz": "olmoq (qoʻlga kiritmoq)"
+          },
+          {
+            "en": "and",
+            "uz": "va"
+          },
+          {
+            "en": "but",
+            "uz": "lekin"
+          },
+          {
+            "en": "or",
+            "uz": "yoki"
+          },
+          {
+            "en": "because",
+            "uz": "chunki"
+          },
+          {
+            "en": "so",
+            "uz": "shuning uchun"
+          },
+          {
+            "en": "also",
+            "uz": "shuningdek, ham"
+          },
+          {
+            "en": "too",
+            "uz": "ham (gap oxirida); juda"
+          },
+          {
+            "en": "only",
+            "uz": "faqat"
+          },
+          {
+            "en": "if",
+            "uz": "agar"
+          },
+          {
+            "en": "before",
+            "uz": "oldin"
+          },
+          {
+            "en": "after",
+            "uz": "keyin, soʻng"
+          },
+          {
+            "en": "until",
+            "uz": "…gacha"
+          },
+          {
+            "en": "while",
+            "uz": "…ayotganda"
+          },
+          {
+            "en": "however",
+            "uz": "biroq"
+          },
+          {
+            "en": "maybe",
+            "uz": "balki"
+          },
+          {
+            "en": "for example",
+            "uz": "masalan"
+          },
+          {
+            "en": "anyway",
+            "uz": "baribir, nima boʻlganda ham"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Don't forget to bring your passport.",
+            "uz": "Pasportingizni olib kelishni unutmang."
+          },
+          {
+            "en": "I like it, but it's expensive.",
+            "uz": "Menga yoqadi, lekin qimmat."
+          },
+          {
+            "en": "I stayed home because I was sick.",
+            "uz": "Kasal boʻlganim uchun uyda qoldim."
+          },
+          {
+            "en": "Can you bring me some water?",
+            "uz": "Menga ozgina suv olib kela olasizmi?"
+          },
+          {
+            "en": "By the way…",
+            "uz": "Aytgancha…"
+          }
+        ]
+      }
+    },
+    {
+      "day": 39,
+      "week": 6,
+      "kind": "lesson",
+      "title": "Bogʻlovchilar",
+      "description": null,
+      "grammar": {
+        "topic": "Bogʻlovchilar",
+        "formula": [
+          "and (qoʻshish) · but (qarama-qarshilik) · or (tanlov) · because (sabab) · so (natija)"
+        ],
+        "examples": [
+          "I was tired, so I went to bed. I stayed home because it was cold."
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Tarz va umumiy sifatlar",
+        "sourceRefs": [
+          "EVU:54",
+          "EVU:56",
+          "DEST:27"
+        ],
+        "preparesFor": "40-kun: sifat va ravish",
+        "words": [
+          {
+            "en": "slow",
+            "uz": "sekin"
+          },
+          {
+            "en": "slowly",
+            "uz": "sekin (ravish)"
+          },
+          {
+            "en": "quick",
+            "uz": "tez, chaqqon"
+          },
+          {
+            "en": "quickly",
+            "uz": "tez (ravish)"
+          },
+          {
+            "en": "loud",
+            "uz": "baland (ovoz)"
+          },
+          {
+            "en": "quietly",
+            "uz": "jimgina, past ovozda"
+          },
+          {
+            "en": "careful",
+            "uz": "ehtiyotkor"
+          },
+          {
+            "en": "carefully",
+            "uz": "ehtiyotkorlik bilan"
+          },
+          {
+            "en": "hard",
+            "uz": "qattiq; qiyin; tirishib"
+          },
+          {
+            "en": "easily",
+            "uz": "osonlik bilan"
+          },
+          {
+            "en": "badly",
+            "uz": "yomon (ravish)"
+          },
+          {
+            "en": "nice",
+            "uz": "yoqimli"
+          },
+          {
+            "en": "awful",
+            "uz": "dahshatli"
+          },
+          {
+            "en": "terrible",
+            "uz": "juda yomon"
+          },
+          {
+            "en": "lovely",
+            "uz": "yoqimli, ajoyib"
+          },
+          {
+            "en": "perfect",
+            "uz": "mukammal"
+          },
+          {
+            "en": "excellent",
+            "uz": "aʼlo"
+          },
+          {
+            "en": "strange",
+            "uz": "gʻalati"
+          },
+          {
+            "en": "normal",
+            "uz": "oddiy, normal"
+          },
+          {
+            "en": "useful",
+            "uz": "foydali"
+          },
+          {
+            "en": "useless",
+            "uz": "foydasiz"
+          },
+          {
+            "en": "comfortable",
+            "uz": "qulay"
+          },
+          {
+            "en": "dangerous",
+            "uz": "xavfli"
+          },
+          {
+            "en": "safe",
+            "uz": "xavfsiz"
+          },
+          {
+            "en": "the right way",
+            "uz": "toʻgʻri usulda"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Drive carefully!",
+            "uz": "Ehtiyot boʻlib haydang!"
+          },
+          {
+            "en": "Don't speak so loudly.",
+            "uz": "Bunchalik baland gapirmang."
+          },
+          {
+            "en": "She works hard.",
+            "uz": "U tirishib ishlaydi."
+          },
+          {
+            "en": "That's perfect!",
+            "uz": "Juda soz!"
+          },
+          {
+            "en": "It's not safe here.",
+            "uz": "Bu yer xavfsiz emas."
+          }
+        ]
+      }
+    },
+    {
+      "day": 40,
+      "week": 6,
+      "kind": "lesson",
+      "title": "Sifat va ravish",
+      "description": null,
+      "grammar": {
+        "topic": "Sifat va ravish",
+        "formula": [
+          "Sifat ot oldida keladi (a big house) yoki be dan keyin (The house is big). Sifat koʻplikda oʻzgarmaydi.",
+          "Ravish: sifat + ly (slow → slowly) · notoʻgʻri: good → well · fast → fast · hard → hard",
+          "Notoʻgʻri feʼllar: 41–60"
+        ],
+        "examples": [
+          "She speaks English well. Drive slowly!"
+        ],
+        "notes": [],
+        "warnings": [
+          "✗ bigs houses"
+        ]
+      },
+      "vocabulary": {
+        "theme": "Hayvonlar va ranglar (3)",
+        "sourceRefs": [
+          "EVU:31"
+        ],
+        "preparesFor": "41-kun: qiyosiy daraja",
+        "words": [
+          {
+            "en": "animal",
+            "uz": "hayvon"
+          },
+          {
+            "en": "pet",
+            "uz": "uy hayvoni"
+          },
+          {
+            "en": "dog",
+            "uz": "it"
+          },
+          {
+            "en": "cat",
+            "uz": "mushuk"
+          },
+          {
+            "en": "horse",
+            "uz": "ot"
+          },
+          {
+            "en": "cow",
+            "uz": "sigir"
+          },
+          {
+            "en": "sheep",
+            "uz": "qoʻy"
+          },
+          {
+            "en": "bird",
+            "uz": "qush"
+          },
+          {
+            "en": "lion",
+            "uz": "sher"
+          },
+          {
+            "en": "tiger",
+            "uz": "yoʻlbars"
+          },
+          {
+            "en": "elephant",
+            "uz": "fil"
+          },
+          {
+            "en": "monkey",
+            "uz": "maymun"
+          },
+          {
+            "en": "bear",
+            "uz": "ayiq"
+          },
+          {
+            "en": "wolf",
+            "uz": "boʻri"
+          },
+          {
+            "en": "snake",
+            "uz": "ilon"
+          },
+          {
+            "en": "camel",
+            "uz": "tuya"
+          },
+          {
+            "en": "insect",
+            "uz": "hasharot"
+          },
+          {
+            "en": "big",
+            "uz": "katta"
+          },
+          {
+            "en": "small",
+            "uz": "kichik"
+          },
+          {
+            "en": "short",
+            "uz": "past (boʻy); qisqa"
+          },
+          {
+            "en": "heavy",
+            "uz": "ogʻir"
+          },
+          {
+            "en": "light",
+            "uz": "yengil; yorugʻlik"
+          },
+          {
+            "en": "clever",
+            "uz": "aqlli, zehnli"
+          },
+          {
+            "en": "pink",
+            "uz": "pushti"
+          },
+          {
+            "en": "orange",
+            "uz": "toʻq sariq; apelsin"
+          },
+          {
+            "en": "purple",
+            "uz": "binafsha"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Do you have any pets?",
+            "uz": "Uy hayvoningiz bormi?"
+          },
+          {
+            "en": "A horse is bigger than a dog.",
+            "uz": "Ot itdan kattaroq."
+          },
+          {
+            "en": "I'm afraid of dogs.",
+            "uz": "Men itlardan qoʻrqaman."
+          },
+          {
+            "en": "Cats are cleaner than dogs.",
+            "uz": "Mushuklar itlardan ozodaroq."
+          },
+          {
+            "en": "It's much better.",
+            "uz": "Bu ancha yaxshiroq."
+          }
+        ]
+      }
+    },
+    {
+      "day": 41,
+      "week": 6,
+      "kind": "lesson",
+      "title": "Qiyosiy daraja",
+      "description": null,
+      "grammar": {
+        "topic": "Qiyosiy daraja",
+        "formula": [
+          "Qisqa sifat + er than: cheap → cheaper · big → bigger · easy → easier",
+          "Uzun sifat: more + sifat + than: more expensive",
+          "Notoʻgʻri: good → better · bad → worse · far → farther"
+        ],
+        "examples": [
+          "Tashkent is bigger than Samarkand. English is easier than Chinese."
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Madaniyat va mashhur joylar",
+        "sourceRefs": [
+          "EVU:33",
+          "DEST:39"
+        ],
+        "preparesFor": "43-kun: orttirma daraja",
+        "words": [
+          {
+            "en": "culture",
+            "uz": "madaniyat"
+          },
+          {
+            "en": "tradition",
+            "uz": "anʼana"
+          },
+          {
+            "en": "history",
+            "uz": "tarix"
+          },
+          {
+            "en": "capital",
+            "uz": "poytaxt"
+          },
+          {
+            "en": "population",
+            "uz": "aholi"
+          },
+          {
+            "en": "world",
+            "uz": "dunyo"
+          },
+          {
+            "en": "continent",
+            "uz": "qitʼa"
+          },
+          {
+            "en": "ocean",
+            "uz": "okean"
+          },
+          {
+            "en": "tower",
+            "uz": "minora"
+          },
+          {
+            "en": "palace",
+            "uz": "saroy"
+          },
+          {
+            "en": "castle",
+            "uz": "qalʼa"
+          },
+          {
+            "en": "monument",
+            "uz": "yodgorlik"
+          },
+          {
+            "en": "square",
+            "uz": "maydon"
+          },
+          {
+            "en": "festival",
+            "uz": "festival, bayram"
+          },
+          {
+            "en": "celebrate",
+            "uz": "nishonlamoq"
+          },
+          {
+            "en": "gift",
+            "uz": "sovgʻa"
+          },
+          {
+            "en": "wedding",
+            "uz": "toʻy"
+          },
+          {
+            "en": "national",
+            "uz": "milliy"
+          },
+          {
+            "en": "international",
+            "uz": "xalqaro"
+          },
+          {
+            "en": "ancient",
+            "uz": "qadimiy"
+          },
+          {
+            "en": "modern",
+            "uz": "zamonaviy"
+          },
+          {
+            "en": "huge",
+            "uz": "ulkan"
+          },
+          {
+            "en": "high",
+            "uz": "baland"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "It's the biggest city in the country.",
+            "uz": "Bu mamlakatdagi eng katta shahar."
+          },
+          {
+            "en": "Samarkand is one of the oldest cities in the world.",
+            "uz": "Samarqand dunyodagi eng qadimiy shaharlardan biri."
+          },
+          {
+            "en": "It's the best place to visit.",
+            "uz": "Bu borib koʻrish uchun eng yaxshi joy."
+          },
+          {
+            "en": "Happy New Year!",
+            "uz": "Yangi yilingiz bilan!"
+          },
+          {
+            "en": "Congratulations!",
+            "uz": "Tabriklayman!"
+          }
+        ]
+      }
+    },
+    {
+      "day": 42,
+      "week": 6,
+      "kind": "review",
+      "title": "TAKRORLASH KUNI",
+      "description": "6-hafta testi va notoʻgʻri feʼllar testi (60 ta). \"Mening oʻtgan dam olish kunim\" mavzusida 2 daqiqa gapirish.",
+      "grammar": null,
+      "vocabulary": null
+    },
+    {
+      "day": 43,
+      "week": 7,
+      "kind": "lesson",
+      "title": "Orttirma daraja",
+      "description": null,
+      "grammar": {
+        "topic": "Orttirma daraja",
+        "formula": [
+          "the + qisqa sifat + est: the cheapest · the biggest · the easiest",
+          "the most + uzun sifat: the most beautiful",
+          "Notoʻgʻri: the best · the worst"
+        ],
+        "examples": [
+          "This is the best day of my life. Who is the tallest in your family?"
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Hayot voqealari va \"get\"",
+        "sourceRefs": [
+          "EVU:2",
+          "EVU:45",
+          "DEST:12"
+        ],
+        "preparesFor": "44-kun: be going to",
+        "words": [
+          {
+            "en": "be born",
+            "uz": "tugʻilmoq"
+          },
+          {
+            "en": "die",
+            "uz": "vafot etmoq"
+          },
+          {
+            "en": "grow up",
+            "uz": "ulgʻaymoq, katta boʻlmoq"
+          },
+          {
+            "en": "get married",
+            "uz": "turmush qurmoq"
+          },
+          {
+            "en": "get divorced",
+            "uz": "ajrashmoq"
+          },
+          {
+            "en": "get a job",
+            "uz": "ishga kirmoq"
+          },
+          {
+            "en": "get better",
+            "uz": "yaxshilanmoq, tuzalmoq"
+          },
+          {
+            "en": "get tired",
+            "uz": "charchamoq"
+          },
+          {
+            "en": "get ready",
+            "uz": "tayyorlanmoq"
+          },
+          {
+            "en": "get lost",
+            "uz": "adashib qolmoq"
+          },
+          {
+            "en": "get home",
+            "uz": "uyga yetib bormoq"
+          },
+          {
+            "en": "graduate",
+            "uz": "oʻqishni bitirmoq"
+          },
+          {
+            "en": "retire",
+            "uz": "nafaqaga chiqmoq"
+          },
+          {
+            "en": "future",
+            "uz": "kelajak"
+          },
+          {
+            "en": "goal",
+            "uz": "maqsad"
+          },
+          {
+            "en": "dream",
+            "uz": "orzu; tush; orzu qilmoq"
+          },
+          {
+            "en": "hope",
+            "uz": "umid; umid qilmoq"
+          },
+          {
+            "en": "move",
+            "uz": "koʻchmoq; harakatlanmoq"
+          },
+          {
+            "en": "career",
+            "uz": "karyera"
+          },
+          {
+            "en": "engaged",
+            "uz": "unashtirilgan"
+          },
+          {
+            "en": "anniversary",
+            "uz": "yillik (toʻy yilligi)"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "I'm going to get a job.",
+            "uz": "Men ishga kirmoqchiman."
+          },
+          {
+            "en": "What are you going to do this summer?",
+            "uz": "Bu yoz nima qilmoqchisiz?"
+          },
+          {
+            "en": "We're going to move to Tashkent.",
+            "uz": "Biz Toshkentga koʻchmoqchimiz."
+          },
+          {
+            "en": "I'm getting ready.",
+            "uz": "Tayyorlanyapman."
+          },
+          {
+            "en": "My dream is to study abroad.",
+            "uz": "Mening orzuim chet elda oʻqish."
+          }
+        ]
+      }
+    },
+    {
+      "day": 44,
+      "week": 7,
+      "kind": "lesson",
+      "title": "Kelasi zamon: be going to",
+      "description": null,
+      "grammar": {
+        "topic": "Kelasi zamon: be going to",
+        "formula": [
+          "am / is / are + going to + feʼl",
+          "Ishlatilishi: oldindan qilingan reja · koʻrinib turgan bashorat",
+          "(−) I'm not going to… · (?) Are you going to…?"
+        ],
+        "examples": [
+          "I'm going to visit my parents on the weekend. Look at the clouds — it's going to rain."
+        ],
+        "notes": [
+          "AmE: ogʻzaki nutqda gonna boʻlib eshitiladi, lekin shunday yozilmaydi"
+        ],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Global muammolar va kelajak",
+        "sourceRefs": [
+          "EVU:37",
+          "DEST:30"
+        ],
+        "preparesFor": "45-kun: will",
+        "words": [
+          {
+            "en": "environment",
+            "uz": "atrof-muhit"
+          },
+          {
+            "en": "pollution",
+            "uz": "ifloslanish"
+          },
+          {
+            "en": "climate",
+            "uz": "iqlim"
+          },
+          {
+            "en": "global warming",
+            "uz": "global isish"
+          },
+          {
+            "en": "planet",
+            "uz": "sayyora"
+          },
+          {
+            "en": "earth",
+            "uz": "Yer (sayyora); tuproq"
+          },
+          {
+            "en": "energy",
+            "uz": "energiya"
+          },
+          {
+            "en": "recycle",
+            "uz": "qayta ishlamoq"
+          },
+          {
+            "en": "plastic",
+            "uz": "plastik"
+          },
+          {
+            "en": "waste",
+            "uz": "chiqindi; isrof qilmoq"
+          },
+          {
+            "en": "war",
+            "uz": "urush"
+          },
+          {
+            "en": "peace",
+            "uz": "tinchlik"
+          },
+          {
+            "en": "disease",
+            "uz": "kasallik"
+          },
+          {
+            "en": "hunger",
+            "uz": "ochlik"
+          },
+          {
+            "en": "flood",
+            "uz": "suv toshqini"
+          },
+          {
+            "en": "earthquake",
+            "uz": "zilzila"
+          },
+          {
+            "en": "fire",
+            "uz": "yongʻin; olov"
+          },
+          {
+            "en": "protect",
+            "uz": "himoya qilmoq"
+          },
+          {
+            "en": "save the planet",
+            "uz": "sayyorani asramoq"
+          },
+          {
+            "en": "solve",
+            "uz": "hal qilmoq"
+          },
+          {
+            "en": "probably",
+            "uz": "ehtimol"
+          },
+          {
+            "en": "certainly",
+            "uz": "albatta, shubhasiz"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "I think it will rain tomorrow.",
+            "uz": "Menimcha, ertaga yomgʻir yogʻadi."
+          },
+          {
+            "en": "I'll help you.",
+            "uz": "Men sizga yordam beraman."
+          },
+          {
+            "en": "I promise I won't be late.",
+            "uz": "Vaʼda beraman, kechikmayman."
+          },
+          {
+            "en": "Things will get better.",
+            "uz": "Hammasi yaxshi boʻladi."
+          },
+          {
+            "en": "We need to save energy.",
+            "uz": "Energiyani tejashimiz kerak."
+          }
+        ]
+      }
+    },
+    {
+      "day": 45,
+      "week": 7,
+      "kind": "lesson",
+      "title": "Kelasi zamon: will",
+      "description": null,
+      "grammar": {
+        "topic": "Kelasi zamon: will",
+        "formula": [
+          "will + feʼl (hamma shaxs uchun bir xil)",
+          "Ishlatilishi: shu zahoti qilingan qaror · fikr va bashorat · vaʼda",
+          "(−) won't · (?) Will you…?",
+          "Reja oldindan qilingan boʻlsa going to, qaror hozir qilinsa will"
+        ],
+        "examples": [
+          "I'll call you later. I think it will be sunny tomorrow. I won't forget."
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Qoidalar va qonun",
+        "sourceRefs": [
+          "EVU:34",
+          "DEST:21"
+        ],
+        "preparesFor": "46-kun: have to / must",
+        "words": [
+          {
+            "en": "rule",
+            "uz": "qoida"
+          },
+          {
+            "en": "law",
+            "uz": "qonun"
+          },
+          {
+            "en": "allowed",
+            "uz": "ruxsat etilgan"
+          },
+          {
+            "en": "forbidden",
+            "uz": "taqiqlangan"
+          },
+          {
+            "en": "crime",
+            "uz": "jinoyat"
+          },
+          {
+            "en": "police",
+            "uz": "politsiya"
+          },
+          {
+            "en": "thief",
+            "uz": "oʻgʻri"
+          },
+          {
+            "en": "steal",
+            "uz": "oʻgʻirlamoq"
+          },
+          {
+            "en": "rob",
+            "uz": "talamoq"
+          },
+          {
+            "en": "prison",
+            "uz": "qamoqxona"
+          },
+          {
+            "en": "court",
+            "uz": "sud"
+          },
+          {
+            "en": "judge",
+            "uz": "sudya"
+          },
+          {
+            "en": "guilty",
+            "uz": "aybdor"
+          },
+          {
+            "en": "fine (money)",
+            "uz": "jarima"
+          },
+          {
+            "en": "seatbelt",
+            "uz": "xavfsizlik kamari"
+          },
+          {
+            "en": "helmet",
+            "uz": "dubulgʻa"
+          },
+          {
+            "en": "uniform",
+            "uz": "forma"
+          },
+          {
+            "en": "driver's license",
+            "uz": "haydovchilik guvohnomasi (AmE)"
+          },
+          {
+            "en": "smoke",
+            "uz": "chekmoq"
+          },
+          {
+            "en": "park the car",
+            "uz": "mashinani toʻxtatib qoʻymoq"
+          },
+          {
+            "en": "obey",
+            "uz": "boʻysunmoq"
+          },
+          {
+            "en": "break the rules",
+            "uz": "qoidani buzmoq"
+          },
+          {
+            "en": "punish",
+            "uz": "jazolamoq"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "You have to wear a seatbelt.",
+            "uz": "Xavfsizlik kamarini taqishingiz shart."
+          },
+          {
+            "en": "You mustn't smoke here.",
+            "uz": "Bu yerda chekish mumkin emas."
+          },
+          {
+            "en": "I have to go now.",
+            "uz": "Hozir ketishim kerak."
+          },
+          {
+            "en": "You don't have to pay.",
+            "uz": "Toʻlashingiz shart emas."
+          },
+          {
+            "en": "No parking.",
+            "uz": "Toʻxtash taqiqlanadi."
+          }
+        ]
+      }
+    },
+    {
+      "day": 46,
+      "week": 7,
+      "kind": "lesson",
+      "title": "have to / must",
+      "description": null,
+      "grammar": {
+        "topic": "have to / must",
+        "formula": [
+          "have to / has to + feʼl: majburiyat · don't have to: shart emas",
+          "must + feʼl: qatʼiy qoida · mustn't: taqiq"
+        ],
+        "examples": [
+          "I have to work tomorrow. You must wear a seatbelt. You mustn't smoke here."
+        ],
+        "notes": [],
+        "warnings": [
+          "don't have to (shart emas) ≠ mustn't (mumkin emas)"
+        ]
+      },
+      "vocabulary": {
+        "theme": "Tana va sogʻliq",
+        "sourceRefs": [
+          "EVU:3",
+          "EVU:6",
+          "DEST:18"
+        ],
+        "preparesFor": "47-kun: should, could",
+        "words": [
+          {
+            "en": "head",
+            "uz": "bosh"
+          },
+          {
+            "en": "hand",
+            "uz": "qoʻl (kaft)"
+          },
+          {
+            "en": "arm",
+            "uz": "qoʻl (yelkadan)"
+          },
+          {
+            "en": "leg",
+            "uz": "oyoq"
+          },
+          {
+            "en": "foot (feet)",
+            "uz": "oyoq panjasi"
+          },
+          {
+            "en": "shoulder",
+            "uz": "yelka"
+          },
+          {
+            "en": "stomach",
+            "uz": "qorin, oshqozon"
+          },
+          {
+            "en": "tooth (teeth)",
+            "uz": "tish"
+          },
+          {
+            "en": "ear",
+            "uz": "quloq"
+          },
+          {
+            "en": "nose",
+            "uz": "burun"
+          },
+          {
+            "en": "mouth",
+            "uz": "ogʻiz"
+          },
+          {
+            "en": "neck",
+            "uz": "boʻyin"
+          },
+          {
+            "en": "heart",
+            "uz": "yurak"
+          },
+          {
+            "en": "headache",
+            "uz": "bosh ogʻrigʻi"
+          },
+          {
+            "en": "toothache",
+            "uz": "tish ogʻrigʻi"
+          },
+          {
+            "en": "fever",
+            "uz": "isitma"
+          },
+          {
+            "en": "a cold",
+            "uz": "shamollash"
+          },
+          {
+            "en": "cough",
+            "uz": "yoʻtal"
+          },
+          {
+            "en": "hurt",
+            "uz": "ogʻrimoq"
+          },
+          {
+            "en": "pain",
+            "uz": "ogʻriq"
+          },
+          {
+            "en": "pill",
+            "uz": "tabletka"
+          },
+          {
+            "en": "healthy",
+            "uz": "sogʻlom"
+          },
+          {
+            "en": "rest",
+            "uz": "dam olish; dam olmoq"
+          },
+          {
+            "en": "appointment",
+            "uz": "(shifokor) qabuli"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "I don't feel well.",
+            "uz": "Oʻzimni yaxshi his qilmayapman."
+          },
+          {
+            "en": "My head hurts.",
+            "uz": "Boshim ogʻriyapti."
+          },
+          {
+            "en": "You should see a doctor.",
+            "uz": "Shifokorga koʻrinishingiz kerak."
+          },
+          {
+            "en": "You shouldn't eat so much sugar.",
+            "uz": "Bunchalik koʻp shakar yemasligingiz kerak."
+          },
+          {
+            "en": "Get well soon!",
+            "uz": "Tezroq tuzalib keting!"
+          }
+        ]
+      }
+    },
+    {
+      "day": 47,
+      "week": 7,
+      "kind": "lesson",
+      "title": "should va muloyim iltimos",
+      "description": null,
+      "grammar": {
+        "topic": "should va muloyim iltimos",
+        "formula": [
+          "should / shouldn't + feʼl: maslahat",
+          "Can you…? / Could you…? (muloyimroq): iltimos",
+          "Can I…? / Could I…?: ruxsat soʻrash"
+        ],
+        "examples": [
+          "You should sleep more. Could you help me, please?"
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Mehmonxona va muloyim iltimoslar",
+        "sourceRefs": [
+          "EVU:21"
+        ],
+        "preparesFor": "48-kun: would like",
+        "words": [
+          {
+            "en": "reception",
+            "uz": "qabulxona"
+          },
+          {
+            "en": "receptionist",
+            "uz": "administrator"
+          },
+          {
+            "en": "single room",
+            "uz": "bir kishilik xona"
+          },
+          {
+            "en": "double room",
+            "uz": "ikki kishilik xona"
+          },
+          {
+            "en": "check in",
+            "uz": "roʻyxatdan oʻtmoq (mehmonxonada)"
+          },
+          {
+            "en": "check out",
+            "uz": "mehmonxonadan chiqib ketmoq"
+          },
+          {
+            "en": "elevator",
+            "uz": "lift (AmE)"
+          },
+          {
+            "en": "stairs",
+            "uz": "zinapoya"
+          },
+          {
+            "en": "room service",
+            "uz": "xonaga xizmat"
+          },
+          {
+            "en": "guest",
+            "uz": "mehmon"
+          },
+          {
+            "en": "staff",
+            "uz": "xodimlar"
+          },
+          {
+            "en": "available",
+            "uz": "mavjud, boʻsh"
+          },
+          {
+            "en": "included",
+            "uz": "(narxga) kiritilgan"
+          },
+          {
+            "en": "wake-up call",
+            "uz": "uygʻotish qoʻngʻirogʻi"
+          },
+          {
+            "en": "air conditioning",
+            "uz": "konditsioner"
+          },
+          {
+            "en": "heating",
+            "uz": "isitish tizimi"
+          },
+          {
+            "en": "polite",
+            "uz": "xushmuomala"
+          },
+          {
+            "en": "rude",
+            "uz": "qoʻpol"
+          },
+          {
+            "en": "please",
+            "uz": "iltimos"
+          },
+          {
+            "en": "excuse me",
+            "uz": "kechirasiz"
+          },
+          {
+            "en": "of course",
+            "uz": "albatta"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "I'd like to book a room.",
+            "uz": "Xona band qilmoqchiman."
+          },
+          {
+            "en": "Would you like some tea?",
+            "uz": "Choy ichasizmi?"
+          },
+          {
+            "en": "Could you help me with my bags?",
+            "uz": "Sumkalarimni koʻtarishga yordam bera olasizmi?"
+          },
+          {
+            "en": "Is breakfast included?",
+            "uz": "Nonushta narxga kiritilganmi?"
+          },
+          {
+            "en": "What time is checkout?",
+            "uz": "Xonani soat nechada boʻshatish kerak?"
+          }
+        ]
+      }
+    },
+    {
+      "day": 48,
+      "week": 7,
+      "kind": "lesson",
+      "title": "would like va takliflar",
+      "description": null,
+      "grammar": {
+        "topic": "would like va takliflar",
+        "formula": [
+          "I'd like + ot · I'd like to + feʼl",
+          "Would you like…? — Yes, please. / No, thank you.",
+          "Let's… · Why don't we…?"
+        ],
+        "examples": [
+          "I'd like a coffee, please. I'd like to book a table. Would you like to join us?"
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Tajribalar va predlogli iboralar",
+        "sourceRefs": [
+          "EVU:57"
+        ],
+        "preparesFor": "50-kun: Present Perfect",
+        "words": [
+          {
+            "en": "experience",
+            "uz": "tajriba"
+          },
+          {
+            "en": "ever",
+            "uz": "qachondir (soʻroqda)"
+          },
+          {
+            "en": "afraid of",
+            "uz": "…dan qoʻrqmoq"
+          },
+          {
+            "en": "good at",
+            "uz": "…ni yaxshi uddalamoq"
+          },
+          {
+            "en": "bad at",
+            "uz": "…ni yomon uddalamoq"
+          },
+          {
+            "en": "interested in",
+            "uz": "…ga qiziqmoq"
+          },
+          {
+            "en": "proud of",
+            "uz": "…bilan faxrlanmoq"
+          },
+          {
+            "en": "wait for",
+            "uz": "…ni kutmoq"
+          },
+          {
+            "en": "look at",
+            "uz": "…ga qaramoq"
+          },
+          {
+            "en": "think about",
+            "uz": "…haqida oʻylamoq"
+          },
+          {
+            "en": "belong to",
+            "uz": "…ga tegishli boʻlmoq"
+          },
+          {
+            "en": "depend on",
+            "uz": "…ga bogʻliq boʻlmoq"
+          },
+          {
+            "en": "been to",
+            "uz": "…da boʻlgan (tajriba)"
+          },
+          {
+            "en": "several times",
+            "uz": "bir necha marta"
+          },
+          {
+            "en": "adventure",
+            "uz": "sarguzasht"
+          },
+          {
+            "en": "skydiving",
+            "uz": "parashyutda sakrash"
+          },
+          {
+            "en": "raw",
+            "uz": "xom"
+          },
+          {
+            "en": "unusual",
+            "uz": "gʻayrioddiy"
+          },
+          {
+            "en": "in my life",
+            "uz": "hayotimda"
+          },
+          {
+            "en": "foreign",
+            "uz": "xorijiy"
+          },
+          {
+            "en": "achievement",
+            "uz": "yutuq"
+          },
+          {
+            "en": "challenge",
+            "uz": "sinov, qiyin vazifa"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Have you ever been to Dubai?",
+            "uz": "Hech Dubayda boʻlganmisiz?"
+          },
+          {
+            "en": "I've never tried sushi.",
+            "uz": "Hech qachon sushi tatib koʻrmaganman."
+          },
+          {
+            "en": "I'm good at math.",
+            "uz": "Matematikani yaxshi bilaman."
+          },
+          {
+            "en": "I'm interested in technology.",
+            "uz": "Texnologiyaga qiziqaman."
+          },
+          {
+            "en": "It depends.",
+            "uz": "Vaziyatga bogʻliq."
+          }
+        ]
+      }
+    },
+    {
+      "day": 49,
+      "week": 7,
+      "kind": "review",
+      "title": "TAKRORLASH KUNI",
+      "description": "7-hafta testi. Kafe va doʻkon dialoglari. \"Mening keyingi oydagi rejalarim\" mavzusida 2 daqiqa gapirish.",
+      "grammar": null,
+      "vocabulary": null
+    },
+    {
+      "day": 50,
+      "week": 8,
+      "kind": "lesson",
+      "title": "Present Perfect: tajriba",
+      "description": null,
+      "grammar": {
+        "topic": "Present Perfect: tajriba",
+        "formula": [
+          "have / has + feʼlning 3-shakli (worked, been, seen, eaten)",
+          "ever soʻroq gapda · never inkor maʼnoda",
+          "Qisqartma: I've · she's"
+        ],
+        "examples": [
+          "Have you ever been to Dubai? I've never eaten sushi. She has visited London twice."
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Soʻz yasash: old qoʻshimchalar",
+        "sourceRefs": [
+          "EVU:58"
+        ],
+        "preparesFor": "51-kun: Present Perfect yoki Past Simple?",
+        "words": [
+          {
+            "en": "unhappy",
+            "uz": "baxtsiz, xafa"
+          },
+          {
+            "en": "unhealthy",
+            "uz": "zararli (sogʻliq uchun)"
+          },
+          {
+            "en": "unknown",
+            "uz": "nomaʼlum"
+          },
+          {
+            "en": "unemployed",
+            "uz": "ishsiz"
+          },
+          {
+            "en": "unlock",
+            "uz": "qulfni ochmoq"
+          },
+          {
+            "en": "impossible",
+            "uz": "imkonsiz"
+          },
+          {
+            "en": "impolite",
+            "uz": "odobsiz"
+          },
+          {
+            "en": "incorrect",
+            "uz": "notoʻgʻri"
+          },
+          {
+            "en": "informal",
+            "uz": "norasmiy"
+          },
+          {
+            "en": "dislike",
+            "uz": "yoqtirmaslik"
+          },
+          {
+            "en": "disagree",
+            "uz": "rozi boʻlmaslik"
+          },
+          {
+            "en": "dishonest",
+            "uz": "nohalol"
+          },
+          {
+            "en": "rewrite",
+            "uz": "qayta yozmoq"
+          },
+          {
+            "en": "redo",
+            "uz": "qayta bajarmoq"
+          },
+          {
+            "en": "ex- (ex-boss)",
+            "uz": "sobiq (sobiq boshliq)"
+          },
+          {
+            "en": "overweight",
+            "uz": "ortiqcha vaznli"
+          },
+          {
+            "en": "oversleep",
+            "uz": "uxlab qolmoq"
+          },
+          {
+            "en": "underground",
+            "uz": "yer osti"
+          },
+          {
+            "en": "honest",
+            "uz": "halol"
+          },
+          {
+            "en": "possible",
+            "uz": "mumkin"
+          },
+          {
+            "en": "correct",
+            "uz": "toʻgʻri"
+          },
+          {
+            "en": "formal",
+            "uz": "rasmiy"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "I overslept this morning.",
+            "uz": "Bugun ertalab uxlab qolibman."
+          },
+          {
+            "en": "That's impossible!",
+            "uz": "Bu imkonsiz!"
+          },
+          {
+            "en": "I disagree with you.",
+            "uz": "Siz bilan rozi emasman."
+          },
+          {
+            "en": "I've lost my keys!",
+            "uz": "Kalitlarimni yoʻqotib qoʻydim!"
+          },
+          {
+            "en": "It's not my fault.",
+            "uz": "Bu mening aybim emas."
+          }
+        ]
+      }
+    },
+    {
+      "day": 51,
+      "week": 8,
+      "kind": "lesson",
+      "title": "Present Perfect yoki Past Simple?",
+      "description": null,
+      "grammar": {
+        "topic": "Present Perfect yoki Past Simple?",
+        "formula": [
+          "Present Perfect: tajriba, vaqti aytilmaydi",
+          "Past Simple: aniq vaqt bor (yesterday, last year, in 2020)"
+        ],
+        "examples": [
+          "I've been to Samarkand. I went there last summer."
+        ],
+        "notes": [],
+        "warnings": [
+          "✗ I have been there last summer"
+        ]
+      },
+      "vocabulary": {
+        "theme": "Soʻz yasash: oxirgi qoʻshimchalar",
+        "sourceRefs": [
+          "EVU:59"
+        ],
+        "preparesFor": "52-kun: savol mashinasi",
+        "words": [
+          {
+            "en": "swimmer",
+            "uz": "suzuvchi"
+          },
+          {
+            "en": "runner",
+            "uz": "yuguruvchi"
+          },
+          {
+            "en": "worker",
+            "uz": "ishchi"
+          },
+          {
+            "en": "beginner",
+            "uz": "boshlovchi"
+          },
+          {
+            "en": "visitor",
+            "uz": "tashrif buyuruvchi"
+          },
+          {
+            "en": "employee",
+            "uz": "xodim"
+          },
+          {
+            "en": "employer",
+            "uz": "ish beruvchi"
+          },
+          {
+            "en": "helpful",
+            "uz": "yordam beradigan, foydali"
+          },
+          {
+            "en": "careless",
+            "uz": "beparvo"
+          },
+          {
+            "en": "homeless",
+            "uz": "uysiz, boshpanasiz"
+          },
+          {
+            "en": "lucky",
+            "uz": "omadli"
+          },
+          {
+            "en": "happiness",
+            "uz": "baxt"
+          },
+          {
+            "en": "kindness",
+            "uz": "mehribonlik"
+          },
+          {
+            "en": "development",
+            "uz": "rivojlanish"
+          },
+          {
+            "en": "payment",
+            "uz": "toʻlov"
+          },
+          {
+            "en": "education",
+            "uz": "taʼlim"
+          },
+          {
+            "en": "invitation",
+            "uz": "taklifnoma"
+          },
+          {
+            "en": "artist",
+            "uz": "rassom (\"artist\" — aktyor emas!)"
+          },
+          {
+            "en": "scientist",
+            "uz": "olim"
+          },
+          {
+            "en": "musician",
+            "uz": "musiqachi"
+          },
+          {
+            "en": "affordable",
+            "uz": "hamyonbop"
+          },
+          {
+            "en": "printer",
+            "uz": "printer"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Where do you work?",
+            "uz": "Qayerda ishlaysiz?"
+          },
+          {
+            "en": "Where did you study?",
+            "uz": "Qayerda oʻqigansiz?"
+          },
+          {
+            "en": "Have you ever worked abroad?",
+            "uz": "Hech chet elda ishlaganmisiz?"
+          },
+          {
+            "en": "Will you be there tomorrow?",
+            "uz": "Ertaga u yerda boʻlasizmi?"
+          },
+          {
+            "en": "Can you help me?",
+            "uz": "Menga yordam bera olasizmi?"
+          }
+        ]
+      }
+    },
+    {
+      "day": 52,
+      "week": 8,
+      "kind": "lesson",
+      "title": "Savol mashinasi (barcha zamonlar)",
+      "description": null,
+      "grammar": {
+        "topic": "Savol mashinasi (barcha zamonlar)",
+        "formula": [
+          "[Soʻroq soʻzi] + yordamchi feʼl + ega + asosiy feʼl?",
+          "Yordamchilar: am / is / are · do / does · did · can · will · have / has"
+        ],
+        "examples": [
+          "Where do you work? · Where did you work? · Where will you work? · Have you ever worked abroad?"
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Chalkashtiriladigan soʻzlar",
+        "sourceRefs": [
+          "EVU:60"
+        ],
+        "preparesFor": "53-kun: gap tartibi, when / before / after",
+        "words": [
+          {
+            "en": "quite",
+            "uz": "ancha, juda"
+          },
+          {
+            "en": "see",
+            "uz": "koʻrmoq"
+          },
+          {
+            "en": "hear",
+            "uz": "eshitmoq"
+          },
+          {
+            "en": "remind",
+            "uz": "eslatmoq"
+          },
+          {
+            "en": "fun",
+            "uz": "qiziqarli; maroq"
+          },
+          {
+            "en": "especially",
+            "uz": "ayniqsa"
+          },
+          {
+            "en": "actually",
+            "uz": "aslida"
+          },
+          {
+            "en": "almost",
+            "uz": "deyarli"
+          },
+          {
+            "en": "during",
+            "uz": "…davomida"
+          },
+          {
+            "en": "for (two hours)",
+            "uz": "(ikki soat) davomida"
+          },
+          {
+            "en": "since",
+            "uz": "…dan beri"
+          },
+          {
+            "en": "across",
+            "uz": "…ning narigi tomoniga"
+          },
+          {
+            "en": "through",
+            "uz": "…orqali"
+          },
+          {
+            "en": "alive",
+            "uz": "tirik"
+          },
+          {
+            "en": "dead",
+            "uz": "oʻlik, jonsiz"
+          },
+          {
+            "en": "lonely",
+            "uz": "yolgʻizlikdan zerikkan"
+          },
+          {
+            "en": "earn",
+            "uz": "(pul) ishlab topmoq"
+          },
+          {
+            "en": "as soon as",
+            "uz": "…bilanoq"
+          },
+          {
+            "en": "otherwise",
+            "uz": "aks holda"
+          },
+          {
+            "en": "exactly",
+            "uz": "aynan"
+          },
+          {
+            "en": "such",
+            "uz": "shunday, bunday"
+          },
+          {
+            "en": "even",
+            "uz": "hatto"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "When I get home, I'll call you.",
+            "uz": "Uyga yetib borganimda, sizga qoʻngʻiroq qilaman."
+          },
+          {
+            "en": "Before I go to bed, I read.",
+            "uz": "Uxlashdan oldin kitob oʻqiyman."
+          },
+          {
+            "en": "After work, I go to the gym.",
+            "uz": "Ishdan keyin sport zaliga boraman."
+          },
+          {
+            "en": "Remind me tomorrow.",
+            "uz": "Ertaga menga eslatib qoʻying."
+          },
+          {
+            "en": "That's exactly right.",
+            "uz": "Aynan shunday."
+          }
+        ]
+      }
+    },
+    {
+      "day": 53,
+      "week": 8,
+      "kind": "lesson",
+      "title": "Gap tartibi va vaqt ergash gaplari",
+      "description": null,
+      "grammar": {
+        "topic": "Gap tartibi va vaqt ergash gaplari",
+        "formula": [
+          "Ega + Feʼl + Toʻldiruvchi + Joy + Vaqt",
+          "when / before / after + gap"
+        ],
+        "examples": [
+          "I study English at home every morning. When I get home, I cook dinner."
+        ],
+        "notes": [],
+        "warnings": [
+          "oʻzbekchada vaqt odatda gap boshida keladi, inglizchada esa odatda oxirida"
+        ]
+      },
+      "vocabulary": {
+        "theme": "Ishda: ish va karyera",
+        "sourceRefs": [
+          "DEST:36"
+        ],
+        "preparesFor": "54-kun: zamonlar xaritasi",
+        "words": [
+          {
+            "en": "interview",
+            "uz": "suhbat (ishga qabul)"
+          },
+          {
+            "en": "resume",
+            "uz": "rezyume (AmE)"
+          },
+          {
+            "en": "apply",
+            "uz": "ariza topshirmoq"
+          },
+          {
+            "en": "hire",
+            "uz": "ishga olmoq"
+          },
+          {
+            "en": "get fired",
+            "uz": "ishdan boʻshatilmoq"
+          },
+          {
+            "en": "quit",
+            "uz": "(ishni) tashlab ketmoq"
+          },
+          {
+            "en": "promotion",
+            "uz": "lavozim oshishi"
+          },
+          {
+            "en": "skill",
+            "uz": "koʻnikma"
+          },
+          {
+            "en": "project",
+            "uz": "loyiha"
+          },
+          {
+            "en": "task",
+            "uz": "vazifa"
+          },
+          {
+            "en": "schedule",
+            "uz": "jadval"
+          },
+          {
+            "en": "report",
+            "uz": "hisobot"
+          },
+          {
+            "en": "client",
+            "uz": "mijoz"
+          },
+          {
+            "en": "contract",
+            "uz": "shartnoma"
+          },
+          {
+            "en": "department",
+            "uz": "boʻlim"
+          },
+          {
+            "en": "full-time",
+            "uz": "toʻliq stavka"
+          },
+          {
+            "en": "part-time",
+            "uz": "yarim stavka"
+          },
+          {
+            "en": "remote work",
+            "uz": "masofaviy ish"
+          },
+          {
+            "en": "overtime",
+            "uz": "qoʻshimcha ish vaqti"
+          },
+          {
+            "en": "responsible",
+            "uz": "masʼuliyatli"
+          },
+          {
+            "en": "experienced",
+            "uz": "tajribali"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "I have an interview tomorrow.",
+            "uz": "Ertaga ish suhbatim bor."
+          },
+          {
+            "en": "I'm working on a new project.",
+            "uz": "Yangi loyiha ustida ishlayapman."
+          },
+          {
+            "en": "Can we schedule a meeting?",
+            "uz": "Uchrashuv vaqtini belgilab olsak boʻladimi?"
+          },
+          {
+            "en": "I'll send you the report.",
+            "uz": "Hisobotni sizga yuboraman."
+          },
+          {
+            "en": "I've worked here for two years.",
+            "uz": "Bu yerda ikki yildan beri ishlayman."
+          }
+        ]
+      }
+    },
+    {
+      "day": 54,
+      "week": 8,
+      "kind": "lesson",
+      "title": "Zamonlar xaritasi",
+      "description": null,
+      "grammar": {
+        "topic": "Zamonlar xaritasi",
+        "formula": [
+          "Present Simple: odat · Present Continuous: hozir · Past Simple: oʻtgan · going to / will: kelajak · Present Perfect: tajriba",
+          "Aralash mashq: bitta mavzu, 5 ta zamon"
+        ],
+        "examples": [
+          "I usually… / Now I'm… / Yesterday I… / Tomorrow I'm going to… / I've never…"
+        ],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": {
+        "theme": "Koʻchada: kundalik vaziyatlar",
+        "sourceRefs": [],
+        "preparesFor": "55-kun: yakuniy tayyorgarlik",
+        "words": [
+          {
+            "en": "line",
+            "uz": "navbat (AmE)"
+          },
+          {
+            "en": "crowded",
+            "uz": "gavjum"
+          },
+          {
+            "en": "empty",
+            "uz": "boʻsh"
+          },
+          {
+            "en": "sidewalk",
+            "uz": "piyodalar yoʻlagi (AmE)"
+          },
+          {
+            "en": "crosswalk",
+            "uz": "piyodalar oʻtish joyi (AmE)"
+          },
+          {
+            "en": "parking lot",
+            "uz": "avtoturargoh (AmE)"
+          },
+          {
+            "en": "gas station",
+            "uz": "yoqilgʻi quyish shoxobchasi (AmE)"
+          },
+          {
+            "en": "ATM",
+            "uz": "bankomat"
+          },
+          {
+            "en": "restroom",
+            "uz": "hojatxona (jamoat joyida, AmE)"
+          },
+          {
+            "en": "emergency",
+            "uz": "favqulodda holat"
+          },
+          {
+            "en": "ambulance",
+            "uz": "tez yordam mashinasi"
+          },
+          {
+            "en": "lost and found",
+            "uz": "yoʻqolgan buyumlar boʻlimi"
+          },
+          {
+            "en": "neighbor",
+            "uz": "qoʻshni (AmE)"
+          },
+          {
+            "en": "stranger",
+            "uz": "notanish odam"
+          },
+          {
+            "en": "entrance",
+            "uz": "kirish"
+          },
+          {
+            "en": "exit",
+            "uz": "chiqish"
+          },
+          {
+            "en": "upstairs",
+            "uz": "yuqori qavatda"
+          },
+          {
+            "en": "downstairs",
+            "uz": "pastki qavatda"
+          },
+          {
+            "en": "sign",
+            "uz": "belgi, yozuv"
+          },
+          {
+            "en": "hurry",
+            "uz": "shoshilmoq"
+          },
+          {
+            "en": "rush hour",
+            "uz": "eng gavjum vaqt"
+          }
+        ],
+        "phrases": [
+          {
+            "en": "Excuse me, is anyone sitting here?",
+            "uz": "Kechirasiz, bu yer bandmi?"
+          },
+          {
+            "en": "Is there an ATM near here?",
+            "uz": "Yaqin atrofda bankomat bormi?"
+          },
+          {
+            "en": "Call an ambulance!",
+            "uz": "Tez yordam chaqiring!"
+          },
+          {
+            "en": "I'm in a hurry.",
+            "uz": "Shoshib turibman."
+          },
+          {
+            "en": "Sorry, I'm not from here.",
+            "uz": "Kechirasiz, men bu yerlik emasman."
+          }
+        ]
+      }
+    },
+    {
+      "day": 55,
+      "week": 8,
+      "kind": "lesson",
+      "title": "Yakuniy tayyorgarlik",
+      "description": null,
+      "grammar": {
+        "topic": "Yakuniy tayyorgarlik",
+        "formula": [
+          "Xatolar daftaridagi eng koʻp takrorlangan 10 ta xato ustida ishlash",
+          "Cambridge A2 Key uslubidagi namunaviy mashqlar"
+        ],
+        "examples": [],
+        "notes": [],
+        "warnings": []
+      },
+      "vocabulary": null
+    },
+    {
+      "day": 56,
+      "week": 8,
+      "kind": "exam",
+      "title": "2-OY IMTIHONI (A2 darvozasi)",
+      "description": "1–55-kunlar: grammatika, soʻzlar, tinglash, 3 daqiqalik nutq, 120 soʻzli matn. Mezonlar keyingi sahifada.",
+      "grammar": null,
+      "vocabulary": null
+    }
+  ]
+}

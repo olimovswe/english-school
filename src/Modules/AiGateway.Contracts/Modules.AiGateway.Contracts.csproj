@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Contracts: faqat DTO, interfeys va integration eventlar. EF Core va ASP.NET Core bu yerga kirmaydi. -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BuildingBlocks.Abstractions\BuildingBlocks.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

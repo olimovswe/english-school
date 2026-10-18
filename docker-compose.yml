@@ -1,0 +1,43 @@
+# Lokal infratuzilma: PostgreSQL 18 + pgvector va Valkey (Redis bilan protokol darajasida mos, BSD litsenziya).
+# Ishga tushirish: cp .env.example .env (parolni almashtiring) && docker compose up -d && scripts/dev-secrets.sh
+# Portlar faqat 127.0.0.1 da ochiladi: baza va kesh lokal tarmoqqa koʻrinmaydi.
+name: english-school
+
+services:
+  postgres:
+    image: docker.io/pgvector/pgvector:pg18
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-english_school}
+      POSTGRES_USER: ${POSTGRES_USER:-english_school}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?.env faylida POSTGRES_PASSWORD ni belgilang}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5434}:5432"
+    volumes:
+      # PostgreSQL 18 image'ida maʼlumotlar /var/lib/postgresql/18/docker ichida turadi,
+      # shuning uchun volume butun /var/lib/postgresql ga ulanadi.
+      - pgdata:/var/lib/postgresql
+      - ./deploy/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  redis:
+    image: docker.io/valkey/valkey:8-alpine
+    restart: unless-stopped
+    command: ["valkey-server", "--appendonly", "yes", "--maxmemory", "256mb", "--maxmemory-policy", "allkeys-lru"]
+    ports:
+      - "127.0.0.1:${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  pgdata:
+  redisdata:
