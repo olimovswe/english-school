@@ -27,4 +27,14 @@ internal sealed class WeeklyReportReadModel
         UserId = userId,
         WeekStarting = weekStarting,
     };
+
+    public void RecordAttempt(decimal score)
+    {
+        AccuracyScoreTotal += score;
+        AttemptCount++;
+    }
+
+    public void AddFocusSeconds(int focusSeconds) => TotalFocusSeconds += focusSeconds;
+
+    public void AddWordsLearned(int words) => WordsLearned += words;
 }

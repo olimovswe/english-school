@@ -2,6 +2,7 @@ using System.Security.Cryptography;
 using EnglishSchool.BuildingBlocks.Caching;
 using EnglishSchool.BuildingBlocks.Modules;
 using EnglishSchool.BuildingBlocks.Outbox;
+using EnglishSchool.Modules.Analytics;
 using EnglishSchool.Modules.Curriculum;
 using EnglishSchool.Modules.Practice;
 using Microsoft.AspNetCore.Hosting;
@@ -46,7 +47,7 @@ public sealed class RetentionApiFactory : WebApplicationFactory<Program>, IAsync
 
         var services = new ServiceCollection().AddLogging();
         services.AddHybridCaching(configuration);
-        foreach (IModule module in new IModule[] { new CurriculumModule(), new PracticeModule(), new RetentionModule() })
+        foreach (IModule module in new IModule[] { new CurriculumModule(), new PracticeModule(), new RetentionModule(), new AnalyticsModule() })
         {
             module.AddServices(services, configuration);
         }
@@ -67,6 +68,7 @@ public sealed class RetentionApiFactory : WebApplicationFactory<Program>, IAsync
         builder.UseSetting("Practice:ApplyMigrationsOnStartup", "true");
         builder.UseSetting("Practice:SeedOnStartup", "true");
         builder.UseSetting("Retention:ApplyMigrationsOnStartup", "true");
+        builder.UseSetting("Analytics:ApplyMigrationsOnStartup", "true");
         builder.UseDefaultServiceProvider(options =>
         {
             options.ValidateScopes = true;

@@ -35,4 +35,12 @@ internal sealed class ErrorSummaryReadModel
         LastSeenAt = now,
         LastAttemptId = attemptId,
     };
+
+    public void Recur(string correction, Guid attemptId, DateTimeOffset now)
+    {
+        Occurrences++;
+        Correction = correction;
+        LastSeenAt = now;
+        LastAttemptId = attemptId;
+    }
 }

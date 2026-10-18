@@ -65,12 +65,47 @@ namespace EnglishSchool.Modules.Analytics.Infrastructure.Migrations
                     b.ToTable("error_summaries", "analytics");
                 });
 
+            modelBuilder.Entity("EnglishSchool.Modules.Analytics.Domain.ProcessedAnalyticsEvent", b =>
+                {
+                    b.Property<Guid>("EventId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("event_id");
+
+                    b.Property<string>("EventType")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)")
+                        .HasColumnName("event_type");
+
+                    b.Property<DateTimeOffset>("OccurredAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("occurred_at");
+
+                    b.HasKey("EventId")
+                        .HasName("pk_processed_events");
+
+                    b.ToTable("processed_events", "analytics");
+                });
+
             modelBuilder.Entity("EnglishSchool.Modules.Analytics.Domain.UserProgressReadModel", b =>
                 {
                     b.Property<Guid>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
                         .HasColumnName("user_id");
+
+                    b.Property<int>("AccuracyAttemptCount")
+                        .HasColumnType("integer")
+                        .HasColumnName("accuracy_attempt_count");
+
+                    b.Property<decimal>("AccuracyScoreTotal")
+                        .HasColumnType("numeric")
+                        .HasColumnName("accuracy_score_total");
+
+                    b.Property<int>("ActiveVocabulary")
+                        .HasColumnType("integer")
+                        .HasColumnName("active_vocabulary");
 
                     b.Property<int>("CompletedDays")
                         .HasColumnType("integer")
@@ -79,6 +114,10 @@ namespace EnglishSchool.Modules.Analytics.Infrastructure.Migrations
                     b.Property<int>("CurrentDay")
                         .HasColumnType("integer")
                         .HasColumnName("current_day");
+
+                    b.Property<DateOnly?>("LastCompletedDay")
+                        .HasColumnType("date")
+                        .HasColumnName("last_completed_day");
 
                     b.Property<DateOnly?>("LastStudyDay")
                         .HasColumnType("date")

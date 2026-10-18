@@ -7,6 +7,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\BuildingBlocks\BuildingBlocks.csproj" />
     <ProjectReference Include="..\Analytics.Contracts\Modules.Analytics.Contracts.csproj" />
+    <ProjectReference Include="..\Curriculum.Contracts\Modules.Curriculum.Contracts.csproj" />
+    <ProjectReference Include="..\Discipline.Contracts\Modules.Discipline.Contracts.csproj" />
+    <ProjectReference Include="..\Practice.Contracts\Modules.Practice.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>

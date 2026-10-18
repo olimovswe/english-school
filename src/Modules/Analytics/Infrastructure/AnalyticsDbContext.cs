@@ -13,6 +13,8 @@ internal sealed class AnalyticsDbContext(DbContextOptions<AnalyticsDbContext> op
 
     public DbSet<ErrorSummaryReadModel> ErrorSummaries => Set<ErrorSummaryReadModel>();
 
+    public DbSet<ProcessedAnalyticsEvent> ProcessedEvents => Set<ProcessedAnalyticsEvent>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema(Schema);
@@ -39,6 +41,13 @@ internal sealed class AnalyticsDbContext(DbContextOptions<AnalyticsDbContext> op
             error.HasIndex(x => new { x.UserId, x.Occurrences });
             error.Property(x => x.ErrorCode).HasMaxLength(64);
             error.Property(x => x.Correction).HasMaxLength(500);
+        });
+
+        modelBuilder.Entity<ProcessedAnalyticsEvent>(processed =>
+        {
+            processed.ToTable("processed_events");
+            processed.HasKey(x => x.EventId);
+            processed.Property(x => x.EventType).HasMaxLength(300);
         });
     }
 }

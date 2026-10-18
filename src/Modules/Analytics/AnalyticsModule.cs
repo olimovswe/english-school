@@ -1,5 +1,9 @@
 using EnglishSchool.BuildingBlocks.Modules;
+using EnglishSchool.BuildingBlocks.Outbox;
+using EnglishSchool.Modules.Analytics.Application;
 using EnglishSchool.Modules.Analytics.Infrastructure;
+using EnglishSchool.Modules.Discipline.Contracts.Events;
+using EnglishSchool.Modules.Practice.Contracts.Events;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
@@ -25,6 +29,11 @@ public sealed class AnalyticsModule : IModule
             .UseSnakeCaseNamingConvention());
         services.AddHostedService<AnalyticsDatabaseMigrator>();
         services.AddHealthChecks().AddDbContextCheck<AnalyticsDbContext>("analytics-db");
+        services.AddScoped<AnalyticsEventUpdater>();
+        services.AddIntegrationEventConsumer<AttemptEvaluated, AttemptEvaluatedConsumer>();
+        services.AddIntegrationEventConsumer<ErrorDetected, ErrorDetectedConsumer>();
+        services.AddIntegrationEventConsumer<DailyGatePassed, DailyGatePassedConsumer>();
+        services.AddIntegrationEventConsumer<SessionEnded, SessionEndedConsumer>();
     }
 
     public void MapEndpoints(IEndpointRouteBuilder endpoints)

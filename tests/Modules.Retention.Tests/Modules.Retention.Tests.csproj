@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Host.Api\Host.Api.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Analytics\Modules.Analytics.csproj" />
     <ProjectReference Include="..\..\src\Modules\Retention\Modules.Retention.csproj" />
   </ItemGroup>
 
