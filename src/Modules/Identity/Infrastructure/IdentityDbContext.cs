@@ -1,3 +1,4 @@
+using EnglishSchool.BuildingBlocks.Outbox;
 using EnglishSchool.Modules.Identity.Domain;
 using Microsoft.EntityFrameworkCore;
 
@@ -43,6 +44,7 @@ internal sealed class IdentityDbContext(DbContextOptions<IdentityDbContext> opti
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema(Schema);
+        modelBuilder.AddOutboxMessages();
 
         modelBuilder.Entity<User>(user =>
         {

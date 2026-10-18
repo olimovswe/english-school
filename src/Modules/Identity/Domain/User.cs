@@ -1,10 +1,14 @@
+using EnglishSchool.BuildingBlocks.Abstractions.Events;
+using EnglishSchool.Modules.Identity.Contracts.Events;
+
 namespace EnglishSchool.Modules.Identity.Domain;
 
 /// <summary>
 /// Oʻquvchi akkaunti. Kirish usuli: email + parol (<see cref="Credentials"/>) yoki tasdiqlangan Telegram ID.
 /// Email unikalligi <see cref="NormalizedEmail"/> boʻyicha tekshiriladi (katta-kichik harf farqsiz).
+/// Yangi akkaunt <see cref="UserRegistered"/> eventini chiqaradi: u roʻyxatdan oʻtish bilan bitta tranzaksiyada outbox'ga yoziladi.
 /// </summary>
-internal sealed class User
+internal sealed class User : IntegrationEventSource
 {
     private User(
         Guid id,
@@ -51,11 +55,16 @@ internal sealed class User
         var trimmed = email.Trim();
         var user = new User(Guid.CreateVersion7(), trimmed, NormalizeEmail(trimmed), null, displayName, timeZone, now);
         user.Credentials = UserCredentials.Create(user.Id, passwordHash, now);
+        user.Raise(new UserRegistered(user.Id, displayName, timeZone));
         return user;
     }
 
-    public static User RegisterWithTelegram(long telegramId, string displayName, string timeZone, DateTimeOffset now) =>
-        new(Guid.CreateVersion7(), null, null, telegramId, displayName, timeZone, now);
+    public static User RegisterWithTelegram(long telegramId, string displayName, string timeZone, DateTimeOffset now)
+    {
+        var user = new User(Guid.CreateVersion7(), null, null, telegramId, displayName, timeZone, now);
+        user.Raise(new UserRegistered(user.Id, displayName, timeZone));
+        return user;
+    }
 
     public static string NormalizeEmail(string email) => email.Trim().ToUpperInvariant();
 }

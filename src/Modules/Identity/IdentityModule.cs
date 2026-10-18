@@ -1,5 +1,6 @@
 using System.Text;
 using EnglishSchool.BuildingBlocks.Modules;
+using EnglishSchool.BuildingBlocks.Outbox;
 using EnglishSchool.Modules.Identity.Application;
 using EnglishSchool.Modules.Identity.Endpoints;
 using EnglishSchool.Modules.Identity.Infrastructure;
@@ -49,7 +50,9 @@ public sealed class IdentityModule : IModule
             .UseNpgsql(
                 configuration.GetConnectionString("Postgres"),
                 npgsql => npgsql.MigrationsHistoryTable("__ef_migrations_history", IdentityDbContext.Schema))
-            .UseSnakeCaseNamingConvention());
+            .UseSnakeCaseNamingConvention()
+            .UseOutbox());
+        services.AddOutboxStore<IdentityDbContext>();
 
         services.TryAddSingleton(TimeProvider.System);
         services.AddSingleton<TokenIssuer>();
