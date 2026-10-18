@@ -1,4 +1,5 @@
 using EnglishSchool.BuildingBlocks.Modules;
+using EnglishSchool.Modules.Discipline.Contracts;
 using EnglishSchool.Modules.Curriculum.Application;
 using EnglishSchool.Modules.Curriculum.Contracts;
 using EnglishSchool.Modules.Curriculum.Infrastructure;
@@ -46,6 +47,7 @@ public sealed class CurriculumModule : IModule
             int dayNumber, ICurriculumQueries queries, CancellationToken ct) =>
             await queries.GetDayAsync(dayNumber, ct) is { } day
                 ? TypedResults.Ok(day)
-                : TypedResults.NotFound());
+                : TypedResults.NotFound())
+            .RequireAuthorization(DisciplinePolicies.DailyLessonAccess);
     }
 }

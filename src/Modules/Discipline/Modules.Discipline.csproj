@@ -7,10 +7,17 @@
   <ItemGroup>
     <ProjectReference Include="..\..\BuildingBlocks\BuildingBlocks.csproj" />
     <ProjectReference Include="..\Discipline.Contracts\Modules.Discipline.Contracts.csproj" />
+    <ProjectReference Include="..\Curriculum.Contracts\Modules.Curriculum.Contracts.csproj" />
+    <ProjectReference Include="..\Retention.Contracts\Modules.Retention.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="EFCore.NamingConventions" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
   </ItemGroup>
 

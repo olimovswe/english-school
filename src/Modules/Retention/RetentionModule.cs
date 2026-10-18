@@ -3,6 +3,7 @@ using EnglishSchool.BuildingBlocks.Outbox;
 using EnglishSchool.Modules.Discipline.Contracts.Events;
 using EnglishSchool.Modules.Practice.Contracts.Events;
 using EnglishSchool.Modules.Retention.Application;
+using EnglishSchool.Modules.Retention.Contracts;
 using EnglishSchool.Modules.Retention.Endpoints;
 using EnglishSchool.Modules.Retention.Infrastructure;
 using EnglishSchool.Modules.Retention.Scheduling;
@@ -43,6 +44,7 @@ public sealed class RetentionModule : IModule
         services.AddScoped<FlashcardEnrollment>();
         services.AddScoped<DueCardQueries>();
         services.AddScoped<ReviewService>();
+        services.AddScoped<IRetentionGateAssessment, RetentionGateAssessment>();
         services.AddIntegrationEventConsumer<AttemptEvaluated, EnrollOnPracticeConsumer>();
         services.AddIntegrationEventConsumer<DailyGatePassed, EnrollOnDayUnlockedConsumer>();
 

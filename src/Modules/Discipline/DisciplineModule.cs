@@ -1,10 +1,14 @@
 using EnglishSchool.BuildingBlocks.Modules;
 using EnglishSchool.BuildingBlocks.Outbox;
+using EnglishSchool.Modules.Discipline.Application;
+using EnglishSchool.Modules.Discipline.Contracts;
+using EnglishSchool.Modules.Discipline.Endpoints;
 using EnglishSchool.Modules.Discipline.Infrastructure;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EnglishSchool.Modules.Discipline;
 
@@ -18,6 +22,7 @@ public sealed class DisciplineModule : IModule
 
     public void AddServices(IServiceCollection services, IConfiguration configuration)
     {
+        services.AddOptions<DisciplineOptions>().Bind(configuration.GetSection(DisciplineOptions.Section));
         services.AddDbContext<DisciplineDbContext>(options => options
             .UseNpgsql(
                 configuration.GetConnectionString("Postgres"),
@@ -25,9 +30,14 @@ public sealed class DisciplineModule : IModule
             .UseSnakeCaseNamingConvention()
             .UseOutbox());
         services.AddOutboxStore<DisciplineDbContext>();
+        services.AddScoped<DisciplineService>();
+        services.AddScoped<IAuthorizationHandler, DailyLessonAccessHandler>();
+        services.AddAuthorizationCore(options => options.AddPolicy(
+            DisciplinePolicies.DailyLessonAccess,
+            policy => policy.AddRequirements(new DailyLessonAccessRequirement())));
+        services.AddHostedService<DisciplineDatabaseMigrator>();
+        services.AddHealthChecks().AddDbContextCheck<DisciplineDbContext>("discipline-db");
     }
 
-    public void MapEndpoints(IEndpointRouteBuilder endpoints)
-    {
-    }
+    public void MapEndpoints(IEndpointRouteBuilder endpoints) => endpoints.MapDisciplineEndpoints();
 }
