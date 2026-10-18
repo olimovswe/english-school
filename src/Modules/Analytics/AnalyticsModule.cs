@@ -1,6 +1,8 @@
 using EnglishSchool.BuildingBlocks.Modules;
 using EnglishSchool.BuildingBlocks.Outbox;
 using EnglishSchool.Modules.Analytics.Application;
+using EnglishSchool.Modules.Analytics.Contracts;
+using EnglishSchool.Modules.Analytics.Endpoints;
 using EnglishSchool.Modules.Analytics.Infrastructure;
 using EnglishSchool.Modules.Discipline.Contracts.Events;
 using EnglishSchool.Modules.Practice.Contracts.Events;
@@ -30,13 +32,12 @@ public sealed class AnalyticsModule : IModule
         services.AddHostedService<AnalyticsDatabaseMigrator>();
         services.AddHealthChecks().AddDbContextCheck<AnalyticsDbContext>("analytics-db");
         services.AddScoped<AnalyticsEventUpdater>();
+        services.AddScoped<IProgressQueries, ProgressQueries>();
         services.AddIntegrationEventConsumer<AttemptEvaluated, AttemptEvaluatedConsumer>();
         services.AddIntegrationEventConsumer<ErrorDetected, ErrorDetectedConsumer>();
         services.AddIntegrationEventConsumer<DailyGatePassed, DailyGatePassedConsumer>();
         services.AddIntegrationEventConsumer<SessionEnded, SessionEndedConsumer>();
     }
 
-    public void MapEndpoints(IEndpointRouteBuilder endpoints)
-    {
-    }
+    public void MapEndpoints(IEndpointRouteBuilder endpoints) => endpoints.MapAnalyticsEndpoints();
 }
