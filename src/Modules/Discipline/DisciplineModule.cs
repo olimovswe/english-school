@@ -1,5 +1,8 @@
 using EnglishSchool.BuildingBlocks.Modules;
+using EnglishSchool.BuildingBlocks.Outbox;
+using EnglishSchool.Modules.Discipline.Infrastructure;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,6 +18,13 @@ public sealed class DisciplineModule : IModule
 
     public void AddServices(IServiceCollection services, IConfiguration configuration)
     {
+        services.AddDbContext<DisciplineDbContext>(options => options
+            .UseNpgsql(
+                configuration.GetConnectionString("Postgres"),
+                npgsql => npgsql.MigrationsHistoryTable("__ef_migrations_history", DisciplineDbContext.Schema))
+            .UseSnakeCaseNamingConvention()
+            .UseOutbox());
+        services.AddOutboxStore<DisciplineDbContext>();
     }
 
     public void MapEndpoints(IEndpointRouteBuilder endpoints)
