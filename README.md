@@ -8,7 +8,7 @@ whose boundaries are enforced by tests rather than by convention.
 
 | | |
 |---|---|
-| **Status** | Dev-week 2 underway. Curriculum and Identity are implemented; six modules are scaffolded with their contracts. |
+| **Status** | Dev-weeks 3–4 done: transactional outbox and the Practice grading engine. Curriculum, Identity and Practice are implemented; five modules are scaffolded with their contracts. |
 | **Runtime** | .NET 10 (SDK pinned in [`global.json`](global.json)), ASP.NET Core minimal APIs |
 | **Data** | PostgreSQL 18 + pgvector, EF Core 10 (Npgsql), one schema per module |
 | **Cache** | HybridCache: in-process L1, Valkey 8 (Redis protocol) as shared L2 |
@@ -78,32 +78,71 @@ will run the outbox dispatcher, nightly jobs and batch AI work; it has no jobs y
 5. Building blocks know nothing about modules.
 6. Every module's services resolve in a non-web host. Web-only services such as authorization belong
    in `Host.Api`.
+7. Integration events are sealed records in `X.Contracts.Events`, never in module code, and every one
+   round-trips through the outbox serializer.
+8. A module whose entities raise events maps an outbox table, attaches the outbox interceptor and
+   registers its outbox store. Only the Worker runs the dispatcher.
 
 **Data ownership.** Each module owns one PostgreSQL schema (`curriculum`, `identity`, …) with its own
 `__ef_migrations_history` table. No module reads another module's tables. Cross-module reads go
 through a Contracts interface (for example `ICurriculumQueries`).
 
-**Cross-module events.** Integration events are defined in Contracts (for example `UserRegistered`,
-`AttemptEvaluated`). The planned delivery is a transactional outbox: the event is written in the same
-transaction as the business data, then dispatched by the Worker. *The outbox is not implemented yet;
-no events are published today.*
+### Integration events and the outbox
+
+Modules notify each other asynchronously through a **transactional outbox**, so an event is never lost
+and never sent for a change that was rolled back.
+
+```mermaid
+sequenceDiagram
+    participant API as Host.Api (module code)
+    participant DB as PostgreSQL (module schema)
+    participant W as Host.Worker (OutboxDispatcher)
+    participant C as Consumer in another module
+    API->>API: entity.Raise(new UserRegistered(…))
+    API->>DB: SaveChanges: business rows + outbox_messages row, one transaction
+    loop every 2 s
+        W->>DB: SELECT … FOR UPDATE SKIP LOCKED (batch of 50)
+        W->>C: consumer.HandleAsync(event)
+        W->>DB: processed_at = now, or failed_attempts + 1 and next_attempt_at
+    end
+```
+
+1. **Raise.** An entity derives from `IntegrationEventSource` and calls `Raise(...)`. For example,
+   `User` raises `UserRegistered`, and `Attempt` raises `AttemptEvaluated` plus one `ErrorDetected`
+   per distinct error type.
+2. **Store.** `OutboxInterceptor` turns those events into rows of the module's own `outbox_messages`
+   table during `SaveChanges`, in the same transaction as the business data. A module opts in with
+   `modelBuilder.AddOutboxMessages()`, `options.UseOutbox()` and `services.AddOutboxStore<TContext>()`.
+3. **Deliver.** Only `Host.Worker` runs the dispatcher (`AddOutboxDispatcher`). It claims batches with
+   `FOR UPDATE SKIP LOCKED`, so several Worker instances never deliver the same message twice at once.
+4. **Consume.** A module subscribes with `services.AddIntegrationEventConsumer<TEvent, TConsumer>()`.
+   Events nobody subscribes to are marked processed.
+5. **Fail.** A failing consumer is retried with exponential backoff (2 s, 4 s, … capped at 5 min). After
+   `MaxAttempts` (10) the message is parked, with `last_error` kept for inspection.
+
+Delivery is **at least once**: a consumer may see the same event twice, so it must be idempotent. Use
+`EventId` (the outbox row's primary key) as the de-duplication key. The stored type name is the event's
+full CLR name, so renaming or moving an event type strands its unprocessed rows. Treat event types as a
+public contract.
 
 ### Repository layout
 
 ```text
 ├── src
-│   ├── BuildingBlocks.Abstractions/   # IIntegrationEvent (framework-free)
-│   ├── BuildingBlocks/                # IModule, AddHybridCaching()
+│   ├── BuildingBlocks.Abstractions/   # IIntegrationEvent, IntegrationEventSource, IIntegrationEventConsumer (framework-free)
+│   ├── BuildingBlocks/                # IModule, AddHybridCaching(), Outbox/, ClaimsPrincipal.TryGetUserId()
 │   ├── Host.Api/                      # web host, ModuleCatalog, appsettings
-│   ├── Host.Worker/                   # background host, ModuleCatalog
+│   ├── Host.Worker/                   # background host, ModuleCatalog, outbox dispatcher
 │   └── Modules/
 │       ├── Curriculum/ + Curriculum.Contracts/
 │       ├── Identity/   + Identity.Contracts/
-│       └── …           # Discipline, Practice, Retention, AiGateway, Speech, Analytics
+│       ├── Practice/   + Practice.Contracts/
+│       └── …           # Discipline, Retention, AiGateway, Speech, Analytics
 ├── tests
-│   ├── Architecture.Tests/            # module boundaries + host composition
+│   ├── Architecture.Tests/            # module boundaries, host composition, event and outbox rules
 │   ├── Modules.Curriculum.Tests/      # seed-data integrity
-│   └── Modules.Identity.Tests/        # API integration (PostgreSQL) + unit tests
+│   ├── Modules.Identity.Tests/        # API + outbox integration (PostgreSQL) + unit tests
+│   └── Modules.Practice.Tests/        # API integration (PostgreSQL), grading tiers, seed content
 ├── deploy/postgres/init/              # runs once on a fresh database (CREATE EXTENSION vector)
 ├── scripts/dev-secrets.sh             # copies .env values into .NET user-secrets
 ├── docker-compose.yml                 # PostgreSQL 18 + pgvector, Valkey 8
@@ -118,16 +157,34 @@ no events are published today.*
 | Module | Status | Responsibility | Contracts today |
 |---|---|---|---|
 | **Curriculum** | Implemented | Course → week → day structure, grammar topics, vocabulary. Versioned, read-only content served from HybridCache. | `ICurriculumQueries` |
-| **Identity** | Implemented | Sign-up and login (email + password, Telegram), JWT access tokens, rotating refresh tokens, lockout. | `UserRegistered` event (not published yet) |
-| Practice | Planned: weeks 4–5 | Exercise attempts, rule-based grading, error taxonomy. | `AttemptEvaluated`, `ErrorDetected` |
+| **Identity** | Implemented | Sign-up and login (email + password, Telegram), JWT access tokens, rotating refresh tokens, lockout. | `UserRegistered` event (via the outbox) |
+| **Practice** | Implemented (core) | Day exercises (gap-fill, multiple choice, matching), 4-tier grading, attempts, repeated-error taxonomy. | `AttemptEvaluated`, `ErrorDetected` events (via the outbox) |
 | Retention | Planned: weeks 4–5 | Flashcards, Leitner then FSRS scheduling. | `CardLapsed` |
 | Discipline | Planned: weeks 6–7 | Daily plan, morning review gate (≥ 80 %), session state machine, focus time. | `DailyGatePassed`, `BlockCompleted`, `SessionEnded` |
 | Analytics | Planned: weeks 6–7 | Progress and weekly-report read models. | `IProgressQueries` |
 | AiGateway | Planned: weeks 8–9 | The single path to LLMs: LanguageTool, Claude, evaluation cache, cost budget. | `IAiGateway` |
 | Speech | Planned: week 10 | Text-to-speech files, Whisper transcription, pronunciation scoring. | `TranscriptReady` |
 
-Answers are designed to be graded in tiers, cheapest first: **0** rules, **1** cache or LanguageTool,
-**2** Claude Haiku, **3** Claude Opus. Callers go through `IAiGateway` and never see model names.
+### Practice: exercises and grading
+
+[`practice.v1.json`](src/Modules/Practice/Seed/practice.v1.json) holds 25 exercises for the week-1 lesson
+days (1–6). Each one targets that day's grammar topic and "Diqqat" warnings. Matching pairs are copied
+from the curriculum's own vocabulary for that day, and a test enforces this. Gap-fill items list their
+accepted answers plus *known mistakes*, each with an error code and an Uzbek explanation of the rule.
+
+Answers go through a **tiered pipeline**, cheapest first. The first tier that can decide wins, and the
+attempt records which tier that was.
+
+| Tier | What it does | Status |
+|---|---|---|
+| **0** Rules | Exact accepted answer, `AnswerPattern` regex, known mistake, chosen option, matching pairs. | ✅ |
+| **1** Normalization | Letter case, spacing, curly or Uzbek `ʼ` apostrophes, contractions (`isn't` = `is not`), then typo detection: a missing apostrophe or 1–2 letter edits counts as *partially correct* with a `SPELLING` hint. Swaps of grammar words (`these`/`those`) are never treated as typos. | ✅ |
+| **2–3** AiGateway | Gap-fill answers the rules couldn't decide are sent to `IAiGateway` (Haiku, then Opus). The tier switches itself on as soon as an `IAiGateway` is registered. | Week 8 |
+
+If no tier decides, the answer is marked incorrect and the correct answer is shown, without guessing an
+error type. Known error codes (`BE_FORM`, `ART_WRONG`, `PLURAL_FORM`, …; see
+[`ErrorCodes`](src/Modules/Practice/Domain/ErrorCodes.cs)) increment the student's `user_errors`
+counter and are published as `ErrorDetected`.
 
 **Curriculum content.** [`curriculum.v1.json`](src/Modules/Curriculum/Seed/curriculum.v1.json) is
 embedded in the assembly: 56 days over 8 weeks, with 48 lessons, 6 review days and exams on day 28
@@ -217,6 +274,9 @@ Settings come from `appsettings.json`, then `appsettings.{Environment}.json`, th
 | `Identity:Jwt:AccessTokenLifetime` / `RefreshTokenLifetime` | `00:15:00` / `30.00:00:00` | |
 | `Identity:Telegram:BotToken` | *(empty)* | **Secret.** From @BotFather. While empty, `/identity/telegram` returns 503. |
 | `Identity:Telegram:MaxAuthAge` | `00:10:00` | Older signed widget data is rejected (replay protection). |
+| `Practice:ActiveCourseVersion` | `1` | Keep it equal to `Curriculum:ActiveCourseVersion`. |
+| `Practice:ApplyMigrationsOnStartup` / `SeedOnStartup` | `false` | `true` only in the API's Development config. |
+| `Outbox:PollingInterval` / `BatchSize` / `MaxAttempts` | `00:00:02` / `50` / `10` | Worker only. |
 
 ### Production checklist
 
@@ -240,7 +300,7 @@ list the failing fields under `errors` with camelCase keys.
 | Method | Path | Auth | Responses |
 |---|---|---|---|
 | GET | `/` | – | Service name and loaded modules |
-| GET | `/health` | – | `Healthy` when the `curriculum-db` and `identity-db` checks pass |
+| GET | `/health` | – | `Healthy` when the `curriculum-db`, `identity-db` and `practice-db` checks pass |
 | GET | `/api/v1/curriculum/days` | – | 200: summary of all 56 days |
 | GET | `/api/v1/curriculum/days/{n}` | – | 200: day with grammar and vocabulary · 404 |
 | POST | `/api/v1/identity/register` | – | 201 + tokens (`Location: …/identity/me`) · 400 · 409 email taken |
@@ -249,6 +309,8 @@ list the failing fields under `errors` with camelCase keys.
 | POST | `/api/v1/identity/refresh` | – | 200 + rotated tokens · 401 |
 | POST | `/api/v1/identity/logout` | – | 204 (also for unknown tokens) |
 | GET | `/api/v1/identity/me` | Bearer | 200 profile · 401 |
+| GET | `/api/v1/practice/days/{n}/exercises` | Bearer | 200 exercises, answers hidden (empty for review and exam days) · 404 day not in course |
+| POST | `/api/v1/practice/attempts` | Bearer | 200 verdict, score, tier and feedback · 400 · 404 unknown exercise |
 
 <details>
 <summary>Request and response shapes</summary>
@@ -268,6 +330,19 @@ list the failing fields under `errors` with camelCase keys.
 
 // Token response (register, login, telegram, refresh)
 { "userId": "…", "accessToken": "…", "accessTokenExpiresAt": "…", "refreshToken": "…", "refreshTokenExpiresAt": "…" }
+
+// GET /practice/days/2/exercises: choices and matchTargets come sorted alphabetically, so their order never reveals the answer
+[{ "id": "…", "position": 3, "type": "MultipleChoice", "instruction": "Toʻgʻri tarjimani tanlang.", "prompt": "«U (qiz) charchagan.»",
+   "choices": [{ "id": "…", "text": "She am tired." }, …], "matchTargets": [] }]
+
+// POST /practice/attempts: send the field that matches the exercise type
+{ "exerciseId": "…", "answer": "is", "timeTakenMs": 5200 }                       // GapFill
+{ "exerciseId": "…", "selectedOptionId": "…", "timeTakenMs": 5200 }             // MultipleChoice
+{ "exerciseId": "…", "matches": [{ "optionId": "…", "matchText": "xursand" }, …], "timeTakenMs": 30000 } // Matching
+
+// Attempt result
+{ "attemptId": "…", "verdict": "Incorrect", "score": 0, "evaluationTier": 0,
+  "feedback": [{ "errorCode": "BE_FORM", "correction": "am", "explanation": "I bilan faqat am ishlatiladi: I am a student." }] }
 ```
 
 </details>
@@ -307,7 +382,7 @@ Signed data older than 10 minutes is rejected. A bare Telegram ID is never trust
 user ID from the `sub` claim. Inbound claim mapping is off, so the claim keeps that name.
 
 Not built yet: email verification, password reset, linking Telegram to an existing email account,
-rate limiting at the edge, and publishing `UserRegistered` (which waits for the outbox).
+and rate limiting at the edge.
 
 ---
 
@@ -323,6 +398,7 @@ dotnet ef migrations add <Name> --project src/Modules/Identity --startup-project
 # Check that the model and the latest migration agree (run in CI)
 dotnet ef migrations has-pending-model-changes --project src/Modules/Curriculum --startup-project src/Host.Api --context CurriculumDbContext
 dotnet ef migrations has-pending-model-changes --project src/Modules/Identity --startup-project src/Host.Api --context IdentityDbContext
+dotnet ef migrations has-pending-model-changes --project src/Modules/Practice --startup-project src/Host.Api --context PracticeDbContext
 
 # Production: an idempotent SQL script per module (or `dotnet ef migrations bundle`)
 dotnet ef migrations script --idempotent --project src/Modules/Identity --startup-project src/Host.Api \
@@ -332,24 +408,27 @@ dotnet ef migrations script --idempotent --project src/Modules/Identity --startu
 | Schema | Tables |
 |---|---|
 | `curriculum` | `days`, `grammar_topics`, `vocabulary_items` |
-| `identity` | `users`, `user_credentials`, `refresh_tokens` |
+| `identity` | `users`, `user_credentials`, `refresh_tokens`, `outbox_messages` |
+| `practice` | `exercises`, `exercise_options`, `attempts`, `user_errors`, `outbox_messages` |
 
-Column and table names are snake_case (EFCore.NamingConventions).
+Column and table names are snake_case (EFCore.NamingConventions). `practice.attempts.user_id` has no
+foreign key to `identity.users`, by design: modules stay separate in the database too.
 
 ---
 
 ## Testing
 
 ```bash
-dotnet test                                                    # everything (Docker or Podman required)
-dotnet test --filter "FullyQualifiedName!~Identity.Tests.Api"  # skip DB-backed tests: no Docker needed
+dotnet test                                            # everything (Docker or Podman required)
+dotnet test --filter "FullyQualifiedName!~.Tests.Api." # skip DB-backed tests: no Docker needed
 ```
 
 | Project | What it covers |
 |---|---|
-| `Architecture.Tests` | Module-boundary rules and host composition: every module's services must resolve in a non-web host with build-time validation. |
+| `Architecture.Tests` | Module-boundary rules and host composition (every module's services resolve in the Worker with build-time validation; only the Worker runs the dispatcher). Event conventions and an outbox round trip for every contract event; outbox wiring for every module that raises events. |
 | `Modules.Curriculum.Tests` | Seed integrity: 56-day calendar, review and exam days, vocabulary totals, unique words, Uzbek `ʻ` and English `'` apostrophes, entity mapping. |
-| `Modules.Identity.Tests` | **Api/**: the real API host via `WebApplicationFactory`, against PostgreSQL in a throwaway container. Covers sign-up, validation, login, lockout (including parallel guesses), forged tokens, refresh rotation, reuse detection, concurrent refresh, logout and Telegram. **Domain/** and **Security/**: lockout and rotation rules and the Telegram signature check, with no I/O. |
+| `Modules.Identity.Tests` | **Api/**: the real API host via `WebApplicationFactory`, against PostgreSQL in a throwaway container. Covers sign-up, validation, login, lockout (including parallel guesses), forged tokens, refresh rotation, reuse detection, concurrent refresh, logout and Telegram, plus the outbox end to end: `UserRegistered` written atomically, delivered by a Worker-style dispatcher, and retried with backoff then parked. **Domain/** and **Security/**: lockout and rotation rules and the Telegram signature check, with no I/O. |
+| `Modules.Practice.Tests` | **Api/**: exercises (order, hidden answers, 404, auth), grading at each tier, per-student error counting, attempts and events in one transaction, rejected submissions. **Grading/**: each tier and the pipeline, including the AiGateway handoff via a fake `IAiGateway`. **Seed/**: every authored answer is graded through the real pipeline, and matching pairs must equal the curriculum's words. |
 
 Integration tests use the same `pgvector/pgvector:pg18` image as Compose. The test host runs in the
 `Testing` environment, so your Development settings and user-secrets are never loaded.
@@ -385,6 +464,9 @@ export TESTCONTAINERS_RYUK_DISABLED=true
    [`tests/Architecture.Tests/SolutionModules.cs`](tests/Architecture.Tests/SolutionModules.cs), and
    reference it from `Architecture.Tests.csproj`. Add the projects to `EnglishSchool.slnx`.
 4. Put web-only registrations (authorization policies, routing) in `Host.Api`, not in `AddServices`.
+5. If the module raises events, declare them as sealed records in `X.Contracts/Events` and wire the
+   outbox (see [Integration events and the outbox](#integration-events-and-the-outbox)). The architecture
+   tests fail until all three outbox pieces are in place.
 
 ---
 
@@ -397,3 +479,4 @@ export TESTCONTAINERS_RYUK_DISABLED=true
 | `password authentication failed for user "english_school"` | user-secrets and `.env` disagree: re-run the script. If the volume was created with an older password, PostgreSQL keeps that one; `docker compose down -v` recreates the database but **deletes all local data**. |
 | First start logs `Failed executing DbCommand … __ef_migrations_history` | Harmless: EF checks for the history table before creating it on a fresh database. |
 | Integration tests fail with `DockerContainerNotFoundException` (Ryuk) | Podman: set the two environment variables in [Testing](#testing). |
+| Rows pile up in `*.outbox_messages` with `processed_at` empty | The Worker isn't running (only it dispatches events). Start `src/Host.Worker`. Rows with `failed_attempts` at the limit are parked; read `last_error`. |
