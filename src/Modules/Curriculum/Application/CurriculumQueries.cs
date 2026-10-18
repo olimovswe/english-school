@@ -38,6 +38,22 @@ internal sealed class CurriculumQueries(
             EntryOptions,
             cancellationToken: cancellationToken);
 
+    public async Task<IReadOnlyList<VocabularyEntryDto>> GetVocabularyAsync(int dayNumber, CancellationToken cancellationToken) =>
+        await cache.GetOrCreateAsync(
+            $"cur:vocab:{Version}:{dayNumber}",
+            async token => await LoadVocabularyAsync(dayNumber, token),
+            EntryOptions,
+            cancellationToken: cancellationToken);
+
+    private async Task<IReadOnlyList<VocabularyEntryDto>> LoadVocabularyAsync(int dayNumber, CancellationToken cancellationToken) =>
+        await db.Days
+            .AsNoTracking()
+            .Where(d => d.CourseVersion == Version && d.DayNumber == dayNumber)
+            .SelectMany(d => d.Vocabulary)
+            .OrderBy(v => v.Position)
+            .Select(v => new VocabularyEntryDto(v.Id, v.English, v.Uzbek, v.IsPhrase))
+            .ToListAsync(cancellationToken);
+
     private async Task<IReadOnlyList<DaySummaryDto>> LoadDaysAsync(CancellationToken cancellationToken) =>
         await db.Days
             .AsNoTracking()

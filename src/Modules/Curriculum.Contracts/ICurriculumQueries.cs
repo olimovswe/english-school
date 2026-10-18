@@ -9,6 +9,12 @@ public interface ICurriculumQueries
     Task<IReadOnlyList<DaySummaryDto>> GetDaysAsync(CancellationToken cancellationToken);
 
     Task<DayDto?> GetDayAsync(int dayNumber, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Kun lugʻati identifikatorlari bilan: Retention kartochkalari shu elementlarga bogʻlanadi.
+    /// Kursda yoʻq yoki lugʻatsiz kun uchun boʻsh roʻyxat.
+    /// </summary>
+    Task<IReadOnlyList<VocabularyEntryDto>> GetVocabularyAsync(int dayNumber, CancellationToken cancellationToken);
 }
 
 public sealed record DaySummaryDto(int DayNumber, int WeekNumber, string Kind, string Title);
@@ -39,3 +45,6 @@ public sealed record VocabularySetDto(
     IReadOnlyList<VocabularyItemDto> Phrases);
 
 public sealed record VocabularyItemDto(string English, string Uzbek);
+
+/// <param name="Id">Kurs versiyasi ichida barqaror identifikator.</param>
+public sealed record VocabularyEntryDto(Guid Id, string English, string Uzbek, bool IsPhrase);
