@@ -59,5 +59,6 @@
     <Project Path="tests/Modules.Curriculum.Tests/Modules.Curriculum.Tests.csproj" />
     <Project Path="tests/Modules.Identity.Tests/Modules.Identity.Tests.csproj" />
     <Project Path="tests/Modules.Practice.Tests/Modules.Practice.Tests.csproj" />
+    <Project Path="tests/Modules.Retention.Tests/Modules.Retention.Tests.csproj" />
   </Folder>
 </Solution>

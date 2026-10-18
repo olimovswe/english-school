@@ -83,6 +83,30 @@ public sealed class IntegrationEventTests
         });
     }
 
+    [Fact]
+    public void Every_consumer_in_module_code_is_internal_and_registered_for_the_worker()
+    {
+        using var host = ModuleComposition.BuildNonWebHost(withOutboxDispatcher: true);
+        using var scope = host.Services.CreateScope();
+
+        var consumers = ModuleComposition.ImplementationAssemblies
+            .SelectMany(assembly => assembly.GetTypes())
+            .Where(type => !type.IsAbstract && ConsumerContracts(type).Any())
+            .ToList();
+
+        Assert.NotEmpty(consumers);
+        Assert.All(consumers, consumer =>
+        {
+            Assert.False(consumer.IsPublic, $"{consumer.Name} modul ichida internal boʻlishi kerak.");
+            Assert.All(ConsumerContracts(consumer), contract => Assert.True(
+                scope.ServiceProvider.GetServices(contract).Any(service => service?.GetType() == consumer),
+                $"{consumer.Name}: AddIntegrationEventConsumer chaqirilmagan, Worker unga eventni yetkazmaydi."));
+        });
+    }
+
+    private static IEnumerable<Type> ConsumerContracts(Type type) =>
+        type.GetInterfaces().Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IIntegrationEventConsumer<>));
+
     private static object SampleValue(Type type) => type switch
     {
         _ when type == typeof(Guid) => Guid.NewGuid(),
