@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="Testcontainers.PostgreSql" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Host.Api\Host.Api.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Analytics\Modules.Analytics.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Discipline.Contracts\Modules.Discipline.Contracts.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Practice.Contracts\Modules.Practice.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

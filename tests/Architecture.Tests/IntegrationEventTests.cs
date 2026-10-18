@@ -1,5 +1,7 @@
 using EnglishSchool.BuildingBlocks.Abstractions.Events;
 using EnglishSchool.BuildingBlocks.Outbox;
+using EnglishSchool.Modules.Discipline.Contracts.Events;
+using EnglishSchool.Modules.Practice.Contracts.Events;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
@@ -102,6 +104,25 @@ public sealed class IntegrationEventTests
                 scope.ServiceProvider.GetServices(contract).Any(service => service?.GetType() == consumer),
                 $"{consumer.Name}: AddIntegrationEventConsumer chaqirilmagan, Worker unga eventni yetkazmaydi."));
         });
+    }
+
+    [Fact]
+    public void Analytics_registers_each_progress_projection_consumer_for_the_worker()
+    {
+        using var host = ModuleComposition.BuildNonWebHost(withOutboxDispatcher: true);
+        using var scope = host.Services.CreateScope();
+        var analytics = ModuleComposition.ImplementationAssemblies
+            .Single(assembly => assembly.GetName().Name == "EnglishSchool.Modules.Analytics");
+
+        Type[] eventTypes = [typeof(AttemptEvaluated), typeof(ErrorDetected), typeof(DailyGatePassed), typeof(SessionEnded)];
+        foreach (var eventType in eventTypes)
+        {
+            var consumerContract = typeof(IIntegrationEventConsumer<>).MakeGenericType(eventType);
+            var consumerType = Assert.Single(analytics.GetTypes(),
+                type => !type.IsAbstract && consumerContract.IsAssignableFrom(type));
+            Assert.Contains(scope.ServiceProvider.GetServices(consumerContract),
+                consumer => consumer?.GetType() == consumerType);
+        }
     }
 
     private static IEnumerable<Type> ConsumerContracts(Type type) =>

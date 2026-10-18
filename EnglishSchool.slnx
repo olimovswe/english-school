@@ -57,6 +57,7 @@
   <Folder Name="/tests/">
     <Project Path="tests/Architecture.Tests/Architecture.Tests.csproj" />
     <Project Path="tests/Modules.Curriculum.Tests/Modules.Curriculum.Tests.csproj" />
+    <Project Path="tests/Modules.Analytics.Tests/Modules.Analytics.Tests.csproj" />
     <Project Path="tests/Modules.Discipline.Tests/Modules.Discipline.Tests.csproj" />
     <Project Path="tests/Modules.Identity.Tests/Modules.Identity.Tests.csproj" />
     <Project Path="tests/Modules.Practice.Tests/Modules.Practice.Tests.csproj" />
