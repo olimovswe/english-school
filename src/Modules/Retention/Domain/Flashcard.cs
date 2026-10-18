@@ -66,4 +66,16 @@ internal sealed class Flashcard
         CreatedAt = now,
         DueAt = now,
     };
+
+    /// <summary>Rejalashtiruvchi hisoblagan natijani qoʻllaydi va takrorlash yozuvini qaytaradi.</summary>
+    public CardReview Apply(CardSchedule schedule, Rating rating, DateTimeOffset now, int? durationMs)
+    {
+        var phaseBefore = State.Phase;
+
+        State = schedule.State;
+        DueAt = schedule.DueAt;
+        ScheduledDays = schedule.ScheduledDays;
+
+        return CardReview.Record(this, rating, now, phaseBefore, schedule.ElapsedDays, schedule.Retrievability, durationMs);
+    }
 }

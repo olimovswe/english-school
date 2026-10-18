@@ -7,6 +7,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\BuildingBlocks\BuildingBlocks.csproj" />
     <ProjectReference Include="..\Retention.Contracts\Modules.Retention.Contracts.csproj" />
+    <!-- Boshqa modullarga faqat Contracts orqali: kun lugʻati va kartochka ochadigan eventlar. -->
+    <ProjectReference Include="..\Curriculum.Contracts\Modules.Curriculum.Contracts.csproj" />
+    <ProjectReference Include="..\Practice.Contracts\Modules.Practice.Contracts.csproj" />
+    <ProjectReference Include="..\Discipline.Contracts\Modules.Discipline.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
