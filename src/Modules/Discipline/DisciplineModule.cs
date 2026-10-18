@@ -1,3 +1,4 @@
+using EnglishSchool.BuildingBlocks.Health;
 using EnglishSchool.BuildingBlocks.Modules;
 using EnglishSchool.BuildingBlocks.Outbox;
 using EnglishSchool.Modules.Discipline.Application;
@@ -36,7 +37,7 @@ public sealed class DisciplineModule : IModule
             DisciplinePolicies.DailyLessonAccess,
             policy => policy.AddRequirements(new DailyLessonAccessRequirement())));
         services.AddHostedService<DisciplineDatabaseMigrator>();
-        services.AddHealthChecks().AddDbContextCheck<DisciplineDbContext>("discipline-db");
+        services.AddHealthChecks().AddModuleDatabaseCheck<DisciplineDbContext>("discipline-db");
     }
 
     public void MapEndpoints(IEndpointRouteBuilder endpoints) => endpoints.MapDisciplineEndpoints();

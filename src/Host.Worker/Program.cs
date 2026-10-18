@@ -1,19 +1,17 @@
-using EnglishSchool.BuildingBlocks.Caching;
-using EnglishSchool.BuildingBlocks.Outbox;
 using EnglishSchool.Host.Worker;
 
-var builder = Host.CreateApplicationBuilder(args);
+// Worker modullarning fon ishlarini bajaradi: outbox orqali eventlarni yetkazadi, keyinroq tungi job'lar va Batch API.
+using var host = WorkerHost.CreateBuilder(args).Build();
 
-builder.Services.AddHybridCaching(builder.Configuration);
-
-// Worker modullarning fon ishlarini bajaradi: outbox (3-hafta), keyinroq tungi job'lar, Batch API, embedding.
-// Eventlarni faqat Worker yetkazadi; API ularni outbox'ga yozadi, xolos.
-builder.Services.AddOutboxDispatcher(builder.Configuration);
-
-foreach (var module in ModuleCatalog.All)
+try
 {
-    module.AddServices(builder.Services, builder.Configuration);
+    await host.RunAsync();
+}
+catch (Exception exception) when (exception is not HostAbortedException)
+{
+    var logger = host.Services.GetRequiredService<ILoggerFactory>().CreateLogger("EnglishSchool.Host.Worker");
+    WorkerHostLog.Crashed(logger, exception);
+    return 1;
 }
 
-using var host = builder.Build();
-await host.RunAsync();
+return 0;

@@ -22,6 +22,7 @@ public interface IOutboxStore
 /// <summary>
 /// Navbatdagi xabarlarni <c>FOR UPDATE SKIP LOCKED</c> bilan oladi: bir nechta Worker nusxasi parallel ishlasa ham
 /// bitta xabarni ikkitasi olmaydi. Qulf xabarlar yetkazilib, holati yozilguncha (tranzaksiya oxirigacha) turadi.
+/// Toʻxtash soʻralsa, joriy partiya xabarlar orasida toʻxtaydi: yetkazilganlari saqlanadi, qolganlari navbatga qaytadi.
 /// </summary>
 internal sealed class OutboxStore<TContext>(IServiceScopeFactory scopeFactory) : IOutboxStore
     where TContext : DbContext
@@ -48,20 +49,32 @@ internal sealed class OutboxStore<TContext>(IServiceScopeFactory scopeFactory) :
         var delivered = 0;
         foreach (var message in batch)
         {
+            if (cancellationToken.IsCancellationRequested)
+            {
+                break;
+            }
+
             try
             {
                 await dispatch(message, cancellationToken);
                 message.MarkProcessed(clock.GetUtcNow());
                 delivered++;
             }
-            catch (Exception exception) when (exception is not OperationCanceledException)
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
             {
+                // Toʻxtash shu xabar ustida keldi: u belgilanmaydi va keyin qayta yetkaziladi.
+                break;
+            }
+            catch (Exception exception)
+            {
+                // Consumer'ning oʻz timeout'i (TaskCanceledException) ham oddiy xato: qayta urinish kutish bilan.
                 message.RecordFailure($"{exception.GetType().Name}: {exception.Message}", clock.GetUtcNow());
             }
         }
 
-        await db.SaveChangesAsync(cancellationToken);
-        await transaction.CommitAsync(cancellationToken);
+        // Toʻxtayotgan boʻlsa ham bajarilgan ish yoziladi, aks holda yetkazilgan xabarlar qayta yuborilardi.
+        await db.SaveChangesAsync(CancellationToken.None);
+        await transaction.CommitAsync(CancellationToken.None);
         return delivered;
     }
 

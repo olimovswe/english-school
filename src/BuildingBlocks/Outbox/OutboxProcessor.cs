@@ -24,13 +24,20 @@ public sealed partial class OutboxProcessor(
 
         foreach (var store in stores)
         {
+            if (cancellationToken.IsCancellationRequested)
+            {
+                // Toʻxtash soʻraldi: yangi jadval partiyasi boshlanmaydi.
+                break;
+            }
+
             try
             {
                 delivered += await store.ProcessBatchAsync(
                     DispatchAsync, settings.BatchSize, settings.MaxAttempts, clock, cancellationToken);
             }
-            catch (Exception exception) when (exception is not OperationCanceledException)
+            catch (Exception exception) when (!cancellationToken.IsCancellationRequested)
             {
+                // Bitta jadvaldagi xato (yoki begona OperationCanceledException) dispatcher'ni toʻxtatmaydi.
                 LogStoreFailed(logger, store.Name, exception);
             }
         }
@@ -51,7 +58,7 @@ public sealed partial class OutboxProcessor(
             await using var scope = scopeFactory.CreateAsyncScope();
             await subscription.DispatchAsync(scope.ServiceProvider, integrationEvent, cancellationToken);
         }
-        catch (Exception exception) when (exception is not OperationCanceledException)
+        catch (Exception exception) when (!cancellationToken.IsCancellationRequested)
         {
             if (message.FailedAttempts + 1 >= options.Value.MaxAttempts)
             {

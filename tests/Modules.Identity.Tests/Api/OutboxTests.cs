@@ -95,6 +95,46 @@ public sealed class OutboxTests(IdentityApiFactory factory)
         Assert.Contains("consumer is down", message.LastError, StringComparison.Ordinal);
     }
 
+    [Fact]
+    public async Task A_consumer_timeout_counts_as_a_failure_and_does_not_stop_the_dispatcher()
+    {
+        using var client = factory.CreateClient();
+        var registration = await client.RegisterNewUserAsync();
+        await using var worker = BuildWorker(services => services
+            .AddSingleton(new FailFor(registration.UserId))
+            .AddIntegrationEventConsumer<UserRegistered, TimingOutConsumer>());
+
+        // HttpClient timeout'i ham OperationCanceledException: u partiyani bekor qilib, dispatcher'ni toʻxtatmasligi kerak.
+        await worker.GetRequiredService<OutboxProcessor>().ProcessAsync(CancellationToken.None);
+
+        var (message, _) = Assert.Single(await FindUserRegisteredAsync(registration.UserId));
+        Assert.Equal(((DateTimeOffset?)null, 1), (message.ProcessedAt, message.FailedAttempts));
+        Assert.StartsWith(nameof(TaskCanceledException), message.LastError, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task Stopping_mid_batch_keeps_finished_deliveries_and_leaves_the_rest_queued()
+    {
+        using var client = factory.CreateClient();
+        var first = await client.RegisterNewUserAsync();
+        var second = await client.RegisterNewUserAsync();
+        using var stopping = new CancellationTokenSource();
+        await using var worker = BuildWorker(services => services
+            .AddSingleton(new StopAfter(first.UserId, stopping))
+            .AddIntegrationEventConsumer<UserRegistered, StopRequestingConsumer>());
+        var processor = worker.GetRequiredService<OutboxProcessor>();
+
+        // Birinchi event yetkazilgach toʻxtash signali keladi (SIGTERM kabi): ikkinchisi shu partiyada yetkazilmaydi.
+        await processor.ProcessAsync(stopping.Token);
+
+        Assert.NotNull(Assert.Single(await FindUserRegisteredAsync(first.UserId)).Message.ProcessedAt);
+        var (queued, _) = Assert.Single(await FindUserRegisteredAsync(second.UserId));
+        Assert.Equal(((DateTimeOffset?)null, 0), (queued.ProcessedAt, queued.FailedAttempts));
+
+        await DrainAsync(worker, () => false);
+        Assert.NotNull(Assert.Single(await FindUserRegisteredAsync(second.UserId)).Message.ProcessedAt);
+    }
+
     private ServiceProvider BuildWorker(Action<IServiceCollection> configure, int maxAttempts = 10, TimeProvider? clock = null)
     {
         var configuration = new ConfigurationBuilder()
@@ -170,6 +210,27 @@ public sealed class OutboxTests(IdentityApiFactory factory)
             integrationEvent.UserId == target.UserId
                 ? throw new InvalidOperationException("Analytics consumer is down.")
                 : Task.CompletedTask;
+    }
+
+    private sealed class TimingOutConsumer(FailFor target) : IIntegrationEventConsumer<UserRegistered>
+    {
+        public Task HandleAsync(UserRegistered integrationEvent, CancellationToken cancellationToken) =>
+            integrationEvent.UserId == target.UserId
+                ? throw new TaskCanceledException("The request was canceled due to the configured HttpClient.Timeout of 30 seconds elapsing.")
+                : Task.CompletedTask;
+    }
+
+    private sealed record StopAfter(Guid UserId, CancellationTokenSource Stopping);
+
+    private sealed class StopRequestingConsumer(StopAfter stop) : IIntegrationEventConsumer<UserRegistered>
+    {
+        public async Task HandleAsync(UserRegistered integrationEvent, CancellationToken cancellationToken)
+        {
+            if (integrationEvent.UserId == stop.UserId)
+            {
+                await stop.Stopping.CancelAsync();
+            }
+        }
     }
 
     private sealed class TestClock(DateTimeOffset now) : TimeProvider

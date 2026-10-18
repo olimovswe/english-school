@@ -1,4 +1,5 @@
 using System.Net.Http.Headers;
+using EnglishSchool.BuildingBlocks.Health;
 using EnglishSchool.BuildingBlocks.Modules;
 using EnglishSchool.BuildingBlocks.Outbox;
 using EnglishSchool.Modules.Discipline.Contracts.Events;
@@ -58,7 +59,7 @@ public sealed class SpeechModule : IModule
         services.AddIntegrationEventConsumer<AttemptEvaluated, SynthesizeOnPracticeConsumer>();
 
         services.AddHostedService<SpeechDatabaseMigrator>();
-        services.AddHealthChecks().AddDbContextCheck<SpeechDbContext>("speech-db");
+        services.AddHealthChecks().AddModuleDatabaseCheck<SpeechDbContext>("speech-db");
     }
 
     public void MapEndpoints(IEndpointRouteBuilder endpoints) => endpoints.MapSpeechEndpoints();

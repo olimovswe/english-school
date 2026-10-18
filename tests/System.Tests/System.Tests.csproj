@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <!-- "EnglishSchool.System" nomlar fazosi kod ichida global System'ni yashirib qoʻyardi. -->
+    <RootNamespace>EnglishSchool.SystemTests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="Testcontainers.PostgreSql" />
+    <PackageReference Include="Testcontainers.Redis" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Tizim testlari modullarga faqat HTTP va hostlar orqali tegadi: modullarning ichki tiplari koʻrinmaydi. -->
+    <ProjectReference Include="..\..\src\Host.Api\Host.Api.csproj" />
+    <!-- Ikkala hostda ham public Program bor: Worker alias orqali, Program nomi esa API'niki boʻlib qoladi. -->
+    <ProjectReference Include="..\..\src\Host.Worker\Host.Worker.csproj" Aliases="worker" />
+  </ItemGroup>
+
+</Project>

@@ -1,3 +1,4 @@
+using EnglishSchool.BuildingBlocks.Health;
 using EnglishSchool.BuildingBlocks.Modules;
 using EnglishSchool.BuildingBlocks.Outbox;
 using EnglishSchool.Modules.Discipline.Contracts.Events;
@@ -49,7 +50,7 @@ public sealed class RetentionModule : IModule
         services.AddIntegrationEventConsumer<DailyGatePassed, EnrollOnDayUnlockedConsumer>();
 
         services.AddHostedService<RetentionDatabaseMigrator>();
-        services.AddHealthChecks().AddDbContextCheck<RetentionDbContext>("retention-db");
+        services.AddHealthChecks().AddModuleDatabaseCheck<RetentionDbContext>("retention-db");
     }
 
     public void MapEndpoints(IEndpointRouteBuilder endpoints) => endpoints.MapRetentionEndpoints();

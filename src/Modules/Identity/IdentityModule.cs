@@ -1,4 +1,5 @@
 using System.Text;
+using EnglishSchool.BuildingBlocks.Health;
 using EnglishSchool.BuildingBlocks.Modules;
 using EnglishSchool.BuildingBlocks.Outbox;
 using EnglishSchool.Modules.Identity.Application;
@@ -59,7 +60,7 @@ public sealed class IdentityModule : IModule
         services.AddSingleton<TelegramLoginVerifier>();
         services.AddScoped<AccountService>();
         services.AddHostedService<IdentityDatabaseMigrator>();
-        services.AddHealthChecks().AddDbContextCheck<IdentityDbContext>("identity-db");
+        services.AddHealthChecks().AddModuleDatabaseCheck<IdentityDbContext>("identity-db");
 
         // Authorization (policy, routing'ga bogʻliq) API host'da qoʻshiladi: Worker'da routing yoʻq.
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();

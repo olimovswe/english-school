@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <PackageReference Include="EFCore.NamingConventions" />
-    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
   </ItemGroup>
 

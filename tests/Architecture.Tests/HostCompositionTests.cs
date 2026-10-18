@@ -1,3 +1,4 @@
+using EnglishSchool.BuildingBlocks.Health;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -28,10 +29,12 @@ public sealed class HostCompositionTests
     }
 
     [Fact]
-    public void Every_module_database_is_covered_by_the_health_endpoint()
+    public void Every_module_database_and_its_migrations_are_covered_by_the_readiness_endpoint()
     {
         using var host = ModuleComposition.BuildNonWebHost(withOutboxDispatcher: false);
+        // Tayyorlik (/health/ready) faqat "ready" tegli tekshiruvlarni bajaradi.
         var checks = host.Services.GetRequiredService<IOptions<HealthCheckServiceOptions>>().Value.Registrations
+            .Where(registration => registration.Tags.Contains(HealthCheckTags.Ready))
             .Select(registration => registration.Name)
             .ToHashSet(StringComparer.Ordinal);
 
@@ -41,6 +44,6 @@ public sealed class HostCompositionTests
             .ToList();
 
         Assert.NotEmpty(expected);
-        Assert.All(expected, name => Assert.True(checks.Contains(name), $"{name}: AddDbContextCheck chaqirilmagan, /health bu bazani tekshirmaydi."));
+        Assert.All(expected, name => Assert.True(checks.Contains(name), $"{name}: AddModuleDatabaseCheck chaqirilmagan, /health/ready bu bazani va uning migratsiyalarini tekshirmaydi."));
     }
 }

@@ -1,3 +1,4 @@
+using EnglishSchool.BuildingBlocks.Health;
 using EnglishSchool.BuildingBlocks.Modules;
 using EnglishSchool.Modules.Discipline.Contracts;
 using EnglishSchool.Modules.Curriculum.Application;
@@ -33,7 +34,7 @@ public sealed class CurriculumModule : IModule
 
         services.AddScoped<ICurriculumQueries, CurriculumQueries>();
         services.AddHostedService<CurriculumSeeder>();
-        services.AddHealthChecks().AddDbContextCheck<CurriculumDbContext>("curriculum-db");
+        services.AddHealthChecks().AddModuleDatabaseCheck<CurriculumDbContext>("curriculum-db");
     }
 
     public void MapEndpoints(IEndpointRouteBuilder endpoints)

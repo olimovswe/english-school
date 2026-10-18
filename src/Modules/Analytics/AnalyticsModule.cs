@@ -1,3 +1,4 @@
+using EnglishSchool.BuildingBlocks.Health;
 using EnglishSchool.BuildingBlocks.Modules;
 using EnglishSchool.BuildingBlocks.Outbox;
 using EnglishSchool.Modules.Analytics.Application;
@@ -30,7 +31,7 @@ public sealed class AnalyticsModule : IModule
                 npgsql => npgsql.MigrationsHistoryTable("__ef_migrations_history", AnalyticsDbContext.Schema))
             .UseSnakeCaseNamingConvention());
         services.AddHostedService<AnalyticsDatabaseMigrator>();
-        services.AddHealthChecks().AddDbContextCheck<AnalyticsDbContext>("analytics-db");
+        services.AddHealthChecks().AddModuleDatabaseCheck<AnalyticsDbContext>("analytics-db");
         services.AddScoped<AnalyticsEventUpdater>();
         services.AddScoped<IProgressQueries, ProgressQueries>();
         services.AddIntegrationEventConsumer<AttemptEvaluated, AttemptEvaluatedConsumer>();

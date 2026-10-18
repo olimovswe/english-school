@@ -1,3 +1,4 @@
+using EnglishSchool.BuildingBlocks.Health;
 using EnglishSchool.BuildingBlocks.Modules;
 using EnglishSchool.BuildingBlocks.Outbox;
 using EnglishSchool.Modules.Practice.Application;
@@ -42,7 +43,7 @@ public sealed class PracticeModule : IModule
         services.AddScoped<AttemptService>();
 
         services.AddHostedService<PracticeSeeder>();
-        services.AddHealthChecks().AddDbContextCheck<PracticeDbContext>("practice-db");
+        services.AddHealthChecks().AddModuleDatabaseCheck<PracticeDbContext>("practice-db");
     }
 
     public void MapEndpoints(IEndpointRouteBuilder endpoints) => endpoints.MapPracticeEndpoints();
