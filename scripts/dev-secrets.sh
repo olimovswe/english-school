@@ -20,4 +20,9 @@ for project in src/Host.Api src/Host.Worker; do
   dotnet user-secrets set "ConnectionStrings:Postgres" "$postgres" --project "$project" > /dev/null
 done
 
+# JWT imzo kaliti faqat API'ga kerak. Mavjud kalit saqlanadi: aks holda chiqarilgan tokenlar yaroqsiz boʻlardi.
+if ! dotnet user-secrets list --project src/Host.Api | grep -q '^Identity:Jwt:SigningKey = '; then
+  dotnet user-secrets set "Identity:Jwt:SigningKey" "$(openssl rand -base64 48)" --project src/Host.Api > /dev/null
+fi
+
 echo "user-secrets yangilandi: Host.Api, Host.Worker"

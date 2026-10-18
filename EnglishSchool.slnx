@@ -57,5 +57,6 @@
   <Folder Name="/tests/">
     <Project Path="tests/Architecture.Tests/Architecture.Tests.csproj" />
     <Project Path="tests/Modules.Curriculum.Tests/Modules.Curriculum.Tests.csproj" />
+    <Project Path="tests/Modules.Identity.Tests/Modules.Identity.Tests.csproj" />
   </Folder>
 </Solution>

@@ -13,8 +13,7 @@ namespace EnglishSchool.Architecture.Tests;
 /// </summary>
 public sealed class ModuleBoundaryTests
 {
-    private static readonly string[] Modules =
-        ["Identity", "Curriculum", "Discipline", "Practice", "Retention", "AiGateway", "Speech", "Analytics"];
+    private static readonly string[] Modules = SolutionModules.Names;
 
     public static TheoryData<string> ModuleNames => new(Modules);
 
