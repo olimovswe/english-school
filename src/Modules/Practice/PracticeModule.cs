@@ -1,5 +1,6 @@
 using EnglishSchool.BuildingBlocks.Modules;
 using EnglishSchool.BuildingBlocks.Outbox;
+using EnglishSchool.Modules.Practice.Grading;
 using EnglishSchool.Modules.Practice.Infrastructure;
 using EnglishSchool.Modules.Practice.Seed;
 using Microsoft.AspNetCore.Routing;
@@ -10,8 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 namespace EnglishSchool.Modules.Practice;
 
 /// <summary>
-/// Practice moduli: kun mashqlari (gap-fill, multiple choice, matching), urinishlar va takrorlanuvchi
-/// xatolar taksonomiyasi. Natijalar <c>AttemptEvaluated</c> / <c>ErrorDetected</c> eventlari bilan tarqaladi.
+/// Practice moduli: kun mashqlari (gap-fill, multiple choice, matching), javoblarni 4 tierli baholash va
+/// takrorlanuvchi xatolar taksonomiyasi. Natijalar <c>AttemptEvaluated</c> / <c>ErrorDetected</c> eventlari bilan tarqaladi.
 /// </summary>
 public sealed class PracticeModule : IModule
 {
@@ -28,6 +29,11 @@ public sealed class PracticeModule : IModule
             .UseSnakeCaseNamingConvention()
             .UseOutbox());
         services.AddOutboxStore<PracticeDbContext>();
+
+        services.AddScoped<IGradingTier, RuleBasedTier>();
+        services.AddScoped<IGradingTier, NormalizationTier>();
+        services.AddScoped<IGradingTier, AiGatewayTier>();
+        services.AddScoped<GradingPipeline>();
 
         services.AddHostedService<PracticeSeeder>();
         services.AddHealthChecks().AddDbContextCheck<PracticeDbContext>("practice-db");
