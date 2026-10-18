@@ -62,5 +62,6 @@
     <Project Path="tests/Modules.Identity.Tests/Modules.Identity.Tests.csproj" />
     <Project Path="tests/Modules.Practice.Tests/Modules.Practice.Tests.csproj" />
     <Project Path="tests/Modules.Retention.Tests/Modules.Retention.Tests.csproj" />
+    <Project Path="tests/Modules.Speech.Tests/Modules.Speech.Tests.csproj" />
   </Folder>
 </Solution>
