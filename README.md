@@ -8,7 +8,7 @@ whose boundaries are enforced by tests rather than by convention.
 
 | | |
 |---|---|
-| **Status** | Dev-weeks 3–4 done: transactional outbox and the Practice grading engine. Curriculum, Identity and Practice are implemented; five modules are scaffolded with their contracts. |
+| **Status** | Dev-week 5 done: Retention flashcards with FSRS-5 scheduling. Curriculum, Identity, Practice and Retention are implemented; four modules are scaffolded with their contracts. |
 | **Runtime** | .NET 10 (SDK pinned in [`global.json`](global.json)), ASP.NET Core minimal APIs |
 | **Data** | PostgreSQL 18 + pgvector, EF Core 10 (Npgsql), one schema per module |
 | **Cache** | HybridCache: in-process L1, Valkey 8 (Redis protocol) as shared L2 |
@@ -116,7 +116,8 @@ sequenceDiagram
 3. **Deliver.** Only `Host.Worker` runs the dispatcher (`AddOutboxDispatcher`). It claims batches with
    `FOR UPDATE SKIP LOCKED`, so several Worker instances never deliver the same message twice at once.
 4. **Consume.** A module subscribes with `services.AddIntegrationEventConsumer<TEvent, TConsumer>()`.
-   Events nobody subscribes to are marked processed.
+   Events nobody subscribes to are marked processed. Today Retention consumes `AttemptEvaluated`
+   (Practice) and `DailyGatePassed` (Discipline) to create flashcards.
 5. **Fail.** A failing consumer is retried with exponential backoff (2 s, 4 s, … capped at 5 min). After
    `MaxAttempts` (10) the message is parked, with `last_error` kept for inspection.
 
@@ -137,12 +138,14 @@ public contract.
 │       ├── Curriculum/ + Curriculum.Contracts/
 │       ├── Identity/   + Identity.Contracts/
 │       ├── Practice/   + Practice.Contracts/
-│       └── …           # Discipline, Retention, AiGateway, Speech, Analytics
+│       ├── Retention/  + Retention.Contracts/
+│       └── …           # Discipline, AiGateway, Speech, Analytics
 ├── tests
 │   ├── Architecture.Tests/            # module boundaries, host composition, event and outbox rules
 │   ├── Modules.Curriculum.Tests/      # seed-data integrity
 │   ├── Modules.Identity.Tests/        # API + outbox integration (PostgreSQL) + unit tests
-│   └── Modules.Practice.Tests/        # API integration (PostgreSQL), grading tiers, seed content
+│   ├── Modules.Practice.Tests/        # API integration (PostgreSQL), grading tiers, seed content
+│   └── Modules.Retention.Tests/       # FSRS vs the reference implementation, enrollment + review API (PostgreSQL)
 ├── deploy/postgres/init/              # runs once on a fresh database (CREATE EXTENSION vector)
 ├── scripts/dev-secrets.sh             # copies .env values into .NET user-secrets
 ├── docker-compose.yml                 # PostgreSQL 18 + pgvector, Valkey 8
@@ -159,7 +162,7 @@ public contract.
 | **Curriculum** | Implemented | Course → week → day structure, grammar topics, vocabulary. Versioned, read-only content served from HybridCache. | `ICurriculumQueries` |
 | **Identity** | Implemented | Sign-up and login (email + password, Telegram), JWT access tokens, rotating refresh tokens, lockout. | `UserRegistered` event (via the outbox) |
 | **Practice** | Implemented (core) | Day exercises (gap-fill, multiple choice, matching), 4-tier grading, attempts, repeated-error taxonomy. | `AttemptEvaluated`, `ErrorDetected` events (via the outbox) |
-| Retention | Planned: weeks 4–5 | Flashcards, Leitner then FSRS scheduling. | `CardLapsed` |
+| **Retention** | Implemented (core) | Word and phrase flashcards created automatically from the course, scheduled with FSRS-5. | `CardLapsed` event (via the outbox) |
 | Discipline | Planned: weeks 6–7 | Daily plan, morning review gate (≥ 80 %), session state machine, focus time. | `DailyGatePassed`, `BlockCompleted`, `SessionEnded` |
 | Analytics | Planned: weeks 6–7 | Progress and weekly-report read models. | `IProgressQueries` |
 | AiGateway | Planned: weeks 8–9 | The single path to LLMs: LanguageTool, Claude, evaluation cache, cost budget. | `IAiGateway` |
@@ -185,6 +188,37 @@ If no tier decides, the answer is marked incorrect and the correct answer is sho
 error type. Known error codes (`BE_FORM`, `ART_WRONG`, `PLURAL_FORM`, …; see
 [`ErrorCodes`](src/Modules/Practice/Domain/ErrorCodes.cs)) increment the student's `user_errors`
 counter and are published as `ErrorDetected`.
+
+### Retention: flashcards and FSRS
+
+**Cards create themselves.** When a student practises a day (`AttemptEvaluated`) or unlocks one
+(`DailyGatePassed`), Retention turns that day's vocabulary into flashcards, read through
+`ICurriculumQueries.GetVocabularyAsync`. A card links to the Curriculum vocabulary item and keeps a copy
+of its text. Enrollment is idempotent (unique per student and item), so redelivered events add nothing,
+and new cards come due in course order.
+
+**Scheduling is FSRS-5**, transcribed from the authors' reference implementation
+([py-fsrs](https://github.com/open-spaced-repetition/py-fsrs) 3.1.0, 19 default weights). The tests pin
+its exact outputs.
+
+| Phase | Again (1) | Hard (2) | Good (3) | Easy (4) |
+|---|---|---|---|---|
+| **New** | Learning, 1 min | Learning, 5 min | Learning, 10 min | Review, *n* days |
+| **Learning / Relearning** | stays, 5 min | stays, 10 min | Review, *n* days | Review, more days |
+| **Review** | **lapse** → Relearning, 5 min | Review | Review | Review |
+
+- **Intervals.** Within a day, steps adjust a short-term stability. Across days, the interval is when
+  the chance of remembering drops to `DesiredRetention` (0.9), never above `MaximumIntervalDays` (365).
+  Hard < Good < Easy always holds.
+- **Lapses.** Only forgetting a card that was in Review counts as a lapse. It increments `lapses` and
+  publishes `CardLapsed` through the outbox. Pressing Again on a card that was never learned is not a
+  lapse.
+- **Review log.** Every review is kept in `card_reviews` (rating, elapsed and scheduled days,
+  stability, difficulty, retrievability) for future per-student optimization of the FSRS weights.
+- **Double submits.** A double-submitted review of one card is rejected with 409 (row version), so it
+  can't be counted twice.
+- **Ratings.** These are 1–4; FSRS has no fifth grade. The Leitner-box step was skipped, because FSRS
+  supersedes it.
 
 **Curriculum content.** [`curriculum.v1.json`](src/Modules/Curriculum/Seed/curriculum.v1.json) is
 embedded in the assembly: 56 days over 8 weeks, with 48 lessons, 6 review days and exams on day 28
@@ -276,6 +310,8 @@ Settings come from `appsettings.json`, then `appsettings.{Environment}.json`, th
 | `Identity:Telegram:MaxAuthAge` | `00:10:00` | Older signed widget data is rejected (replay protection). |
 | `Practice:ActiveCourseVersion` | `1` | Keep it equal to `Curriculum:ActiveCourseVersion`. |
 | `Practice:ApplyMigrationsOnStartup` / `SeedOnStartup` | `false` | `true` only in the API's Development config. |
+| `Retention:ApplyMigrationsOnStartup` | `false` | `true` only in the API's Development config. |
+| `Retention:DesiredRetention` / `MaximumIntervalDays` | `0.9` / `365` | FSRS target recall and longest interval. |
 | `Outbox:PollingInterval` / `BatchSize` / `MaxAttempts` | `00:00:02` / `50` / `10` | Worker only. |
 
 ### Production checklist
@@ -300,7 +336,7 @@ list the failing fields under `errors` with camelCase keys.
 | Method | Path | Auth | Responses |
 |---|---|---|---|
 | GET | `/` | – | Service name and loaded modules |
-| GET | `/health` | – | `Healthy` when the `curriculum-db`, `identity-db` and `practice-db` checks pass |
+| GET | `/health` | – | `Healthy` when the `curriculum-db`, `identity-db`, `practice-db` and `retention-db` checks pass |
 | GET | `/api/v1/curriculum/days` | – | 200: summary of all 56 days |
 | GET | `/api/v1/curriculum/days/{n}` | – | 200: day with grammar and vocabulary · 404 |
 | POST | `/api/v1/identity/register` | – | 201 + tokens (`Location: …/identity/me`) · 400 · 409 email taken |
@@ -311,6 +347,8 @@ list the failing fields under `errors` with camelCase keys.
 | GET | `/api/v1/identity/me` | Bearer | 200 profile · 401 |
 | GET | `/api/v1/practice/days/{n}/exercises` | Bearer | 200 exercises, answers hidden (empty for review and exam days) · 404 day not in course |
 | POST | `/api/v1/practice/attempts` | Bearer | 200 verdict, score, tier and feedback · 400 · 404 unknown exercise |
+| GET | `/api/v1/retention/due?limit=` | Bearer | 200 `{ totalDue, cards }`: cards due now, oldest first (limit 1–100, default 20) · 400 |
+| POST | `/api/v1/retention/review` | Bearer | 200 new phase, due time, interval, stability, difficulty, `lapsed` · 400 · 404 not your card · 409 double submit |
 
 <details>
 <summary>Request and response shapes</summary>
@@ -399,6 +437,7 @@ dotnet ef migrations add <Name> --project src/Modules/Identity --startup-project
 dotnet ef migrations has-pending-model-changes --project src/Modules/Curriculum --startup-project src/Host.Api --context CurriculumDbContext
 dotnet ef migrations has-pending-model-changes --project src/Modules/Identity --startup-project src/Host.Api --context IdentityDbContext
 dotnet ef migrations has-pending-model-changes --project src/Modules/Practice --startup-project src/Host.Api --context PracticeDbContext
+dotnet ef migrations has-pending-model-changes --project src/Modules/Retention --startup-project src/Host.Api --context RetentionDbContext
 
 # Production: an idempotent SQL script per module (or `dotnet ef migrations bundle`)
 dotnet ef migrations script --idempotent --project src/Modules/Identity --startup-project src/Host.Api \
@@ -410,6 +449,7 @@ dotnet ef migrations script --idempotent --project src/Modules/Identity --startu
 | `curriculum` | `days`, `grammar_topics`, `vocabulary_items` |
 | `identity` | `users`, `user_credentials`, `refresh_tokens`, `outbox_messages` |
 | `practice` | `exercises`, `exercise_options`, `attempts`, `user_errors`, `outbox_messages` |
+| `retention` | `flashcards` (FSRS state as `state_*` columns), `card_reviews`, `outbox_messages` |
 
 Column and table names are snake_case (EFCore.NamingConventions). `practice.attempts.user_id` has no
 foreign key to `identity.users`, by design: modules stay separate in the database too.
@@ -425,10 +465,11 @@ dotnet test --filter "FullyQualifiedName!~.Tests.Api." # skip DB-backed tests: n
 
 | Project | What it covers |
 |---|---|
-| `Architecture.Tests` | Module-boundary rules and host composition (every module's services resolve in the Worker with build-time validation; only the Worker runs the dispatcher). Event conventions and an outbox round trip for every contract event; outbox wiring for every module that raises events. |
+| `Architecture.Tests` | Module-boundary rules and host composition (every module's services resolve in the Worker with build-time validation; only the Worker runs the dispatcher). Event conventions and an outbox round trip for every contract event; outbox wiring for every module that raises events; every event consumer is internal and registered for the Worker. |
 | `Modules.Curriculum.Tests` | Seed integrity: 56-day calendar, review and exam days, vocabulary totals, unique words, Uzbek `ʻ` and English `'` apostrophes, entity mapping. |
 | `Modules.Identity.Tests` | **Api/**: the real API host via `WebApplicationFactory`, against PostgreSQL in a throwaway container. Covers sign-up, validation, login, lockout (including parallel guesses), forged tokens, refresh rotation, reuse detection, concurrent refresh, logout and Telegram, plus the outbox end to end: `UserRegistered` written atomically, delivered by a Worker-style dispatcher, and retried with backoff then parked. **Domain/** and **Security/**: lockout and rotation rules and the Telegram signature check, with no I/O. |
 | `Modules.Practice.Tests` | **Api/**: exercises (order, hidden answers, 404, auth), grading at each tier, per-student error counting, attempts and events in one transaction, rejected submissions. **Grading/**: each tier and the pipeline, including the AiGateway handoff via a fake `IAiGateway`. **Seed/**: every authored answer is graded through the real pipeline, and matching pairs must equal the curriculum's words. |
+| `Modules.Retention.Tests` | **Scheduling/**: FSRS-5 pinned to values computed by the reference implementation, covering each rating on a new card, a graduating chain, lapse and relearning, learning steps, early reviews, rounding and caps. **Domain/**: `CardLapsed` only on a lapse. **Api/**: a Practice attempt reaches Retention through the outbox and becomes due cards; enrollment by `DailyGatePassed` and redelivery; due lists (own cards, order, limit); reviews, lapse events, validation and the row-version conflict. |
 
 Integration tests use the same `pgvector/pgvector:pg18` image as Compose. The test host runs in the
 `Testing` environment, so your Development settings and user-secrets are never loaded.
@@ -467,6 +508,9 @@ export TESTCONTAINERS_RYUK_DISABLED=true
 5. If the module raises events, declare them as sealed records in `X.Contracts/Events` and wire the
    outbox (see [Integration events and the outbox](#integration-events-and-the-outbox)). The architecture
    tests fail until all three outbox pieces are in place.
+6. If it consumes events, implement `IIntegrationEventConsumer<T>` as an `internal` class and register it
+   with `AddIntegrationEventConsumer<TEvent, TConsumer>()`. Consumers run in the Worker, at least once, so
+   make them idempotent.
 
 ---
 
