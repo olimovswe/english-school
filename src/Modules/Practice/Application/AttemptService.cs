@@ -57,7 +57,7 @@ internal sealed class AttemptService(PracticeDbContext db, GradingPipeline gradi
             .ToList();
 
         var attempt = Attempt.Record(
-            userId, exercise.Id, DescribeAnswer(exercise, request), outcome.Verdict, outcome.Score, outcome.Tier,
+            userId, exercise.Id, exercise.DayNumber, DescribeAnswer(exercise, request), outcome.Verdict, outcome.Score, outcome.Tier,
             request.TimeTakenMs ?? 0, detected, now);
         db.Attempts.Add(attempt);
         await TrackErrorsAsync(userId, attempt.Id, detected, now, cancellationToken);

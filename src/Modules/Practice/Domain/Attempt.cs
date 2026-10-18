@@ -48,6 +48,7 @@ internal sealed class Attempt : IntegrationEventSource
     public static Attempt Record(
         Guid userId,
         Guid exerciseId,
+        int dayNumber,
         string answer,
         Verdict verdict,
         decimal score,
@@ -69,7 +70,7 @@ internal sealed class Attempt : IntegrationEventSource
             DetectedErrorCodes = [.. errors.Select(e => e.ErrorCode)],
         };
 
-        attempt.Raise(new AttemptEvaluated(userId, attempt.Id, exerciseId, verdict.ToString(), score, evaluationTier));
+        attempt.Raise(new AttemptEvaluated(userId, attempt.Id, exerciseId, dayNumber, verdict.ToString(), score, evaluationTier));
         foreach (var error in errors)
         {
             attempt.Raise(new ErrorDetected(userId, attempt.Id, error.ErrorCode, error.Correction));

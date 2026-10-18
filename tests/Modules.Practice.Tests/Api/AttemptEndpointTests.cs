@@ -139,7 +139,9 @@ public sealed class AttemptEndpointTests(PracticeApiFactory factory)
             .Select(m => (ErrorDetected)OutboxSerializer.Deserialize(m.Content, typeof(ErrorDetected)))
             .Single(e => e.AttemptId == result.AttemptId);
 
-        Assert.Equal((student.UserId, exercise.Id, "Incorrect", 0), (evaluated.UserId, evaluated.ExerciseId, evaluated.Verdict, evaluated.EvaluationTier));
+        Assert.Equal(
+            (student.UserId, exercise.Id, 6, "Incorrect", 0),
+            (evaluated.UserId, evaluated.ExerciseId, evaluated.DayNumber, evaluated.Verdict, evaluated.EvaluationTier));
         Assert.Equal(("DEMONSTRATIVE", "These"), (detected.ErrorCode, detected.Correction));
     }
 
