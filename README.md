@@ -8,7 +8,7 @@ whose boundaries are enforced by tests rather than by convention.
 
 | | |
 |---|---|
-| **Status** | Dev-week 5 done: Retention flashcards with FSRS-5 scheduling. Curriculum, Identity, Practice and Retention are implemented; four modules are scaffolded with their contracts. |
+| **Status** | Dev-week 10 done: Speech (reference pronunciation clips and pronunciation scoring). Curriculum, Identity, Practice, Retention, Discipline, Analytics and Speech are implemented; AiGateway is scaffolded with its contracts. |
 | **Runtime** | .NET 10 (SDK pinned in [`global.json`](global.json)), ASP.NET Core minimal APIs |
 | **Data** | PostgreSQL 18 + pgvector, EF Core 10 (Npgsql), one schema per module |
 | **Cache** | HybridCache: in-process L1, Valkey 8 (Redis protocol) as shared L2 |
@@ -82,6 +82,8 @@ will run the outbox dispatcher, nightly jobs and batch AI work; it has no jobs y
    round-trips through the outbox serializer.
 8. A module whose entities raise events maps an outbox table, attaches the outbox interceptor and
    registers its outbox store. Only the Worker runs the dispatcher.
+9. Every module database has a `/health` check (`{module}-db`).
+10. Committed `appsettings*.json` files hold no secrets: keys, tokens and passwords stay empty there.
 
 **Data ownership.** Each module owns one PostgreSQL schema (`curriculum`, `identity`, …) with its own
 `__ef_migrations_history` table. No module reads another module's tables. Cross-module reads go
@@ -117,7 +119,8 @@ sequenceDiagram
    `FOR UPDATE SKIP LOCKED`, so several Worker instances never deliver the same message twice at once.
 4. **Consume.** A module subscribes with `services.AddIntegrationEventConsumer<TEvent, TConsumer>()`.
    Events nobody subscribes to are marked processed. Today Retention consumes `AttemptEvaluated`
-   (Practice) and `DailyGatePassed` (Discipline) to create flashcards.
+   (Practice) and `DailyGatePassed` (Discipline) to create flashcards, and Speech consumes the same two
+   to synthesize the day's pronunciation clips.
 5. **Fail.** A failing consumer is retried with exponential backoff (2 s, 4 s, … capped at 5 min). After
    `MaxAttempts` (10) the message is parked, with `last_error` kept for inspection.
 
@@ -139,13 +142,15 @@ public contract.
 │       ├── Identity/   + Identity.Contracts/
 │       ├── Practice/   + Practice.Contracts/
 │       ├── Retention/  + Retention.Contracts/
-│       └── …           # Discipline, AiGateway, Speech, Analytics
+│       ├── Speech/     + Speech.Contracts/
+│       └── …           # Discipline, AiGateway, Analytics
 ├── tests
 │   ├── Architecture.Tests/            # module boundaries, host composition, event and outbox rules
 │   ├── Modules.Curriculum.Tests/      # seed-data integrity
 │   ├── Modules.Identity.Tests/        # API + outbox integration (PostgreSQL) + unit tests
 │   ├── Modules.Practice.Tests/        # API integration (PostgreSQL), grading tiers, seed content
-│   └── Modules.Retention.Tests/       # FSRS vs the reference implementation, enrollment + review API (PostgreSQL)
+│   ├── Modules.Retention.Tests/       # FSRS vs the reference implementation, enrollment + review API (PostgreSQL)
+│   └── Modules.Speech.Tests/          # scoring engine, provider client, assessment + audio API (PostgreSQL)
 ├── deploy/postgres/init/              # runs once on a fresh database (CREATE EXTENSION vector)
 ├── scripts/dev-secrets.sh             # copies .env values into .NET user-secrets
 ├── docker-compose.yml                 # PostgreSQL 18 + pgvector, Valkey 8
@@ -166,7 +171,7 @@ public contract.
 | Discipline | Planned: weeks 6–7 | Daily plan, morning review gate (≥ 80 %), session state machine, focus time. | `DailyGatePassed`, `BlockCompleted`, `SessionEnded` |
 | Analytics | Planned: weeks 6–7 | Progress and weekly-report read models. | `IProgressQueries` |
 | AiGateway | Planned: weeks 8–9 | The single path to LLMs: LanguageTool, Claude, evaluation cache, cost budget. | `IAiGateway` |
-| Speech | Planned: week 10 | Text-to-speech files, Whisper transcription, pronunciation scoring. | `TranscriptReady` |
+| **Speech** | Implemented (core) | Reference pronunciation clips (TTS) for every course word and phrase; pronunciation scoring of student recordings (Whisper + word alignment). | `TranscriptReady` event (via the outbox) |
 
 ### Practice: exercises and grading
 
@@ -227,6 +232,66 @@ code only (`EVU:14`, `DEST:36`); no book text is stored. **Content is immutable 
 version is seeded anywhere, a change means a new `curriculum.vN.json` and a new `ActiveCourseVersion`,
 because the seeder skips versions that already exist.
 
+### Speech: pronunciation clips and scoring
+
+Both directions use one **OpenAI Audio API** client: `whisper-1` for transcription (`verbose_json` with
+word timestamps, language fixed to `en`) and `tts-1` for synthesis (voice `alloy`, speed 0.9, MP3). Any
+server that offers the same API works through `Speech:Provider:BaseUrl`. While `Speech:Provider:ApiKey`
+is empty, scoring returns 503 and no clips are made.
+
+**Clips.** When a student unlocks a day (`DailyGatePassed`) or practises it (`AttemptEvaluated`), the
+Worker synthesizes that day's words and phrases. Each text is synthesized once for everybody: the
+cache key is a SHA-256 of the text and the voice settings, so a redelivered event or a second student
+adds nothing, and a new voice produces new clips. `GET /speech/days/{n}/audio` lists the day's
+vocabulary in course order with clip IDs, which stay `null` until the Worker has made the clip.
+
+**Scoring a recording** (`POST /speech/assess`, multipart `audio` + `targetText`):
+
+1. The format comes from the file's first bytes (WebM, MP4/M4A, WAV, MP3, OGG, FLAC), never from the
+   client's `Content-Type`. There is also a size limit and a per-student limit per 24 hours.
+2. Whisper transcribes the recording. If the provider fails, nothing is stored.
+3. Target text and transcript are normalized: case, punctuation, apostrophe variants, contractions
+   (`I'm` = `I am`), numbers (`25` = `twenty-five`), accents (`café`) and a few spelling variants
+   (`okay` = `ok`).
+4. The two word sequences are aligned by a weighted Levenshtein alignment. Substituting a word costs
+   1 − similarity; a missing or extra word costs 1. **Similarity** is the mean of the spelling
+   similarity and the similarity of a *phonetic key*. The key follows the course's day-1 reading rules
+   (`th` → θ, `sh` → ʃ, `ch`/`tch` → ʧ, `ph` → f, `ck` → k, `qu` → kw, soft `c`, magic `e`) and collapses
+   vowels, so `think`/`sink` differ by one sound while `their`/`there` share a key.
+5. The recording is stored, and the assessment plus `TranscriptReady` are saved in one transaction.
+   If that save fails, the stored file is deleted.
+
+| Word status | Rule | Credit |
+|---|---|---|
+| **Correct** | same word after normalization | 1 |
+| **Close** | similarity ≥ 0.75, or the same phonetic key (homophone) | similarity |
+| **Mispronounced** | similarity ≥ 0.45: a different but similar word was heard | similarity × 0.5 |
+| **Missing** | not heard, or replaced by an unrelated word | 0 |
+| **Extra** | heard but not in the text | counts as ½ word in the denominator |
+
+- **Accuracy** = credit ÷ (target words + ½ × extra words). **Completeness** = share of target words
+  that weren't missing.
+- **Fluency** (from three target words up, when word timestamps exist) = 100 × (1 − pause time ÷ speech
+  time) × min(1, words per minute ÷ 70). A pause is a gap of at least 0.5 s.
+- **Overall** = 0.8 × accuracy + 0.2 × fluency, or just accuracy when fluency isn't measured.
+- **Verdict:** `Correct` needs an overall score of at least 90 *and* every word Correct or Close.
+  `PartiallyCorrect` needs at least 60; anything lower is `Incorrect`.
+- **Feedback codes** with Uzbek hints cover typical errors of Uzbek speakers: `TH_SOUND` (think → sink,
+  three → tree), `W_V_SOUND` (wine ↔ vine), `FINAL_CONSONANT` (cats → cat), plus `WRONG_WORD`,
+  `MISSING_WORD` and `EXTRA_WORD`.
+
+**Limits of this approach.** The score is built from what Whisper *heard*, not from phonemes. Vowel
+quality (`ship`/`sheep`) and homophones can't be told apart, and Whisper's language model sometimes
+repairs a weak pronunciation into the right word. Phoneme-level scoring (forced alignment, goodness of
+pronunciation) would need a different provider.
+
+**Storage.** Audio goes through `IAudioStorage`, with S3-style keys: `tts/{cacheKey}.mp3` and
+`recordings/{user}/{id}.{ext}`. Today that is a local folder (`Speech:StoragePath`). In Development both
+hosts point to `.data/audio` at the repository root, so the API serves the clips the Worker writes.
+Several API or Worker instances need a shared volume, or an S3 implementation of the interface.
+**Recordings are personal data:** only their owner can fetch them, and no retention period is enforced
+yet.
+
 ---
 
 ## Getting started
@@ -260,7 +325,8 @@ scripts/dev-secrets.sh
 The script copies the connection string from `.env` into .NET user-secrets for both hosts and creates a
 JWT signing key for `Host.Api` if one doesn't exist yet. Passwords and keys stay out of the repository:
 `appsettings.Development.json` holds a connection string *without* a password. Re-running the script is
-safe; an existing JWT key is kept, so issued tokens stay valid.
+safe; an existing JWT key is kept, so issued tokens stay valid. If `.env` sets `SPEECH_API_KEY` (optional),
+the script also stores it as the speech provider key for both hosts.
 
 ### 3. Run
 
@@ -312,13 +378,22 @@ Settings come from `appsettings.json`, then `appsettings.{Environment}.json`, th
 | `Practice:ApplyMigrationsOnStartup` / `SeedOnStartup` | `false` | `true` only in the API's Development config. |
 | `Retention:ApplyMigrationsOnStartup` | `false` | `true` only in the API's Development config. |
 | `Retention:DesiredRetention` / `MaximumIntervalDays` | `0.9` / `365` | FSRS target recall and longest interval. |
+| `Speech:ApplyMigrationsOnStartup` | `false` | `true` only in the API's Development config. |
+| `Speech:Provider:ApiKey` | *(empty)* | **Secret, both hosts.** OpenAI (or compatible server) key. While empty, `/speech/assess` returns 503 and no clips are made. Locally: `SPEECH_API_KEY` in `.env`, then `scripts/dev-secrets.sh`. |
+| `Speech:Provider:BaseUrl` | `https://api.openai.com/v1/` | Any server with the OpenAI Audio API. |
+| `Speech:Provider:TranscriptionModel` / `SynthesisModel` | `whisper-1` / `tts-1` | Transcription needs `verbose_json` word timestamps. |
+| `Speech:Provider:Voice` / `Speed` / `Timeout` | `alloy` / `0.9` / `00:00:30` | Voice settings are part of the clip cache key. |
+| `Speech:StoragePath` | `App_Data/audio` | Relative to each host's content root, or absolute. Development uses `../../.data/audio` for both hosts. |
+| `Speech:MaxRecordingBytes` / `DailyAssessmentLimit` | `5242880` / `100` | Per recording and per student per 24 hours; both bound the Whisper cost. |
 | `Outbox:PollingInterval` / `BatchSize` / `MaxAttempts` | `00:00:02` / `50` / `10` | Worker only. |
 
 ### Production checklist
 
 - Supply secrets through environment variables or a secret store, never through appsettings files:
-  `ConnectionStrings__Postgres`, `ConnectionStrings__Redis`, `Identity__Jwt__SigningKey`, and
-  `Identity__Telegram__BotToken` if Telegram login is enabled.
+  `ConnectionStrings__Postgres`, `ConnectionStrings__Redis`, `Identity__Jwt__SigningKey`,
+  `Identity__Telegram__BotToken` if Telegram login is enabled, and `Speech__Provider__ApiKey` (both
+  hosts) if speech is enabled.
+- Point `Speech__StoragePath` at a persistent volume that the API and the Worker share.
 - Leave the `ApplyMigrationsOnStartup` and `SeedOnStartup` flags `false`, and run migrations as a
   separate deployment step (see [migrations](#database-and-migrations)).
 - The runtime image needs **tzdata**: time zones are validated at startup and on sign-up. The
@@ -336,7 +411,7 @@ list the failing fields under `errors` with camelCase keys.
 | Method | Path | Auth | Responses |
 |---|---|---|---|
 | GET | `/` | – | Service name and loaded modules |
-| GET | `/health` | – | `Healthy` when the `curriculum-db`, `identity-db`, `practice-db` and `retention-db` checks pass |
+| GET | `/health` | – | `Healthy` when every module's `{module}-db` check passes |
 | GET | `/api/v1/curriculum/days` | – | 200: summary of all 56 days |
 | GET | `/api/v1/curriculum/days/{n}` | – | 200: day with grammar and vocabulary · 404 |
 | POST | `/api/v1/identity/register` | – | 201 + tokens (`Location: …/identity/me`) · 400 · 409 email taken |
@@ -349,6 +424,9 @@ list the failing fields under `errors` with camelCase keys.
 | POST | `/api/v1/practice/attempts` | Bearer | 200 verdict, score, tier and feedback · 400 · 404 unknown exercise |
 | GET | `/api/v1/retention/due?limit=` | Bearer | 200 `{ totalDue, cards }`: cards due now, oldest first (limit 1–100, default 20) · 400 |
 | POST | `/api/v1/retention/review` | Bearer | 200 new phase, due time, interval, stability, difficulty, `lapsed` · 400 · 404 not your card · 409 double submit |
+| POST | `/api/v1/speech/assess` | Bearer | multipart `audio` + `targetText` → 200 scores and word-by-word result · 400 · 429 daily limit · 503 provider off or failing |
+| GET | `/api/v1/speech/audio/{id}` | Bearer | 200 audio stream (ETag, 304, ranges): a shared clip, or your own recording · 404 |
+| GET | `/api/v1/speech/days/{n}/audio` | Bearer | 200 the day's words and phrases with clip IDs (`null` until made) · 404 day not in course |
 
 <details>
 <summary>Request and response shapes</summary>
@@ -381,6 +459,15 @@ list the failing fields under `errors` with camelCase keys.
 // Attempt result
 { "attemptId": "…", "verdict": "Incorrect", "score": 0, "evaluationTier": 0,
   "feedback": [{ "errorCode": "BE_FORM", "correction": "am", "explanation": "I bilan faqat am ishlatiladi: I am a student." }] }
+
+// POST /speech/assess  (curl -F audio=@recording.webm -F "targetText=I think it's three o'clock.")
+{ "assessmentId": "…", "recordingId": "…", "referenceAudioId": null,
+  "targetText": "I think it's three o'clock.", "transcript": "I sink it is tree o'clock.",
+  "overallScore": 82.7, "accuracyScore": 78.4, "completenessScore": 100, "fluencyScore": 100, "verdict": "PartiallyCorrect",
+  "fluency": { "speechDurationMs": 1900, "wordsPerMinute": 189.5, "pauseCount": 0, "longestPauseMs": 0 },
+  "words": [{ "expected": "think", "heard": "sink", "similarity": 0.675, "status": "Mispronounced", "feedbackCode": "TH_SOUND",
+              "hint": "th tovushi: til uchini yuqori tishlar orasiga qoʻyib, havoni chiqaring (think, this). Bu s, z, t yoki d emas." }, …],
+  "createdAt": "…" }
 ```
 
 </details>
@@ -438,6 +525,7 @@ dotnet ef migrations has-pending-model-changes --project src/Modules/Curriculum 
 dotnet ef migrations has-pending-model-changes --project src/Modules/Identity --startup-project src/Host.Api --context IdentityDbContext
 dotnet ef migrations has-pending-model-changes --project src/Modules/Practice --startup-project src/Host.Api --context PracticeDbContext
 dotnet ef migrations has-pending-model-changes --project src/Modules/Retention --startup-project src/Host.Api --context RetentionDbContext
+dotnet ef migrations has-pending-model-changes --project src/Modules/Speech --startup-project src/Host.Api --context SpeechDbContext
 
 # Production: an idempotent SQL script per module (or `dotnet ef migrations bundle`)
 dotnet ef migrations script --idempotent --project src/Modules/Identity --startup-project src/Host.Api \
@@ -450,6 +538,7 @@ dotnet ef migrations script --idempotent --project src/Modules/Identity --startu
 | `identity` | `users`, `user_credentials`, `refresh_tokens`, `outbox_messages` |
 | `practice` | `exercises`, `exercise_options`, `attempts`, `user_errors`, `outbox_messages` |
 | `retention` | `flashcards` (FSRS state as `state_*` columns), `card_reviews`, `outbox_messages` |
+| `speech` | `audio_artifacts` (metadata and storage key; files live in audio storage), `pronunciation_assessments` (word alignment as `words` jsonb), `outbox_messages` |
 
 Column and table names are snake_case (EFCore.NamingConventions). `practice.attempts.user_id` has no
 foreign key to `identity.users`, by design: modules stay separate in the database too.
@@ -465,10 +554,11 @@ dotnet test --filter "FullyQualifiedName!~.Tests.Api." # skip DB-backed tests: n
 
 | Project | What it covers |
 |---|---|
-| `Architecture.Tests` | Module-boundary rules and host composition (every module's services resolve in the Worker with build-time validation; only the Worker runs the dispatcher). Event conventions and an outbox round trip for every contract event; outbox wiring for every module that raises events; every event consumer is internal and registered for the Worker. |
+| `Architecture.Tests` | Module-boundary rules and host composition (every module's services resolve in the Worker with build-time validation; only the Worker runs the dispatcher; every module database has a health check). Event conventions and an outbox round trip for every contract event; outbox wiring for every module that raises events; every event consumer is internal and registered for the Worker. No secrets in committed settings files. |
 | `Modules.Curriculum.Tests` | Seed integrity: 56-day calendar, review and exam days, vocabulary totals, unique words, Uzbek `ʻ` and English `'` apostrophes, entity mapping. |
 | `Modules.Identity.Tests` | **Api/**: the real API host via `WebApplicationFactory`, against PostgreSQL in a throwaway container. Covers sign-up, validation, login, lockout (including parallel guesses), forged tokens, refresh rotation, reuse detection, concurrent refresh, logout and Telegram, plus the outbox end to end: `UserRegistered` written atomically, delivered by a Worker-style dispatcher, and retried with backoff then parked. **Domain/** and **Security/**: lockout and rotation rules and the Telegram signature check, with no I/O. |
 | `Modules.Practice.Tests` | **Api/**: exercises (order, hidden answers, 404, auth), grading at each tier, per-student error counting, attempts and events in one transaction, rejected submissions. **Grading/**: each tier and the pipeline, including the AiGateway handoff via a fake `IAiGateway`. **Seed/**: every authored answer is graded through the real pipeline, and matching pairs must equal the curriculum's words. |
+| `Modules.Speech.Tests` | **Scoring/**: exact, equivalent, partly wrong (th errors, missing and extra words), completely wrong and silent transcripts; homophones; feedback codes; the verdict rule; fluency from pauses and rate; phonetic keys, normalization, number words, Levenshtein. **Domain/**: format detection from magic bytes, `TranscriptReady`, access rules. **Providers/**: the OpenAI client against a fake HTTP handler (multipart fields, TTS body, key, errors, timeout). **Storage/**: local disk and path traversal. **Api/**: scoring end to end with the outbox row, WebM upload with reference clip, validation, provider failure stores nothing, daily limit, provider off, one clip per text, day clip list, private recordings, ETag and range requests. The provider is a fake handler and storage is in memory. |
 | `Modules.Retention.Tests` | **Scheduling/**: FSRS-5 pinned to values computed by the reference implementation, covering each rating on a new card, a graduating chain, lapse and relearning, learning steps, early reviews, rounding and caps. **Domain/**: `CardLapsed` only on a lapse. **Api/**: a Practice attempt reaches Retention through the outbox and becomes due cards; enrollment by `DailyGatePassed` and redelivery; due lists (own cards, order, limit); reviews, lapse events, validation and the row-version conflict. |
 
 Integration tests use the same `pgvector/pgvector:pg18` image as Compose. The test host runs in the
@@ -523,4 +613,6 @@ export TESTCONTAINERS_RYUK_DISABLED=true
 | `password authentication failed for user "english_school"` | user-secrets and `.env` disagree: re-run the script. If the volume was created with an older password, PostgreSQL keeps that one; `docker compose down -v` recreates the database but **deletes all local data**. |
 | First start logs `Failed executing DbCommand … __ef_migrations_history` | Harmless: EF checks for the history table before creating it on a fresh database. |
 | Integration tests fail with `DockerContainerNotFoundException` (Ryuk) | Podman: set the two environment variables in [Testing](#testing). |
+| `/speech/assess` returns 503 `Talaffuzni baholash hozircha yoqilmagan.` | No provider key. Set `SPEECH_API_KEY` in `.env` and re-run `scripts/dev-secrets.sh`, or set `Speech__Provider__ApiKey`. |
+| `audioId` stays `null` in `/speech/days/{n}/audio` | Clips are made by the Worker when the day is unlocked or practised. Start `src/Host.Worker` with the provider key, then practise or unlock the day. |
 | Rows pile up in `*.outbox_messages` with `processed_at` empty | The Worker isn't running (only it dispatches events). Start `src/Host.Worker`. Rows with `failed_attempts` at the limit are parked; read `last_error`. |

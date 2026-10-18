@@ -25,4 +25,11 @@ if ! dotnet user-secrets list --project src/Host.Api | grep -q '^Identity:Jwt:Si
   dotnet user-secrets set "Identity:Jwt:SigningKey" "$(openssl rand -base64 48)" --project src/Host.Api > /dev/null
 fi
 
+# Nutq provayderi kaliti ixtiyoriy. Ikkala host'ga ham kerak: API yozuvni baholaydi, Worker kliplarni sintez qiladi.
+if [[ -n "${SPEECH_API_KEY:-}" ]]; then
+  for project in src/Host.Api src/Host.Worker; do
+    dotnet user-secrets set "Speech:Provider:ApiKey" "$SPEECH_API_KEY" --project "$project" > /dev/null
+  done
+fi
+
 echo "user-secrets yangilandi: Host.Api, Host.Worker"
