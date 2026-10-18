@@ -14,8 +14,11 @@ public sealed class ApiFactory(SystemFixture system) : WebApplicationFactory<Pro
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.UseEnvironment("Testing");
-        builder.UseSetting("ConnectionStrings:Postgres", system.PostgresConnectionString);
-        builder.UseSetting("ConnectionStrings:Redis", system.ValkeyConnectionString);
+        foreach (var (key, value) in system.SharedSettings)
+        {
+            builder.UseSetting(key, value);
+        }
+
         builder.UseSetting("Identity:Jwt:SigningKey", system.SigningKey);
         foreach (var module in MigratedModules)
         {

@@ -11,9 +11,9 @@ using WorkerHost = worker::EnglishSchool.Host.Worker.WorkerHost;
 namespace EnglishSchool.SystemTests.TestSupport;
 
 /// <summary>
-/// Butun tizim uchun bitta muhit: PostgreSQL (pgvector) va Valkey konteynerlari hamda barcha modullari migratsiya va
-/// seed qilingan API host. Worker kerak boʻlgan test uni <see cref="CreateWorker"/> bilan oʻzi ishga tushiradi.
-/// Testlar bir-biridan unikal foydalanuvchilar bilan ajraladi.
+/// Butun tizim uchun bitta muhit: PostgreSQL (pgvector) va Valkey konteynerlari, nutq provayderi stub'i, ikkala host
+/// boʻlishadigan audio papkasi hamda barcha modullari migratsiya va seed qilingan API host. Worker kerak boʻlgan test
+/// uni <see cref="CreateWorker"/> bilan oʻzi ishga tushiradi. Testlar bir-biridan unikal foydalanuvchilar bilan ajraladi.
 /// </summary>
 public sealed class SystemFixture : IAsyncLifetime
 {
@@ -26,6 +26,11 @@ public sealed class SystemFixture : IAsyncLifetime
 
     public string ValkeyConnectionString => _valkey.GetConnectionString();
 
+    public SpeechProviderStub Speech { get; private set; } = null!;
+
+    /// <summary>Lokal audio ombori: API yozuvni saqlaydi, Worker kliplarni yozadi, API ularni beradi.</summary>
+    public string AudioStoragePath { get; } = Directory.CreateTempSubdirectory("english-school-audio-").FullName;
+
     /// <summary>Bitta kalit: WithWebHostBuilder bilan yasalgan API hostlari ham shu tokenlarni qabul qiladi.</summary>
     public string SigningKey { get; } = Convert.ToBase64String(RandomNumberGenerator.GetBytes(48));
 
@@ -34,6 +39,7 @@ public sealed class SystemFixture : IAsyncLifetime
     public async Task InitializeAsync()
     {
         await Task.WhenAll(_postgres.StartAsync(), _valkey.StartAsync());
+        Speech = await SpeechProviderStub.StartAsync();
 
         // Host birinchi murojaatda ishga tushadi va barcha modullarni migratsiya hamda seed qiladi.
         Api = new ApiFactory(this);
@@ -43,17 +49,27 @@ public sealed class SystemFixture : IAsyncLifetime
     public async Task DisposeAsync()
     {
         await Api.DisposeAsync();
+        await Speech.DisposeAsync();
         await _valkey.DisposeAsync();
         await _postgres.DisposeAsync();
+        Directory.Delete(AudioStoragePath, recursive: true);
     }
+
+    /// <summary>Ikkala hostga bir xil: ulanishlar va nutq provayderi.</summary>
+    public IReadOnlyDictionary<string, string?> SharedSettings => new Dictionary<string, string?>
+    {
+        ["ConnectionStrings:Postgres"] = PostgresConnectionString,
+        ["ConnectionStrings:Redis"] = ValkeyConnectionString,
+        ["Speech:Provider:BaseUrl"] = Speech.BaseUrl.AbsoluteUri,
+        ["Speech:Provider:ApiKey"] = SpeechProviderStub.ApiKey,
+        ["Speech:StoragePath"] = AudioStoragePath,
+    };
 
     /// <summary>Productiondagi Worker yigʻishi (<see cref="WorkerHost"/>), shu konteynerlarga ulangan.</summary>
     public HostApplicationBuilder CreateWorker(IReadOnlyDictionary<string, string?>? overrides = null)
     {
-        var settings = new Dictionary<string, string?>
+        var settings = new Dictionary<string, string?>(SharedSettings)
         {
-            ["ConnectionStrings:Postgres"] = PostgresConnectionString,
-            ["ConnectionStrings:Redis"] = ValkeyConnectionString,
             ["Outbox:PollingInterval"] = "00:00:00.100",
             ["Outbox:BatchSize"] = "1000",
         };
