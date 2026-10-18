@@ -1,11 +1,16 @@
+using EnglishSchool.BuildingBlocks.Abstractions.Events;
+using EnglishSchool.Modules.Speech.Contracts;
+using EnglishSchool.Modules.Speech.Contracts.Events;
+
 namespace EnglishSchool.Modules.Speech.Domain;
 
 /// <summary>
 /// Oʻquvchi yozuvining bitta talaffuz bahosi: nimani aytishi kerak edi (<see cref="TargetText"/>),
 /// Whisper nimani eshitdi (<see cref="Transcript"/>) va bu ikkisi soʻzma-soʻz qanchalik mos.
-/// Yozuvning oʻzi <see cref="RecordingId"/> boʻyicha audio omborida qoladi.
+/// Yozuvning oʻzi <see cref="RecordingId"/> boʻyicha audio omborida qoladi. Transkript <see cref="TranscriptReady"/>
+/// bilan boshqa modullarga tarqaladi (baho bilan bitta tranzaksiyada outbox'ga).
 /// </summary>
-internal sealed class PronunciationAssessment
+internal sealed class PronunciationAssessment : IntegrationEventSource
 {
     private PronunciationAssessment()
     {
@@ -62,7 +67,7 @@ internal sealed class PronunciationAssessment
             throw new ArgumentException("Baho faqat shu oʻquvchining oʻz yozuviga beriladi.", nameof(recording));
         }
 
-        return new PronunciationAssessment
+        var assessment = new PronunciationAssessment
         {
             UserId = userId,
             RecordingId = recording.Id,
@@ -81,5 +86,8 @@ internal sealed class PronunciationAssessment
             Words = [.. score.Words],
             CreatedAt = now,
         };
+
+        assessment.Raise(new TranscriptReady(userId, assessment.Id, SpeechPurposes.Pronunciation, transcript));
+        return assessment;
     }
 }

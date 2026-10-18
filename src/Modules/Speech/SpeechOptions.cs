@@ -10,11 +10,14 @@ internal sealed class SpeechOptions
     /// <summary>Lokal audio ombori papkasi, host'ning content root'iga nisbatan (yoki absolyut yoʻl).</summary>
     public string StoragePath { get; set; } = "App_Data/audio";
 
-    /// <summary>Bitta yozuvning eng katta hajmi. 30 soniyalik WAV ham 10 MB'dan kichik; Whisper chegarasi 25 MB.</summary>
-    public int MaxRecordingBytes { get; set; } = 10 * 1024 * 1024;
+    /// <summary>
+    /// Bitta yozuvning eng katta hajmi (Whisper chegarasi 25 MB). Gap talaffuzi bir necha soniya: brauzer yozuvi
+    /// (WebM/Opus, MP4) 1 MB'dan ancha kichik. Chegara Whisper xarajatini ham cheklaydi: Opus'da 5 MB ≈ 20 daqiqa.
+    /// </summary>
+    public int MaxRecordingBytes { get; set; } = 5 * 1024 * 1024;
 
-    /// <summary>Bitta oʻquvchining 24 soat ichidagi baholari: Whisper pullik, xarajat chegaralanadi.</summary>
-    public int DailyAssessmentLimit { get; set; } = 200;
+    /// <summary>Bitta oʻquvchining 24 soat ichidagi baholari: Whisper daqiqasi pullik, xarajat chegaralanadi.</summary>
+    public int DailyAssessmentLimit { get; set; } = 100;
 
     public SpeechProviderOptions Provider { get; set; } = new();
 }

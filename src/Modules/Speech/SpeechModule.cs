@@ -4,6 +4,7 @@ using EnglishSchool.BuildingBlocks.Outbox;
 using EnglishSchool.Modules.Discipline.Contracts.Events;
 using EnglishSchool.Modules.Practice.Contracts.Events;
 using EnglishSchool.Modules.Speech.Application;
+using EnglishSchool.Modules.Speech.Endpoints;
 using EnglishSchool.Modules.Speech.Infrastructure;
 using EnglishSchool.Modules.Speech.Providers;
 using EnglishSchool.Modules.Speech.Storage;
@@ -42,7 +43,9 @@ public sealed class SpeechModule : IModule
             .UseNpgsql(
                 configuration.GetConnectionString("Postgres"),
                 npgsql => npgsql.MigrationsHistoryTable("__ef_migrations_history", SpeechDbContext.Schema))
-            .UseSnakeCaseNamingConvention());
+            .UseSnakeCaseNamingConvention()
+            .UseOutbox());
+        services.AddOutboxStore<SpeechDbContext>();
 
         services.TryAddSingleton(TimeProvider.System);
         services.AddSingleton<IAudioStorage, LocalAudioStorage>();
@@ -50,6 +53,7 @@ public sealed class SpeechModule : IModule
         services.AddHttpClient<ISpeechSynthesizer, OpenAiSpeechClient>(ConfigureProvider);
         services.AddScoped<SpeechClipService>();
         services.AddScoped<PronunciationService>();
+        services.AddScoped<AudioQueries>();
         services.AddIntegrationEventConsumer<DailyGatePassed, SynthesizeOnDayUnlockedConsumer>();
         services.AddIntegrationEventConsumer<AttemptEvaluated, SynthesizeOnPracticeConsumer>();
 
@@ -57,9 +61,7 @@ public sealed class SpeechModule : IModule
         services.AddHealthChecks().AddDbContextCheck<SpeechDbContext>("speech-db");
     }
 
-    public void MapEndpoints(IEndpointRouteBuilder endpoints)
-    {
-    }
+    public void MapEndpoints(IEndpointRouteBuilder endpoints) => endpoints.MapSpeechEndpoints();
 
     private static void ConfigureProvider(IServiceProvider services, HttpClient http)
     {
