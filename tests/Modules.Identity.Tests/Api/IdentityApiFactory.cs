@@ -19,6 +19,9 @@ public sealed class IdentityApiFactory : WebApplicationFactory<Program>, IAsyncL
     // docker-compose.yml bilan bir xil image: lokal va CI bazasi bir xil.
     private readonly PostgreSqlContainer _postgres = new PostgreSqlBuilder("docker.io/pgvector/pgvector:pg18").Build();
 
+    /// <summary>Worker kabi host'ni (outbox dispatcher bilan) shu bazaga ulash uchun.</summary>
+    public string ConnectionString => _postgres.GetConnectionString();
+
     public Task InitializeAsync() => _postgres.StartAsync();
 
     async Task IAsyncLifetime.DisposeAsync()
