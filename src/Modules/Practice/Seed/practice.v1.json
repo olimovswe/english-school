@@ -1,0 +1,635 @@
+{
+  "course": "A0-A2",
+  "version": 1,
+  "exercises": [
+    {
+      "day": 1,
+      "type": "multipleChoice",
+      "instruction": "Toʻgʻri javobni tanlang.",
+      "prompt": "Qaysi soʻzda «magic e» bor?",
+      "explanation": "Magic e: soʻz oxiridagi e oʻqilmaydi, lekin oldingi unlini choʻziq qiladi: cap → cape.",
+      "options": [
+        {
+          "text": "cap",
+          "correct": false,
+          "errorCode": "PHONICS",
+          "feedback": "cap — qisqa /æ/, oxirida e yoʻq."
+        },
+        {
+          "text": "cape",
+          "correct": true
+        },
+        {
+          "text": "cup",
+          "correct": false,
+          "errorCode": "PHONICS",
+          "feedback": "cup — qisqa /ʌ/, oxirida e yoʻq."
+        },
+        {
+          "text": "kit",
+          "correct": false,
+          "errorCode": "PHONICS",
+          "feedback": "kit — qisqa /ɪ/; magic e bilan: kite."
+        }
+      ]
+    },
+    {
+      "day": 1,
+      "type": "multipleChoice",
+      "instruction": "Toʻgʻri javobni tanlang.",
+      "prompt": "«sh» harf birikmasi qanday oʻqiladi? (she, shop)",
+      "explanation": "sh = /ʃ/, oʻzbekcha «sh» kabi: she, shop, fish.",
+      "options": [
+        {
+          "text": "/s/",
+          "correct": false,
+          "errorCode": "PHONICS",
+          "feedback": "s va h alohida oʻqilmaydi: sh = /ʃ/."
+        },
+        {
+          "text": "/ʃ/",
+          "correct": true
+        },
+        {
+          "text": "/tʃ/",
+          "correct": false,
+          "errorCode": "PHONICS",
+          "feedback": "/tʃ/ — bu ch tovushi: chair, cheese."
+        }
+      ]
+    },
+    {
+      "day": 1,
+      "type": "gapFill",
+      "instruction": "Boʻsh joyni toʻldiring.",
+      "prompt": "— ___! My name is Ali. — Hi, Ali!",
+      "explanation": "Salomlashish: Hello (umumiy) yoki Hi (norasmiy).",
+      "accepted": [
+        "Hello",
+        "Hi"
+      ],
+      "mistakes": [
+        {
+          "text": "Goodbye",
+          "errorCode": "VOCABULARY",
+          "feedback": "Goodbye — xayrlashganda aytiladi. Salomlashganda: Hello yoki Hi."
+        }
+      ]
+    },
+    {
+      "day": 1,
+      "type": "matching",
+      "instruction": "Soʻzlarni tarjimasi bilan juftlang.",
+      "prompt": "1-kun soʻzlari",
+      "pairs": [
+        {
+          "en": "hello",
+          "uz": "salom"
+        },
+        {
+          "en": "goodbye",
+          "uz": "xayr"
+        },
+        {
+          "en": "name",
+          "uz": "ism"
+        },
+        {
+          "en": "friend",
+          "uz": "doʻst"
+        },
+        {
+          "en": "woman",
+          "uz": "ayol"
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "type": "gapFill",
+      "instruction": "Boʻsh joyni toʻldiring.",
+      "prompt": "I ___ a student.",
+      "explanation": "I am · he / she / it is · you / we / they are.",
+      "accepted": [
+        "am"
+      ],
+      "mistakes": [
+        {
+          "text": "is",
+          "errorCode": "BE_FORM",
+          "feedback": "I bilan faqat am ishlatiladi: I am a student."
+        },
+        {
+          "text": "are",
+          "errorCode": "BE_FORM",
+          "feedback": "I bilan faqat am ishlatiladi: I am a student."
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "type": "gapFill",
+      "instruction": "Boʻsh joyni toʻldiring.",
+      "prompt": "They ___ my friends.",
+      "explanation": "I am · he / she / it is · you / we / they are.",
+      "accepted": [
+        "are"
+      ],
+      "mistakes": [
+        {
+          "text": "is",
+          "errorCode": "BE_FORM",
+          "feedback": "they — koʻplik: they are."
+        },
+        {
+          "text": "am",
+          "errorCode": "BE_FORM",
+          "feedback": "am faqat I bilan ishlatiladi: they are."
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "type": "multipleChoice",
+      "instruction": "Toʻgʻri tarjimani tanlang.",
+      "prompt": "«U (qiz) charchagan.»",
+      "explanation": "Oʻzbekchadagi «-man, -san» oʻrniga inglizchada to be keladi: She is tired.",
+      "options": [
+        {
+          "text": "She tired.",
+          "correct": false,
+          "errorCode": "BE_MISSING",
+          "feedback": "Inglizchada to be tushib qolmaydi: She is tired."
+        },
+        {
+          "text": "She is tired.",
+          "correct": true
+        },
+        {
+          "text": "She are tired.",
+          "correct": false,
+          "errorCode": "BE_FORM",
+          "feedback": "she bilan is ishlatiladi: She is tired."
+        },
+        {
+          "text": "She am tired.",
+          "correct": false,
+          "errorCode": "BE_FORM",
+          "feedback": "am faqat I bilan ishlatiladi: She is tired."
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "type": "matching",
+      "instruction": "Soʻzlarni tarjimasi bilan juftlang.",
+      "prompt": "2-kun soʻzlari",
+      "pairs": [
+        {
+          "en": "happy",
+          "uz": "xursand"
+        },
+        {
+          "en": "sad",
+          "uz": "xafa, gʻamgin"
+        },
+        {
+          "en": "tired",
+          "uz": "charchagan"
+        },
+        {
+          "en": "hungry",
+          "uz": "och (qorni och)"
+        },
+        {
+          "en": "busy",
+          "uz": "band"
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "type": "gapFill",
+      "instruction": "Boʻsh joyni toʻldiring.",
+      "prompt": "He ___ a doctor. He is a teacher.",
+      "explanation": "Inkor: I'm not · he / she / it isn't · you / we / they aren't.",
+      "accepted": [
+        "isn't",
+        "is not"
+      ],
+      "mistakes": [
+        {
+          "text": "not",
+          "errorCode": "BE_MISSING",
+          "feedback": "Inkorda to be saqlanadi: He isn't (is not) a doctor."
+        },
+        {
+          "text": "aren't",
+          "errorCode": "BE_FORM",
+          "feedback": "he bilan is: He isn't a doctor."
+        },
+        {
+          "text": "don't",
+          "errorCode": "BE_FORM",
+          "feedback": "to be inkorida do ishlatilmaydi: He isn't a doctor."
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "type": "multipleChoice",
+      "instruction": "Toʻgʻri tarjimani tanlang.",
+      "prompt": "«Siz charchaganmisiz?»",
+      "explanation": "Soʻroqda to be gap boshiga chiqadi: Are you tired?",
+      "options": [
+        {
+          "text": "You are tired?",
+          "correct": false,
+          "errorCode": "WORD_ORDER",
+          "feedback": "Soʻroq gapda are egadan oldin keladi: Are you tired?"
+        },
+        {
+          "text": "Are you tired?",
+          "correct": true
+        },
+        {
+          "text": "Do you tired?",
+          "correct": false,
+          "errorCode": "BE_FORM",
+          "feedback": "to be bilan soʻroqda do ishlatilmaydi: Are you tired?"
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "type": "gapFill",
+      "instruction": "Boʻsh joyni toʻldiring.",
+      "prompt": "— Are you a student? — Yes, I ___.",
+      "explanation": "Qisqa javob: Yes, I am. / No, I'm not.",
+      "accepted": [
+        "am"
+      ],
+      "mistakes": [
+        {
+          "text": "'m",
+          "errorCode": "BE_FORM",
+          "feedback": "Qisqa ijobiy javobda qisqartma ishlatilmaydi: Yes, I am."
+        },
+        {
+          "text": "is",
+          "errorCode": "BE_FORM",
+          "feedback": "I bilan am: Yes, I am."
+        },
+        {
+          "text": "are",
+          "errorCode": "BE_FORM",
+          "feedback": "Javobda I keladi, demak am: Yes, I am."
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "type": "matching",
+      "instruction": "Soʻzlarni tarjimasi bilan juftlang.",
+      "prompt": "3-kun soʻzlari",
+      "pairs": [
+        {
+          "en": "doctor",
+          "uz": "shifokor"
+        },
+        {
+          "en": "nurse",
+          "uz": "hamshira"
+        },
+        {
+          "en": "teacher",
+          "uz": "oʻqituvchi"
+        },
+        {
+          "en": "engineer",
+          "uz": "muhandis"
+        },
+        {
+          "en": "developer",
+          "uz": "dasturchi"
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "type": "gapFill",
+      "instruction": "Boʻsh joyni toʻldiring.",
+      "prompt": "I'm ___ engineer.",
+      "explanation": "a — undosh tovushdan oldin (a car), an — unli tovushdan oldin (an apple, an hour).",
+      "accepted": [
+        "an"
+      ],
+      "mistakes": [
+        {
+          "text": "a",
+          "errorCode": "ART_WRONG",
+          "feedback": "engineer unli tovush bilan boshlanadi: an engineer."
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "type": "gapFill",
+      "instruction": "Boʻsh joyni toʻldiring.",
+      "prompt": "She is ___ doctor.",
+      "explanation": "a — undosh tovushdan oldin (a car), an — unli tovushdan oldin (an apple, an hour).",
+      "accepted": [
+        "a"
+      ],
+      "mistakes": [
+        {
+          "text": "an",
+          "errorCode": "ART_WRONG",
+          "feedback": "doctor undosh tovush bilan boshlanadi: a doctor."
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "type": "multipleChoice",
+      "instruction": "Toʻgʻri tarjimani tanlang.",
+      "prompt": "«Men dasturchiman.»",
+      "explanation": "Oʻzbek tilida artikl yoʻq, inglizchada esa birlikdagi kasb oldidan a / an shart.",
+      "options": [
+        {
+          "text": "I'm developer.",
+          "correct": false,
+          "errorCode": "ART_MISSING",
+          "feedback": "Kasb oldidan artikl kerak: I'm a developer."
+        },
+        {
+          "text": "I'm an developer.",
+          "correct": false,
+          "errorCode": "ART_WRONG",
+          "feedback": "developer undosh tovush bilan boshlanadi: a developer."
+        },
+        {
+          "text": "I developer.",
+          "correct": false,
+          "errorCode": "BE_MISSING",
+          "feedback": "to be tushib qolgan: I'm (I am) a developer."
+        },
+        {
+          "text": "I'm a developer.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "type": "matching",
+      "instruction": "Soʻzlarni tarjimasi bilan juftlang.",
+      "prompt": "4-kun soʻzlari",
+      "pairs": [
+        {
+          "en": "family",
+          "uz": "oila"
+        },
+        {
+          "en": "mother (mom)",
+          "uz": "ona (oyi)"
+        },
+        {
+          "en": "father (dad)",
+          "uz": "ota (dada)"
+        },
+        {
+          "en": "son",
+          "uz": "oʻgʻil"
+        },
+        {
+          "en": "daughter",
+          "uz": "qiz (farzand)"
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "type": "gapFill",
+      "instruction": "Boʻsh joyni toʻldiring.",
+      "prompt": "Aziz is my friend. ___ phone is new.",
+      "explanation": "his — erkak uchun, her — ayol uchun. Oʻzbekchada ikkalasi ham «uning».",
+      "accepted": [
+        "His"
+      ],
+      "mistakes": [
+        {
+          "text": "Her",
+          "errorCode": "PRONOUN_POSSESSIVE",
+          "feedback": "Aziz — erkak, demak his. her — ayol uchun."
+        },
+        {
+          "text": "He",
+          "errorCode": "PRONOUN_POSSESSIVE",
+          "feedback": "he — «u». Egalik uchun his: His phone is new."
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "type": "gapFill",
+      "instruction": "Boʻsh joyni toʻldiring.",
+      "prompt": "What's ___ name? — My name is Lola.",
+      "explanation": "you → your: What's your name?",
+      "accepted": [
+        "your"
+      ],
+      "mistakes": [
+        {
+          "text": "you",
+          "errorCode": "PRONOUN_POSSESSIVE",
+          "feedback": "you — «siz», your — «sizning»: What's your name?"
+        },
+        {
+          "text": "you're",
+          "errorCode": "PRONOUN_POSSESSIVE",
+          "feedback": "you're = you are. «Sizning» — your."
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "type": "multipleChoice",
+      "instruction": "Toʻgʻri tarjimani tanlang.",
+      "prompt": "«ularning kompyuteri»",
+      "explanation": "I → my · you → your · he → his · she → her · it → its · we → our · they → their.",
+      "options": [
+        {
+          "text": "they computer",
+          "correct": false,
+          "errorCode": "PRONOUN_POSSESSIVE",
+          "feedback": "they — «ular», their — «ularning»."
+        },
+        {
+          "text": "there computer",
+          "correct": false,
+          "errorCode": "VOCABULARY",
+          "feedback": "there — «u yerda». «Ularning» — their."
+        },
+        {
+          "text": "their computer",
+          "correct": true
+        },
+        {
+          "text": "them computer",
+          "correct": false,
+          "errorCode": "PRONOUN_POSSESSIVE",
+          "feedback": "them — «ularni». «Ularning» — their."
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "type": "matching",
+      "instruction": "Soʻzlarni tarjimasi bilan juftlang.",
+      "prompt": "5-kun soʻzlari",
+      "pairs": [
+        {
+          "en": "computer",
+          "uz": "kompyuter"
+        },
+        {
+          "en": "laptop",
+          "uz": "noutbuk"
+        },
+        {
+          "en": "screen",
+          "uz": "ekran"
+        },
+        {
+          "en": "keyboard",
+          "uz": "klaviatura"
+        },
+        {
+          "en": "headphones",
+          "uz": "quloqchin"
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "type": "gapFill",
+      "instruction": "Boʻsh joyni toʻldiring.",
+      "prompt": "___ are my books. (yaqin, koʻp)",
+      "explanation": "this / these — yaqin; that / those — uzoq. Koʻplikda: these, those.",
+      "accepted": [
+        "These"
+      ],
+      "mistakes": [
+        {
+          "text": "This",
+          "errorCode": "DEMONSTRATIVE",
+          "feedback": "this — bitta narsa uchun. Yaqindagi koʻp narsa: these."
+        },
+        {
+          "text": "Those",
+          "errorCode": "DEMONSTRATIVE",
+          "feedback": "those — uzoqdagilar uchun. Yaqindagilar: these."
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "type": "gapFill",
+      "instruction": "Boʻsh joyni toʻldiring.",
+      "prompt": "I have three ___. (book)",
+      "explanation": "Sondan keyin ot koʻplikda keladi: three books (✗ three book).",
+      "accepted": [
+        "books"
+      ],
+      "mistakes": [
+        {
+          "text": "book",
+          "errorCode": "PLURAL_FORM",
+          "feedback": "Sondan keyin koʻplik: three books."
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "type": "gapFill",
+      "instruction": "Boʻsh joyni toʻldiring.",
+      "prompt": "two ___ (child)",
+      "explanation": "Notoʻgʻri koʻplik: man → men · woman → women · child → children · person → people.",
+      "accepted": [
+        "children"
+      ],
+      "mistakes": [
+        {
+          "text": "childs",
+          "errorCode": "PLURAL_FORM",
+          "feedback": "child notoʻgʻri ot: child → children."
+        },
+        {
+          "text": "childrens",
+          "errorCode": "PLURAL_FORM",
+          "feedback": "children allaqachon koʻplik, -s qoʻshilmaydi."
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "type": "multipleChoice",
+      "instruction": "Toʻgʻri tarjimani tanlang.",
+      "prompt": "«Ana u — mening mashinam.» (uzoqda)",
+      "explanation": "Uzoqdagi bitta narsa: that. That is my car.",
+      "options": [
+        {
+          "text": "This is my car.",
+          "correct": false,
+          "errorCode": "DEMONSTRATIVE",
+          "feedback": "this — yaqindagi narsa. Uzoqdagi: that."
+        },
+        {
+          "text": "Those is my car.",
+          "correct": false,
+          "errorCode": "DEMONSTRATIVE",
+          "feedback": "those — koʻplik uchun. Bitta narsa: that."
+        },
+        {
+          "text": "That my car.",
+          "correct": false,
+          "errorCode": "BE_MISSING",
+          "feedback": "to be tushib qolgan: That is my car."
+        },
+        {
+          "text": "That is my car.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "type": "matching",
+      "instruction": "Soʻzlarni tarjimasi bilan juftlang.",
+      "prompt": "6-kun soʻzlari",
+      "pairs": [
+        {
+          "en": "what",
+          "uz": "nima"
+        },
+        {
+          "en": "who",
+          "uz": "kim"
+        },
+        {
+          "en": "where",
+          "uz": "qayerda"
+        },
+        {
+          "en": "when",
+          "uz": "qachon"
+        },
+        {
+          "en": "why",
+          "uz": "nega"
+        }
+      ]
+    }
+  ]
+}
