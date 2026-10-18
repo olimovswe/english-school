@@ -1,5 +1,7 @@
 using EnglishSchool.BuildingBlocks.Modules;
 using EnglishSchool.BuildingBlocks.Outbox;
+using EnglishSchool.Modules.Practice.Application;
+using EnglishSchool.Modules.Practice.Endpoints;
 using EnglishSchool.Modules.Practice.Grading;
 using EnglishSchool.Modules.Practice.Infrastructure;
 using EnglishSchool.Modules.Practice.Seed;
@@ -7,6 +9,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace EnglishSchool.Modules.Practice;
 
@@ -30,16 +33,17 @@ public sealed class PracticeModule : IModule
             .UseOutbox());
         services.AddOutboxStore<PracticeDbContext>();
 
+        services.TryAddSingleton(TimeProvider.System);
         services.AddScoped<IGradingTier, RuleBasedTier>();
         services.AddScoped<IGradingTier, NormalizationTier>();
         services.AddScoped<IGradingTier, AiGatewayTier>();
         services.AddScoped<GradingPipeline>();
+        services.AddScoped<ExerciseQueries>();
+        services.AddScoped<AttemptService>();
 
         services.AddHostedService<PracticeSeeder>();
         services.AddHealthChecks().AddDbContextCheck<PracticeDbContext>("practice-db");
     }
 
-    public void MapEndpoints(IEndpointRouteBuilder endpoints)
-    {
-    }
+    public void MapEndpoints(IEndpointRouteBuilder endpoints) => endpoints.MapPracticeEndpoints();
 }

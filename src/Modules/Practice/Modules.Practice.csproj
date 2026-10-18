@@ -7,7 +7,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\BuildingBlocks\BuildingBlocks.csproj" />
     <ProjectReference Include="..\Practice.Contracts\Modules.Practice.Contracts.csproj" />
-    <!-- Boshqa modullarga faqat Contracts orqali: (8-haftadan) AI baholash. -->
+    <!-- Boshqa modullarga faqat Contracts orqali: kurs kunlari va (8-haftadan) AI baholash. -->
+    <ProjectReference Include="..\Curriculum.Contracts\Modules.Curriculum.Contracts.csproj" />
     <ProjectReference Include="..\AiGateway.Contracts\Modules.AiGateway.Contracts.csproj" />
   </ItemGroup>
 

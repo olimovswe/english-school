@@ -1,12 +1,12 @@
 using System.Diagnostics;
 using System.Security.Claims;
+using EnglishSchool.BuildingBlocks.Security;
 using EnglishSchool.Modules.Identity.Application;
 using EnglishSchool.Modules.Identity.Security;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.IdentityModel.JsonWebTokens;
 
 namespace EnglishSchool.Modules.Identity.Endpoints;
 
@@ -100,7 +100,7 @@ internal static class IdentityEndpoints
     private static async Task<Results<Ok<UserProfileResponse>, UnauthorizedHttpResult, NotFound>> GetProfileAsync(
         ClaimsPrincipal principal, AccountService accounts, CancellationToken cancellationToken)
     {
-        if (!Guid.TryParse(principal.FindFirst(JwtRegisteredClaimNames.Sub)?.Value, out var userId))
+        if (!principal.TryGetUserId(out var userId))
         {
             return TypedResults.Unauthorized();
         }
