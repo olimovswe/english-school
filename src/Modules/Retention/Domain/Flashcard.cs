@@ -1,3 +1,6 @@
+using EnglishSchool.BuildingBlocks.Abstractions.Events;
+using EnglishSchool.Modules.Retention.Contracts.Events;
+
 namespace EnglishSchool.Modules.Retention.Domain;
 
 internal enum FlashcardKind
@@ -9,8 +12,9 @@ internal enum FlashcardKind
 /// <summary>
 /// Oʻquvchining bitta soʻz yoki ibora kartochkasi. Curriculum'dagi lugʻat elementiga
 /// (<see cref="VocabularyItemId"/>) bogʻlangan; matn yaratilgan paytdagi nusxa, chunki kurs kontenti versiya ichida oʻzgarmaydi.
+/// Takrorlash bosqichidagi kartochka unutilsa, <see cref="CardLapsed"/> chiqadi (baho bilan bitta tranzaksiyada outbox'ga).
 /// </summary>
-internal sealed class Flashcard
+internal sealed class Flashcard : IntegrationEventSource
 {
     private Flashcard()
     {
@@ -75,6 +79,11 @@ internal sealed class Flashcard
         State = schedule.State;
         DueAt = schedule.DueAt;
         ScheduledDays = schedule.ScheduledDays;
+
+        if (schedule.IsLapse)
+        {
+            Raise(new CardLapsed(UserId, Id, Kind.ToString(), VocabularyItemId));
+        }
 
         return CardReview.Record(this, rating, now, phaseBefore, schedule.ElapsedDays, schedule.Retrievability, durationMs);
     }
