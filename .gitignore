@@ -8,6 +8,10 @@
 .env.*
 !.env.example
 
+# Local audio storage (Speech module): student recordings and generated clips
+.data/
+App_Data/
+
 # User-specific files
 *.rsuser
 *.suo
