@@ -38,4 +38,38 @@ public static class WorkerHost
 
         return builder;
     }
+
+    /// <summary>
+    /// Bir martalik <c>migrate</c> buyrugʻi: barcha modullar migratsiyalari va kurs kontenti seed'i, keyin chiqish.
+    /// Productionda API va Worker'dan oldin ishlaydi (compose'dagi <c>migrate</c> xizmati); ular esa migratsiya qilmaydi.
+    /// Takroriy ishga tushirish xavfsiz: qoʻllangan migratsiya va seed qilingan versiya oʻtkazib yuboriladi.
+    /// </summary>
+    public static async Task MigrateAsync(
+        HostApplicationBuilderSettings settings, IReadOnlyDictionary<string, string?>? overrides = null, CancellationToken cancellationToken = default)
+    {
+        var builder = GenericHost.CreateApplicationBuilder(settings);
+        var migration = new Dictionary<string, string?>();
+        foreach (var module in ModuleCatalog.All)
+        {
+            migration[$"{module.Name}:ApplyMigrationsOnStartup"] = "true";
+            migration[$"{module.Name}:SeedOnStartup"] = "true";
+        }
+
+        builder.Configuration.AddInMemoryCollection(migration);
+        if (overrides is not null)
+        {
+            builder.Configuration.AddInMemoryCollection(overrides);
+        }
+
+        // Outbox dispatcher qoʻshilmaydi: faqat modullarning migratorlari va seed'erlari (ular StartAsync'da ishlaydi).
+        builder.Services.AddHybridCaching(builder.Configuration);
+        foreach (var module in ModuleCatalog.All)
+        {
+            module.AddServices(builder.Services, builder.Configuration);
+        }
+
+        using var host = builder.Build();
+        await host.StartAsync(cancellationToken);
+        await host.StopAsync(cancellationToken);
+    }
 }

@@ -1,7 +1,47 @@
-# Lokal infratuzilma: PostgreSQL 18 + pgvector va Valkey (Redis bilan protokol darajasida mos, BSD litsenziya).
-# Ishga tushirish: cp .env.example .env (parolni almashtiring) && docker compose up -d && scripts/dev-secrets.sh
-# Portlar faqat 127.0.0.1 da ochiladi: baza va kesh lokal tarmoqqa koʻrinmaydi.
+# Ikki rejim bitta faylda. Sozlamalar .env'dan olinadi (shablon: .env.example).
+#
+#   Lokal ishlab chiqish:  docker compose up -d
+#     Faqat PostgreSQL 18 + pgvector va Valkey; portlar faqat 127.0.0.1 da. API va Worker `dotnet run` bilan.
+#
+#   Production (yoki lokal production sinovi):  docker compose --profile app up -d --build
+#     Qoʻshimcha: migrate (bir martalik: migratsiyalar va kurs seed'i), keyin api va worker. API faqat migrate
+#     muvaffaqiyatli tugagach ishga tushadi va oʻzi hech qachon migratsiya qilmaydi.
 name: english-school
+
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+# API, Worker va migrate uchun umumiy: root emas, faqat oʻqiladigan fayl tizimi, imtiyozlarsiz.
+x-app: &app
+  restart: unless-stopped
+  read_only: true
+  tmpfs:
+    - /tmp
+  security_opt:
+    - no-new-privileges:true
+  cap_drop:
+    - ALL
+  # Hosting:ShutdownTimeout (25 s) shundan qisqa: joriy soʻrovlar va outbox xabari SIGKILL'dan oldin tugaydi.
+  stop_grace_period: 30s
+  logging: *logging
+  volumes:
+    - audio:/data/audio
+
+x-app-environment: &app-environment
+  ConnectionStrings__Postgres: Host=postgres;Port=5432;Database=${POSTGRES_DB:-english_school};Username=${POSTGRES_USER:-english_school};Password=${POSTGRES_PASSWORD}
+  ConnectionStrings__Redis: redis:6379
+  Hosting__ShutdownTimeout: "00:00:25"
+  Speech__StoragePath: /data/audio
+  Speech__Provider__ApiKey: ${SPEECH_API_KEY:-}
+
+x-infrastructure-ready: &infrastructure-ready
+  postgres:
+    condition: service_healthy
+  redis:
+    condition: service_healthy
 
 services:
   postgres:
@@ -18,11 +58,18 @@ services:
       # shuning uchun volume butun /var/lib/postgresql ga ulanadi.
       - pgdata:/var/lib/postgresql
       - ./deploy/postgres/init:/docker-entrypoint-initdb.d:ro
+    shm_size: 256mb
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 5s
       timeout: 3s
       retries: 20
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1g
+    logging: *logging
 
   redis:
     image: docker.io/valkey/valkey:8-alpine
@@ -37,7 +84,92 @@ services:
       interval: 5s
       timeout: 3s
       retries: 20
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 320m
+    logging: *logging
+
+  migrate:
+    <<: *app
+    profiles: [app]
+    build:
+      context: .
+      target: worker
+    image: english-school-worker:${APP_VERSION:-local}
+    command: ["migrate"]
+    restart: "no"
+    environment:
+      <<: *app-environment
+    depends_on: *infrastructure-ready
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512m
+
+  api:
+    <<: *app
+    profiles: [app]
+    build:
+      context: .
+      target: api
+    image: english-school-api:${APP_VERSION:-local}
+    ports:
+      # Standart: faqat shu serverdagi reverse proxy (TLS) uchun. Tashqariga: API_BIND=0.0.0.0.
+      - "${API_BIND:-127.0.0.1}:${API_PORT:-8080}:8080"
+    environment:
+      <<: *app-environment
+      Identity__Jwt__SigningKey: ${JWT_SIGNING_KEY:-}
+      Identity__Telegram__BotToken: ${TELEGRAM_BOT_TOKEN:-}
+      Cors__AllowedOrigins__0: ${CORS_ALLOWED_ORIGINS:-}
+      RateLimiting__PermitsPerMinute: ${RATE_LIMIT_PER_MINUTE:-300}
+      RateLimiting__AuthenticationPermitsPerMinute: ${RATE_LIMIT_AUTH_PER_MINUTE:-20}
+      RateLimiting__SpeechPermitsPerMinute: ${RATE_LIMIT_SPEECH_PER_MINUTE:-20}
+      # Faqat API'ga yagona yoʻl reverse proxy orqali boʻlsa yoqing: aks holda mijoz X-Forwarded-For'ni soxtalashtiradi.
+      ASPNETCORE_FORWARDEDHEADERS_ENABLED: ${FORWARDED_HEADERS_ENABLED:-false}
+    depends_on:
+      <<: *infrastructure-ready
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      # Image'da curl yoʻq: bash'ning /dev/tcp'i orqali tayyorlik endpointi.
+      test:
+        - CMD
+        - bash
+        - -c
+        - 'exec 3<>/dev/tcp/127.0.0.1/8080 && printf ''GET /health/ready HTTP/1.0\r\nHost: localhost\r\n\r\n'' >&3 && head -n 1 <&3 | grep -q " 200 "'
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512m
+
+  worker:
+    <<: *app
+    profiles: [app]
+    build:
+      context: .
+      target: worker
+    image: english-school-worker:${APP_VERSION:-local}
+    environment:
+      <<: *app-environment
+    depends_on:
+      <<: *infrastructure-ready
+      migrate:
+        condition: service_completed_successfully
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 384m
 
 volumes:
   pgdata:
   redisdata:
+  audio:

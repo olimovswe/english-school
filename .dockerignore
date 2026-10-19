@@ -1,0 +1,19 @@
+# Build konteksti: faqat global.json, Directory.*.props va src/ kerak. Qolgani image'ga ham, keshga ham tushmasin.
+**/bin/
+**/obj/
+**/App_Data/
+.data/
+.git/
+.vs/
+.vscode/
+.idea/
+*.user
+.env
+.env.*
+tests/
+deploy/
+scripts/
+*.md
+docker-compose*.yml
+Dockerfile
+.dockerignore

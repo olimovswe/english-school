@@ -9,7 +9,8 @@ namespace EnglishSchool.SystemTests.TestSupport;
 /// </summary>
 public sealed class ApiFactory(SystemFixture system) : WebApplicationFactory<Program>
 {
-    private static readonly string[] MigratedModules = ["Identity", "Curriculum", "Discipline", "Practice", "Retention", "Speech", "Analytics"];
+    /// <summary>Bazasi bor modullar: <c>{Modul}:ApplyMigrationsOnStartup</c> sozlamasi.</summary>
+    public static readonly string[] MigratedModules = ["Identity", "Curriculum", "Discipline", "Practice", "Retention", "Speech", "Analytics"];
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {

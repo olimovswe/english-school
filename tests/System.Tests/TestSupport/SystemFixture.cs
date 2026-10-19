@@ -83,6 +83,16 @@ public sealed class SystemFixture : IAsyncLifetime
             settings);
     }
 
+    /// <summary>Productiondagi <c>migrate</c> buyrugʻi (<see cref="WorkerHost.MigrateAsync"/>) berilgan bazada.</summary>
+    public static Task MigrateAsync(string postgresConnectionString) =>
+        WorkerHost.MigrateAsync(
+            new HostApplicationBuilderSettings { EnvironmentName = "Testing", ContentRootPath = AppContext.BaseDirectory },
+            new Dictionary<string, string?>
+            {
+                ["ConnectionStrings:Postgres"] = postgresConnectionString,
+                ["ConnectionStrings:Redis"] = string.Empty,
+            });
+
     /// <summary>Shu konteynerda yangi, boʻsh baza: migratsiya qilinmagan holatlarni tekshirish uchun.</summary>
     public async Task<string> CreateDatabaseAsync()
     {
