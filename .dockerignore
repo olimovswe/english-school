@@ -11,6 +11,8 @@
 .env
 .env.*
 tests/
+# Next.js veb ilovasi alohida: node_modules va .next yuzlab MB, backend image'ga kerak emas.
+web/
 deploy/
 scripts/
 *.md
