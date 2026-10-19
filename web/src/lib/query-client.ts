@@ -1,15 +1,13 @@
 import { QueryClient } from "@tanstack/react-query";
 
+import { statusOf } from "@/lib/api/errors";
+
 const MAX_RETRIES = 2;
 
-/** 4xx javoblar (notoʻgʻri soʻrov, ruxsat yoʻq, topilmadi) qayta urinish bilan oʻzgarmaydi. */
+/** 4xx javoblar (notoʻgʻri soʻrov, ruxsat yoʻq, topilmadi) qayta urinish bilan oʻzgarmaydi; 429 esa kutishni soʻraydi. */
 function isClientError(error: unknown): boolean {
-  if (typeof error !== "object" || error === null || !("status" in error)) {
-    return false;
-  }
-
-  const { status } = error as { status: unknown };
-  return typeof status === "number" && status >= 400 && status < 500;
+  const status = statusOf(error);
+  return status !== null && status >= 400 && status < 500;
 }
 
 export function createQueryClient(): QueryClient {
