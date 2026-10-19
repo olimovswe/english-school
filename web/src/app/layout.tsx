@@ -33,9 +33,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    // next-themes <html> klassini gidratsiyadan oldin oʻrnatadi.
-    <html lang="uz" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    // Shrift oʻzgaruvchilari <html> da: globals.css `html { font-family: var(--font-sans) }` ni shu yerda oʻqiydi.
+    // suppressHydrationWarning: next-themes <html> klassini gidratsiyadan oldin oʻrnatadi.
+    <html lang="uz" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
+      <body className="antialiased">
         <Providers>{children}</Providers>
       </body>
     </html>
