@@ -1,21 +1,22 @@
 # English School
 
-Backend for an 8-week (56-day) **A0 → A2 English course for Uzbek speakers**: daily grammar and
-vocabulary, practice with tiered AI feedback, spaced-repetition review, pronunciation practice and a
-daily-discipline loop.
+An 8-week (56-day) **A0 → A2 English course for Uzbek speakers**: daily grammar and vocabulary, practice
+with tiered AI feedback, spaced-repetition review, pronunciation practice and a daily-discipline loop.
 
-It is a **.NET 10 modular monolith**: one deployable API, one background worker, and eight business
-modules whose boundaries are enforced by tests rather than by convention.
+The backend is a **.NET 10 modular monolith**: one deployable API, one background worker, and eight
+business modules whose boundaries are enforced by tests rather than by convention. The student web app
+in [`web/`](web/README.md) is a **Next.js 15** client of the same API.
 
 | | |
 |---|---|
-| **Status** | Dev-weeks 11–12 done: system integration, an end-to-end student journey test, health checks and production deployment. Seven modules are implemented; AiGateway is scaffolded with its contracts. |
+| **Status** | Backend: dev-weeks 11–12 done (system integration, an end-to-end student journey test, health checks, production deployment); seven modules are implemented, and AiGateway is scaffolded with its contracts. Web: sign-in and the daily plan dashboard; the Practice, Flashcards, Speech and Analytics pages are placeholders. |
 | **Runtime** | .NET 10 (SDK pinned in [`global.json`](global.json)), ASP.NET Core minimal APIs |
 | **Data** | PostgreSQL 18 + pgvector, EF Core 10 (Npgsql), one schema per module |
 | **Cache** | HybridCache: in-process L1, Valkey 8 (Redis protocol) as shared L2 |
 | **Auth** | JWT access tokens + rotating refresh tokens; email/password or Telegram Login |
+| **Web** | Next.js 15 (App Router), TypeScript, Tailwind CSS 4, shadcn/ui, TanStack Query; see [`web/README.md`](web/README.md) |
 | **Deploy** | Multi-stage [`Dockerfile`](Dockerfile) (API and Worker images), [`docker-compose.yml`](docker-compose.yml) with a production profile |
-| **Tests** | xUnit, ArchUnitNET, WebApplicationFactory, Testcontainers (PostgreSQL, Valkey); 368 tests |
+| **Tests** | Backend: xUnit, ArchUnitNET, WebApplicationFactory, Testcontainers (PostgreSQL, Valkey); 368 tests. Web: Vitest; 18 tests |
 
 ---
 
@@ -24,6 +25,7 @@ modules whose boundaries are enforced by tests rather than by convention.
 - [Architecture](#architecture)
 - [Modules](#modules)
 - [Getting started](#getting-started)
+  - [Running everything together](#running-everything-together)
 - [Running in production (Docker)](#running-in-production-docker)
 - [Health checks and operations](#health-checks-and-operations)
 - [Configuration](#configuration)
@@ -196,6 +198,7 @@ public contract.
 │   ├── Architecture.Tests/            # module boundaries, host composition, events, outbox wiring, health, secrets
 │   ├── Modules.*.Tests/               # one per implemented module: unit tests + API tests on PostgreSQL
 │   └── System.Tests/                  # both hosts end to end: journey, health, edge, migrate, shutdown
+├── web/                               # Next.js 15 student web app (see web/README.md)
 ├── deploy/postgres/init/              # runs once on a fresh database (CREATE EXTENSION vector)
 ├── scripts/dev-secrets.sh             # copies .env values into .NET user-secrets
 ├── Dockerfile                         # multi-stage: targets api and worker
@@ -395,6 +398,7 @@ because the seeder skips versions that already exist.
 - .NET SDK **10.0.112** or a later 10.0 feature band
 - Docker or Podman, with Compose v2
 - `openssl` (used to generate local secrets)
+- Node.js **20.9** or later for the web app; 24 LTS is recommended ([`web/.nvmrc`](web/.nvmrc))
 
 ### 1. Start PostgreSQL and Valkey
 
@@ -452,6 +456,41 @@ curl -s localhost:5080/api/v1/discipline/gate/submit -H "Authorization: Bearer $
 curl -s localhost:5080/api/v1/curriculum/days/1 -H "Authorization: Bearer $TOKEN"
 curl -s "localhost:5080/api/v1/retention/due?limit=5" -H "Authorization: Bearer $TOKEN"  # 33 cards, once the Worker ran
 ```
+
+### 5. Run the web app
+
+```bash
+cd web
+npm ci
+npm run dev        # http://localhost:3000
+```
+
+Open http://localhost:3000 and register with an email and a password; you land on the daily plan. On
+day 1 no cards are due, so **Darvozani ochish** opens the morning gate at once. The dev server forwards
+`/api/v1/*` to the API at `http://localhost:5080`, so the browser talks to a single origin and the API
+needs no CORS entry. Configuration, Telegram sign-in and the project layout are described in
+[`web/README.md`](web/README.md).
+
+### Running everything together
+
+**Everything from source** (hot reload everywhere), one terminal per process:
+
+```bash
+docker compose up -d                       # 1. PostgreSQL + Valkey only (no --profile)
+dotnet run --project src/Host.Api          # 2. API → http://localhost:5080 (migrates and seeds in Development)
+dotnet run --project src/Host.Worker       # 3. Worker: flashcards, clips and progress from events
+cd web && npm run dev                      # 4. Web app → http://localhost:3000
+```
+
+**Backend in containers, web app from source.** With `JWT_SIGNING_KEY` set in `.env` (see
+[Running in production](#running-in-production-docker)):
+
+```bash
+docker compose --profile app up -d --build                     # migrate, API (:8080) and Worker
+cd web && API_PROXY_TARGET=http://localhost:8080 npm run dev   # http://localhost:3000
+```
+
+The web app reads `API_PROXY_TARGET` when `npm run dev` starts, or at build time for `npm run build`.
 
 ---
 
@@ -840,6 +879,14 @@ export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
 export TESTCONTAINERS_RYUK_DISABLED=true
 ```
 
+**Web app.** These need no backend:
+
+```bash
+cd web
+npm test                                           # Vitest: API client and token refresh, query retries, formatting
+npm run lint && npm run typecheck && npm run build # zero warnings: lint, types, production build
+```
+
 ---
 
 ## Conventions
@@ -894,3 +941,4 @@ export TESTCONTAINERS_RYUK_DISABLED=true
 | `/speech/assess` returns 503 `Talaffuzni baholash hozircha yoqilmagan.` | No provider key. Set `SPEECH_API_KEY` in `.env` and re-run `scripts/dev-secrets.sh`, or set `Speech__Provider__ApiKey`. |
 | `audioId` stays `null` in `/speech/days/{n}/audio` | Clips are made by the Worker when the day is unlocked or practised. Start `src/Host.Worker` with the provider key, then practise or unlock the day. |
 | Rows pile up in `*.outbox_messages` with `processed_at` empty | The Worker isn't running (only it dispatches events). Start `src/Host.Worker`. Rows with `failed_attempts` at the limit are parked; read `last_error`. |
+| Web app: every request fails with "Serverda xatolik yuz berdi"; the dev terminal shows `Failed to proxy … ECONNREFUSED` | The API isn't running, or `API_PROXY_TARGET` points to the wrong port (5080 for `dotnet run`, 8080 for Compose). More in [web/README.md](web/README.md#troubleshooting). |
