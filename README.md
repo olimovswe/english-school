@@ -9,14 +9,14 @@ in [`web/`](web/README.md) is a **Next.js 15** client of the same API.
 
 | | |
 |---|---|
-| **Status** | Backend: dev-weeks 11–12 done (system integration, an end-to-end student journey test, health checks, production deployment); seven modules are implemented, and AiGateway is scaffolded with its contracts. Web: sign-in and the daily plan dashboard; the Practice, Flashcards, Speech and Analytics pages are placeholders. |
+| **Status** | Backend: dev-weeks 11–12 done (system integration, an end-to-end student journey test, health checks, production deployment); seven modules are implemented, and AiGateway is scaffolded with its contracts. Web: sign-in, the daily plan dashboard and practice sessions; the Flashcards, Speech and Analytics pages are placeholders. |
 | **Runtime** | .NET 10 (SDK pinned in [`global.json`](global.json)), ASP.NET Core minimal APIs |
 | **Data** | PostgreSQL 18 + pgvector, EF Core 10 (Npgsql), one schema per module |
 | **Cache** | HybridCache: in-process L1, Valkey 8 (Redis protocol) as shared L2 |
 | **Auth** | JWT access tokens + rotating refresh tokens; email/password or Telegram Login |
 | **Web** | Next.js 15 (App Router), TypeScript, Tailwind CSS 4, shadcn/ui, TanStack Query; see [`web/README.md`](web/README.md) |
 | **Deploy** | Multi-stage [`Dockerfile`](Dockerfile) (API and Worker images), [`docker-compose.yml`](docker-compose.yml) with a production profile |
-| **Tests** | Backend: xUnit, ArchUnitNET, WebApplicationFactory, Testcontainers (PostgreSQL, Valkey); 368 tests. Web: Vitest; 18 tests |
+| **Tests** | Backend: xUnit, ArchUnitNET, WebApplicationFactory, Testcontainers (PostgreSQL, Valkey); 368 tests. Web: Vitest and Testing Library; 49 tests |
 
 ---
 
@@ -727,7 +727,8 @@ answer **429** (rate limit, with `Retry-After`).
 { "sessionId": "…", "focusSeconds": 1500, "distractionCount": 1, "minimalDay": true }
 { "sessionId": "…", "status": "Completed", "totalFocusSeconds": 1500, "minimalDay": true }
 
-// GET /practice/days/2/exercises: choices and matchTargets come sorted alphabetically, so their order never reveals the answer
+// GET /practice/days/2/exercises: MultipleChoice choices and Matching matchTargets come sorted alphabetically, so their
+// order never reveals the answer (Matching's choices, the left column, keep the authored order)
 [{ "id": "…", "position": 3, "type": "MultipleChoice", "instruction": "Toʻgʻri tarjimani tanlang.", "prompt": "«U (qiz) charchagan.»",
    "choices": [{ "id": "…", "text": "She am tired." }, …], "matchTargets": [] }]
 
@@ -883,7 +884,7 @@ export TESTCONTAINERS_RYUK_DISABLED=true
 
 ```bash
 cd web
-npm test                                           # Vitest: API client and token refresh, query retries, formatting
+npm test                                           # Vitest: API client and token refresh, practice session and cards
 npm run lint && npm run typecheck && npm run build # zero warnings: lint, types, production build
 ```
 

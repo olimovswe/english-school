@@ -1,10 +1,10 @@
 # English School: web app
 
-The student web app for the English School API: sign-in with Telegram or email, and the daily plan with
-the morning review gate, today's steps, progress and streak.
+The student web app for the English School API: sign-in with Telegram or email, the daily plan (morning
+review gate, today's steps, progress and streak), and practice sessions with instant grading feedback.
 
 **Stack:** Next.js 15 (App Router) · TypeScript · Tailwind CSS 4 · shadcn/ui (Radix) · Lucide · TanStack
-Query · ky · zustand · Vitest.
+Query · ky · zustand · Vitest + Testing Library.
 
 The UI is in Uzbek (Latin script). All data comes from the .NET API in this repository; see the
 [root README](../README.md) for the backend.
@@ -25,7 +25,7 @@ npm run dev                  # http://localhost:3000
 Open http://localhost:3000. You are sent to the sign-in page; choose **Roʻyxatdan oʻting**, register with
 an email and a password of 8–128 characters, and you land on the daily plan. On day 1 no cards are due,
 so **Darvozani ochish** opens the gate at once. When the Worker has delivered the events a few seconds
-later, the stats show the day's 33 words.
+later, the stats show the day's 33 words. **Mashqlar** then plays the day's exercises (four on day 1).
 
 | Command | What it does |
 |---|---|
@@ -34,7 +34,7 @@ later, the stats show the day's 33 words.
 | `npm start` | Serves the production build |
 | `npm run lint` | ESLint; any warning fails |
 | `npm run typecheck` | `tsc --noEmit` |
-| `npm test` | Vitest unit tests |
+| `npm test` | Vitest: unit tests (node) and component tests (jsdom, Testing Library) |
 
 ## Configuration
 
@@ -106,6 +106,47 @@ keeps the session.
 session. `RequireSession` (the `(app)` layout) redirects to `/login?next=…` once the stored session has
 loaded, and `next` only accepts paths on this site. The API enforces authorization on every request.
 
+## Practice
+
+`/practice` plays the exercises of today's course day: the day comes from `GET /discipline/today`, the
+exercises from `GET /practice/days/{n}/exercises`, ordered by position. Each answer goes to
+`POST /practice/attempts` and is graded right away.
+
+| Backend type | Card | Interaction |
+|---|---|---|
+| `GapFill` | `FillInTheBlankCard` | The `___` in the prompt fills in as the student types. Empty answers are caught on submit, and Cyrillic letters (a Russian keyboard layout) are flagged while typing and never sent. |
+| `MultipleChoice` | `MultipleChoiceCard` | Native radio buttons: arrow keys or Space to choose, Enter to submit. |
+| `Matching` | `MatchingCard` | Pick a word, then its translation, from either side; clicking a pair again undoes it. Numbered badges show the pairs, and focus moves to the next open word. |
+
+The backend has no word-order (sentence reordering) exercise type, so there is no card for one.
+
+**Flow.** Answer → feedback → **Keyingi mashq** → … → summary. The feedback banner shows:
+- the verdict and the score (0–100 %);
+- the error class, with Uzbek labels for the backend's error codes;
+- the correct answer and the rule;
+- which tier graded the answer.
+
+After grading, the card turns read-only and marks right and wrong choices or pairs. The summary shows:
+- the average score and the correct / partial / incorrect counts;
+- the error classes met, most frequent first;
+- each exercise's result;
+- **Qayta ishlash** to restart the set.
+
+A failed submission keeps the answer and shows why. Pressing Enter again while an attempt is being
+graded sends nothing.
+
+**Keyboard.** Every step works without a mouse. Each new exercise focuses its first control, Enter
+submits, and after grading focus moves to **Keyingi mashq**, so Enter continues. When the summary
+appears, focus moves to its heading.
+
+The session logic is pure and tested on its own:
+- [`session.ts`](src/modules/practice/session.ts): phases, per-exercise `timeTakenMs` clamped to the
+  API's 0–1 h, and the summary;
+- [`matching.ts`](src/modules/practice/matching.ts): the pairing rules.
+
+Completing a practice set does not yet mark the plan's practice step as done; see the Discipline "known
+gap" in the root README.
+
 ## Project layout
 
 ```text
@@ -113,7 +154,8 @@ src/
 ├── app/                       routes (App Router)
 │   ├── (app)/                 signed-in pages; layout = RequireSession + AppShell
 │   │   ├── dashboard/         the daily plan
-│   │   └── practice/ flashcards/ speech/ analytics/   placeholders
+│   │   ├── practice/          today's exercise session
+│   │   └── flashcards/ speech/ analytics/   placeholders
 │   ├── login/                 sign-in page
 │   ├── layout.tsx             fonts, <html lang="uz">, providers
 │   ├── providers.tsx          TanStack Query, theme, toaster, session sync
@@ -128,7 +170,8 @@ src/
 └── modules/                   one folder per backend module
     ├── auth/                  session store, sign-in flows, guard, sign-out
     ├── discipline/  retention/  analytics/  curriculum/
-    └── dashboard/             dashboard widgets
+    ├── dashboard/             dashboard widgets
+    └── practice/              exercise cards, feedback, session and summary; session.ts, matching.ts
 ```
 
 A module folder holds:
@@ -156,9 +199,12 @@ The backend's module names are kept, so a frontend module maps to one API area.
 ## Testing
 
 ```bash
-npm test                         # Vitest: API client, query retries, formatting
+npm test                         # Vitest: unit and component tests
 npm run lint && npm run typecheck && npm run build
 ```
+
+Tests run in node by default. A component test opts into jsdom with `// @vitest-environment jsdom` on
+its first line and uses Testing Library with the jest-dom matchers ([`src/test/setup.ts`](src/test/setup.ts)).
 
 [`client.test.ts`](src/lib/api/client.test.ts) runs the API client against a fake Identity service that
 rotates refresh tokens and rejects reused ones, like the real one. It covers:
@@ -170,6 +216,18 @@ rotates refresh tokens and rejects reused ones, like the real one. It covers:
 - a rejected refresh token;
 - network failures;
 - public endpoints, which never carry a token.
+
+The practice module has unit and component tests:
+- [`session.test.ts`](src/modules/practice/session.test.ts) and
+  [`matching.test.ts`](src/modules/practice/matching.test.ts): the session phases and the pairing rules.
+- [`exercise-cards.test.tsx`](src/modules/practice/components/exercise-cards.test.tsx): each card's
+  validation, keyboard use and graded marks, and the feedback banner.
+- [`practice-session.test.tsx`](src/modules/practice/components/practice-session.test.tsx): the submit
+  workflow, with only `practiceApi` mocked:
+  - a keyboard-only run through all three exercise types to the summary;
+  - a restart;
+  - a failed submission retried;
+  - no double submit while an attempt is being graded.
 
 There are no browser end-to-end tests in the repository yet.
 
