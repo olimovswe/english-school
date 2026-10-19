@@ -1,4 +1,4 @@
-export const AFTER_SIGN_IN_PATH = "/";
+export const AFTER_SIGN_IN_PATH = "/dashboard";
 
 /** `?next=` faqat shu saytdagi yoʻl boʻlishi mumkin: `//evil.example` yoki toʻliq URL ochiq redirect boʻlardi. */
 export function safeRedirectPath(next: string | null): string {
